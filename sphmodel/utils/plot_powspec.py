@@ -32,7 +32,7 @@
 
  COMMAND LINE ARGUMENTS
    PARAMETER              - model parameter for which the power spectrum will be plotted
-                            (vp, vs, rho, eta, vsv, etc.)
+                            (vph, rho, eta, vsv, etc.)
 
  DESCRIPTION
    Plots the 1D power spectrum created by POWSPEC.
@@ -93,7 +93,7 @@ def helpMenu ():
 
  COMMAND LINE ARGUMENTS
    PARAMETER              - model parameter for which the power spectrum will be plotted
-                            (vp, vs, rho, eta, vsv, etc.)
+                            (vph, rho, eta, vsv, etc.)
 
  DESCRIPTION
    Plots the 1D power spectrum created by POWSPEC.\n"""

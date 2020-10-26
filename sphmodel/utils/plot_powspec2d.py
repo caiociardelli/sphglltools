@@ -32,7 +32,7 @@
 
  COMMAND LINE ARGUMENTS
    PARAMETER              - model parameter for which the power spectrum will be plotted
-                            (vp, vs, rho, eta, vsv, etc.)
+                            (vph, rho, eta, vsv, etc.)
 
  DESCRIPTION
    Plots the 2D power spectrum created by POWSPEC2D.

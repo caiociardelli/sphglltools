@@ -31,7 +31,7 @@
    ./utils/created_extra_vertical_cross_section.py dcb
 
  COMMAND LINE ARGUMENTS
-   PARAMETER              - derived model parameter to be created (cb, vpvs, ti, dcb, dvsv, etc.)
+   PARAMETER              - derived model parameter to be created (cb, vpvs, ti, dcb, dvs, etc.)
 
  DESCRIPTION
    Calculates additional model parameters from the ones created by BKMNS2DD. You can calculate
@@ -158,7 +158,7 @@ def helpMenu ():
    ./utils/created_extra_vertical_cross_section.py dcb
 
  COMMAND LINE ARGUMENTS
-   PARAMETER              - derived model parameter to be created (cb, vpvs, ti, dcb, dvsv, etc.)
+   PARAMETER              - derived model parameter to be created (cb, vpvs, ti, dcb, dvs, etc.)
 
  DESCRIPTION
    Calculates additional model parameters from the ones created by BKMNS2DD. You can calculate

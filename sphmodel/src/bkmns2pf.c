@@ -25,10 +25,10 @@
    ./bin/bkmns2pf PARAMETER MIN_DEPTH MAX_DEPTH LAT LON RESOLUTION NMAX
 
  EXAMPLE
-   ./bin/bkmns2pf vs 10 2891 0.8 -24.2 1.0 10
+   ./bin/bkmns2pf rho 10 2891 0.8 -24.2 1.0 10
 
  COMMAND LINE ARGUMENTS
-   PARAMETER              - model parameter to be expanded (vp, vs, rho, eta, vsv, etc.)
+   PARAMETER              - model parameter to be expanded (vph, rho, eta, vsv, etc.)
    MIN_DEPTH              - minimum depth
    MAX_DEPTH              - maximum depth
    LAT LON                - latitude and longitude of the point
@@ -271,10 +271,10 @@ static void helpMenu (void)
                     "\n    ./bin/bkmns2pf PARAMETER MIN_DEPTH MAX_DEPTH LAT LON RESOLUTION NMAX"
 
                     "\n\n EXAMPLE"
-                    "\n    ./bin/bkmns2pf vs 10 2891 0.8 -24.2 1.0 10"
+                    "\n    ./bin/bkmns2pf rho 10 2891 0.8 -24.2 1.0 10"
 
                     "\n\n COMMAND LINE ARGUMENTS"
-                    "\n    PARAMETER              - model parameter to be expanded (vp, vs, rho, eta, vsv, etc.)"
+                    "\n    PARAMETER              - model parameter to be expanded (vph, rho, eta, vsv, etc.)"
                     "\n    MIN_DEPTH              - minimum depth"
                     "\n    MAX_DEPTH              - maximum depth"
                     "\n    LAT LON                - latitude and longitude of the point"

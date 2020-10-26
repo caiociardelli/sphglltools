@@ -25,10 +25,10 @@
    ./bin/bkmns2ll PARAMETER DEPTH RESOLUTION NMAX
 
  EXAMPLE
-   ./bin/bkmns2ll vs 100 0.5 10
+   ./bin/bkmns2ll vsv 100 0.5 10
 
  COMMAND LINE ARGUMENTS
-   PARAMETER              - model parameter to be expanded (vp, vs, rho, eta, vsv, etc.)
+   PARAMETER              - model parameter to be expanded (vph, rho, eta, vsv, etc.)
    DEPTH                  - depth in which the depth slice will be created
    RESOLUTION             - spatial distance (in degrees) between both latitude and longitude
                             grid points of the depth slice
@@ -266,10 +266,10 @@ static void helpMenu (void)
                     "\n    ./bin/bkmns2ll PARAMETER DEPTH RESOLUTION NMAX"
 
                     "\n\n EXAMPLE"
-                    "\n    ./bin/bkmns2ll vs 100 0.5 10"
+                    "\n    ./bin/bkmns2ll vsv 100 0.5 10"
 
                     "\n\n COMMAND LINE ARGUMENTS"
-                    "\n    PARAMETER              - model parameter to be expanded (vp, vs, rho, eta, vsv, etc.)"
+                    "\n    PARAMETER              - model parameter to be expanded (vph, rho, eta, vsv, etc.)"
                     "\n    DEPTH                  - depth in which the depth slice will be created"
                     "\n    RESOLUTION             - spatial distance (in degrees) between both latitude and longitude"
                     "\n                             grid points of the depth slice"

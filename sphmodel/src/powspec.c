@@ -29,7 +29,7 @@
 
  COMMAND LINE ARGUMENTS
    PARAMETER              - model parameter for which the power spectrum will be created
-                            (vp, vs, rho, eta, vsv, etc.)
+                            (vph, rho, eta, vsv, etc.)
    NMAX                   - maximum degree of the spherical harmonics expansion
 
  DESCRIPTION
@@ -131,7 +131,7 @@ static void helpMenu (void)
 
                     "\n\n COMMAND LINE ARGUMENTS"
                     "\n    PARAMETER              - model parameter for which the power spectrum will be created"
-                    "\n                             (vp, vs, rho, eta, vsv, etc.)"
+                    "\n                             (vph, rho, eta, vsv, etc.)"
                     "\n    NMAX                   - maximum degree of the spherical harmonics expansion"
 
                     "\n\n DESCRIPTION"

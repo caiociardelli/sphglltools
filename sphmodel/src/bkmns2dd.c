@@ -26,10 +26,10 @@
                   RADIAL_RESOLUTION NMAX
 
  EXAMPLE
-   ./bin/bkmns2dd dvs 80 2891 -1.4 -25.1 23.7 51.3 0.1 2.0 10
+   ./bin/bkmns2dd dvsv 80 2891 -1.4 -25.1 23.7 51.3 0.1 2.0 10
 
  COMMAND LINE ARGUMENTS
-   PARAMETER              - model parameter to be expanded (vp, vs, rho, eta, vsv, etc.)
+   PARAMETER              - model parameter to be expanded (vph, rho, eta, vsv, etc.)
    MIN_DEPTH              - minimum depth
    MAX_DEPTH              - maximum depth
    LAT1, LON1             - latitude and longitude of the firts point
@@ -284,10 +284,10 @@ static void helpMenu (void)
                     "\n                   RADIAL_RESOLUTION NMAX"
 
                     "\n\n EXAMPLE"
-                    "\n    ./bin/bkmns2dd dvs 80 2891 -1.4 -25.1 23.7 51.3 0.1 2.0 10"
+                    "\n    ./bin/bkmns2dd dvsv 80 2891 -1.4 -25.1 23.7 51.3 0.1 2.0 10"
 
                     "\n\n COMMAND LINE ARGUMENTS"
-                    "\n    PARAMETER              - model parameter to be expanded (vp, vs, rho, eta, vsv, etc.)"
+                    "\n    PARAMETER              - model parameter to be expanded (vph, rho, eta, vsv, etc.)"
                     "\n    MIN_DEPTH              - minimum depth"
                     "\n    MAX_DEPTH              - maximum depth"
                     "\n    LAT1, LON1             - latitude and longitude of the firts point"

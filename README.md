@@ -1,6 +1,6 @@
 # SphGLLTools
 
-`SphGLLTools` is a toolbox for visualization, processing and spherical harmonics analysis of tomographic models defined on GLL meshes.
+`SphGLLTools` is a toolbox for visualization, processing, sharing, and spherical harmonics analysis of tomographic models defined on GLL meshes.
 
 Author: Caio Ciardelli
 

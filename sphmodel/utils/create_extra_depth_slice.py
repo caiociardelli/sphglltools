@@ -31,7 +31,7 @@
    ./utils/created_extra_depth_slice.py cb 100
 
  COMMAND LINE ARGUMENTS
-   PARAMETER              - derived model parameter to be created (cb, vpvs, ti, dcb, dvsv, etc.)
+   PARAMETER              - derived model parameter to be created (cb, vpvs, ti, dcb, dvs, etc.)
    DEPTH                  - depth in which you created the depth slice
 
  DESCRIPTION
@@ -147,7 +147,7 @@ def helpMenu ():
    ./utils/created_extra_depth_slice.py cb 100
 
  COMMAND LINE ARGUMENTS
-   PARAMETER              - derived model parameter to be created (cb, vpvs, ti, dcb, dvsv, etc.)
+   PARAMETER              - derived model parameter to be created (cb, vpvs, ti, dcb, dvs, etc.)
    DEPTH                  - depth in which you created the depth slice
 
  DESCRIPTION
