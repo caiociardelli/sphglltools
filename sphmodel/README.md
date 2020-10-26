@@ -41,7 +41,7 @@ $ for file in crust/*tar.xz; do tar -xvJf "$file" -C crust/; done
 $ make
 ```
 
-# Usage
+## Usage
 -----------------------
 
 All routines have a help menu that shows up wherever you run them with no or with a wrong number of command-line parameters. The
@@ -52,7 +52,7 @@ same menu is also at the beginning of each source code. For more details, please
 
 Development is hosted on GitHub in the [caio.ciardelli/sphglltools repository](https://github.com/caiociardelli/sphglltools).
 
-# Model parametrization
+## Model parametrization
 -----------------------
 
 This parametrization includes Vpv (km/s), Vph (km/s), Vsv (km/s), Vsh (km/s), Eta, and Rho (g/cm^3). The perturbations for the default parameters, as well as some derived parameters such as the isotropic velocities (Vp and Vs), the bulk sound speed, the Vp/Vs ratios, and the transverse isotropy, can also be computed using these routines.
@@ -67,14 +67,14 @@ Zone 3: Represents the transition zone using a combination of spherical harmonic
 
 Zone 4: Represents the lower mantle using a combination of spherical harmonics of various degrees and fourteen cubic B-splines. This zone stretches from 650 km to 2891 km depth.
 
-# Plate boundaries
+## Plate boundaries
 -----------------------
 
 The plate boundaries are from http://geoscience.wisc.edu/~chuck/MORVEL/citation.html (access on June 20, 2020)
 
 DeMets, C., Gordon, R. G., and Argus, D. F., 2010. Geologically current plate motions, Geophysical Journal International, v. 181, no. 1, p. 1-80, doi: 10.1111/j.1365-246X.2009.04491.x
 
-#Contact
+## Contact
 -----------------------
 
 If you have any questions, suggestions, and bug reports, you can email *caio.ciardelli@gmail.com*
