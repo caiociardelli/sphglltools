@@ -153,7 +153,7 @@ static void deletePmNode (struct PmNode *llm)
   q = NULL;
 }
 
-static unsigned readInputMeshAndModel (int ic, char *prm, unsigned nelm,
+static unsigned readInputMeshAndModel (int ic, char *prm, unsigned nelm, unsigned nglob,
                                        struct Boundaries *gb, struct ElNode *lle,
                                        struct PmNode *llm, unsigned *nel)
 {
@@ -181,22 +181,22 @@ static unsigned readInputMeshAndModel (int ic, char *prm, unsigned nelm,
   if (fread (&nval, sizeof (unsigned), 1, file) != 1) return 3;
   if (fread (&junk, sizeof (unsigned), 1, file) != 1) return 3;
 
-  float xf[NG];
+  float xf[nglob];
 
   if (fread (&junk, sizeof (unsigned), 1, file) != 1) return 3;
-  if (fread (xf, sizeof (float), NG, file) != NG) return 3;
+  if (fread (xf, sizeof (float), nglob, file) != nglob) return 3;
   if (fread (&junk, sizeof (unsigned), 1, file) != 1) return 3;
 
-  float yf[NG];
+  float yf[nglob];
 
   if (fread (&junk, sizeof (unsigned), 1, file) != 1) return 3;
-  if (fread (yf, sizeof (float), NG, file) != NG) return 3;
+  if (fread (yf, sizeof (float), nglob, file) != nglob) return 3;
   if (fread (&junk, sizeof (unsigned), 1, file) != 1) return 3;
 
-  float zf[NG];
+  float zf[nglob];
 
   if (fread (&junk, sizeof (unsigned), 1, file) != 1) return 3;
-  if (fread (zf, sizeof (float), NG, file) != NG) return 3;
+  if (fread (zf, sizeof (float), nglob, file) != nglob) return 3;
   if (fread (&junk, sizeof (unsigned), 1, file) != 1) return 3;
 
   unsigned ibool[nelm][NZ][NY][NX];
@@ -510,8 +510,9 @@ static unsigned readInputMeshAndModel (int ic, char *prm, unsigned nelm,
   return 0;
 }
 
-unsigned scanMeshAndModel (int ic, char *prm, unsigned nelm, struct Boundaries *gb,
-                           struct ElNode *lle, struct PmNode *llm, unsigned *nel)
+unsigned scanMeshAndModel (int ic, char *prm, unsigned nelm, unsigned nglob,
+                           struct Boundaries *gb, struct ElNode *lle,
+                           struct PmNode *llm, unsigned *nel)
 {
   /* Reads the mesh and all model parameters */
   for (unsigned iic = 0; iic < NC; iic++)
@@ -559,7 +560,7 @@ unsigned scanMeshAndModel (int ic, char *prm, unsigned nelm, struct Boundaries *
       #endif
     }
 
-    unsigned r = readInputMeshAndModel (iic, prm, nelm, gb, lle, llm, nel); if (r) return r;
+    unsigned r = readInputMeshAndModel (iic, prm, nelm, nglob, gb, lle, llm, nel); if (r) return r;
   }
 
   return 0;

@@ -1049,7 +1049,7 @@ int main (int argc, char *argv[])
 
   if (ic == 0) fprintf (stderr, "\nScanning input mesh and model files...\n\n");
 
-  if (checkTopoAndModelIO (scanMeshAndModel (ic, argv[5], NEL, &gb, lle, llm,
+  if (checkTopoAndModelIO (scanMeshAndModel (ic, argv[5], NEL, NG, &gb, lle, llm,
                                              &nel))) MPI_Abort (MPI_COMM_WORLD, 1);
 
   unsigned nels; MPI_Reduce(&nel, &nels, 1, MPI_UNSIGNED, MPI_SUM, 0, MPI_COMM_WORLD);

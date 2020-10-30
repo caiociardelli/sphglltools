@@ -27,8 +27,9 @@
 void initializeElNode (struct ElNode **lle);
 void initializePmNode (struct PmNode **llm);
 
-unsigned scanMeshAndModel (int ic, char *prm, unsigned nelm, struct Boundaries *gb,
-                           struct ElNode *lle, struct PmNode *llm, unsigned *nel);
+unsigned scanMeshAndModel (int ic, char *prm, unsigned nelm, unsigned nglob,
+                           struct Boundaries *gb, struct ElNode *lle,
+                           struct PmNode *llm, unsigned *nel);
 
 void toArrayElAndPmNodes (unsigned nel, struct ElNode *lle, struct PmNode *llm,
                           struct Point Ti[nel][NX][NY][NZ],
