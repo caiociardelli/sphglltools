@@ -1226,9 +1226,6 @@ static unsigned optimize (int ic, int nc, unsigned nel,
         {
           fprintf (stderr, "Singular Jacobian. No solution found.\n");
 
-          fprintf (stderr, "r = %Lf theta = %Lf phi = %Lf x = %Lf y = %Lf z = %Lf\n", r, theta, phi, x, y, z);
-          fprintf (stderr, "el = %u xi = %Lf eta = %Lf gamma = %Lf\n", eijk.element, xi, eta, gamma);
-
           return 1;
         }
 
