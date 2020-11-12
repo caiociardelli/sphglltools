@@ -127,11 +127,11 @@ def writeOutput (name, label, depth, nlat, nlon, theta, phi, M):
     header  = '#depth (km) nlat nlon: {:g} {} {}\n'.format (depth, nlat, nlon)
     header += '#latitude (degrees)   longitude (degrees)   {}\n'.format (label)
 
-    FILE.write (header.decode ('utf-8'))
+    FILE.write (header.encode ().decode ('utf-8'))
 
     for t, p, m in zip (theta, phi, M):
 
-      FILE.write ('{:15.7f} {:21.7f} {:18E}\n'.format (t, p, m).decode ('utf-8'))
+      FILE.write ('{:15.7f} {:21.7f} {:18E}\n'.format (t, p, m).encode ().decode ('utf-8'))
 
 
 def helpMenu ():

@@ -136,11 +136,11 @@ def writeOutput (name, label, depth, nrad, ndel,
     header += gcline
     header += '#radius (km)   delta (degrees)   {}\n'.format (label)
 
-    FILE.write (header.decode ('utf-8'))
+    FILE.write (header.encode ().decode ('utf-8'))
 
     for r, d, m in zip (radius, delta, M):
 
-      FILE.write ('{:10.3f} {:14.3f} {:19E}\n'.format (r, d, m).decode ('utf-8'))
+      FILE.write ('{:10.3f} {:14.3f} {:19E}\n'.format (r, d, m).encode ().decode ('utf-8'))
 
 
 def helpMenu ():

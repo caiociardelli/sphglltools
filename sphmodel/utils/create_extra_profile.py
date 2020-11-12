@@ -125,11 +125,11 @@ def writeOutput (name, label, ndep, point, depth, M):
     header += point
     header += '#depth (km)    {}\n'.format (label)
 
-    FILE.write (header.decode ('utf-8'))
+    FILE.write (header.encode ().decode ('utf-8'))
 
     for d, m in zip (depth, M):
 
-      FILE.write ('{:9.3f} {:17E}\n'.format (d, m).decode ('utf-8'))
+      FILE.write ('{:9.3f} {:17E}\n'.format (d, m).encode ().decode ('utf-8'))
 
 
 def helpMenu ():
