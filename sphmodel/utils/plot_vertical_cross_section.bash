@@ -117,8 +117,8 @@ if [ "$#" -ne 1 ] && [ "$#" -ne 3 ]; then
 fi
 
 REARTH=6371
-R410=5721
-R650=5961
+R410=5961
+R650=5721
 KM2DEGREE=111.2
 TOPOSCALE=0.08
 
