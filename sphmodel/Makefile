@@ -168,6 +168,6 @@ binDirectory:
 	@ mkdir -p $(BIN)
 
 clean:
-	$(RM) $(OBJ)/ $(BIN)/ *.cpt *.xyp *.history *.grd *.pdf
+	$(RM) $(OBJ)/ $(BIN)/ *.dat *.cpt *.xyp *.history *.grd *.pdf
 
 .PHONY: all clean

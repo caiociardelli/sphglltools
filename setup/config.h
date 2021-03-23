@@ -13,10 +13,10 @@ static const unsigned NG2  = 592913; /* Total number of points on each slice of 
 #define VP   1 /* Set to 1 to enable the interpolation of the Vp parameter */
 #define VS   1 /* Set to 1 to enable the interpolation of the Vs parameter */
 #define RHO  1 /* Set to 1 to enable the interpolation of the Rho parameter */
-#define VPV  0 /* Set to 1 to enable the interpolation of the Vpv parameter */
-#define VPH  0 /* Set to 1 to enable the interpolation of the Vph parameter */
-#define VSV  0 /* Set to 1 to enable the interpolation of the Vsv parameter */
-#define VSH  0 /* Set to 1 to enable the interpolation of the Vsh parameter */
-#define ETA  0 /* Set to 1 to enable the interpolation of the Eta parameter */
+#define VPV  1 /* Set to 1 to enable the interpolation of the Vpv parameter */
+#define VPH  1 /* Set to 1 to enable the interpolation of the Vph parameter */
+#define VSV  1 /* Set to 1 to enable the interpolation of the Vsv parameter */
+#define VSH  1 /* Set to 1 to enable the interpolation of the Vsh parameter */
+#define ETA  1 /* Set to 1 to enable the interpolation of the Eta parameter */
 #define QMU  0 /* Set to 1 to enable the interpolation of the Qmu parameter */
 #endif

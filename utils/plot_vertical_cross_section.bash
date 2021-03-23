@@ -131,18 +131,18 @@ nr=$(head -n1 $filename | cut -f3 -d' ')
 
 line=$(sed '2q;d' $filename)
 
-lat1=$(echo $line | awk '{print $5}')
-lon1=$(echo $line | awk '{print $6}')
-lat2=$(echo $line | awk '{print $7}')
-lon2=$(echo $line | awk '{print $8}')
+lat1=$(echo $line | awk '{printf "%lf", $5}')
+lon1=$(echo $line | awk '{printf "%lf", $6}')
+lat2=$(echo $line | awk '{printf "%lf", $7}')
+lon2=$(echo $line | awk '{printf "%lf", $8}')
 
 lat0=$(echo "($lat1 + $lat2) / 2" | bc -l)
 lon0=$(echo "($lon1 + $lon2) / 2" | bc -l)
 
 info=$(./bin/getinfo $filename)
 
-mean=$(echo $info | awk '{print $5}')
-stdv=$(echo $info | awk '{print $6}')
+mean=$(echo $info | awk '{printf "%lf", $5}')
+stdv=$(echo $info | awk '{printf "%lf", $6}')
 
 if [ "$#" -eq 3 ]; then
   cbmin=$2
@@ -158,18 +158,18 @@ dstring=$(echo "$string" | cut -f3 | awk -F '[</>]' '{print $2" "$3}')
 rstring=$(echo "$string" | cut -f2 | awk -F '[</>]' '{print $2" "$3}')
 vstring=$(echo "$string" | cut -f4 | awk -F '[</>]' '{print $2" "$3}')
 
-drange=$(echo $dstring | awk '{print $2 - $1}')
-rrange=$(echo $rstring | awk '{print $2 - $1}')
+drange=$(echo $dstring | awk '{printf "%lf", $2 - $1}')
+rrange=$(echo $rstring | awk '{printf "%lf", $2 - $1}')
 
 dd=$(echo "$drange / ($nd - 1)" | bc -l)
 dr=$(echo "$rrange / ($nr - 1)" | bc -l)
 
-dmin=$(echo "$dstring" | awk '{print $1}')
-dmax=$(echo "$dstring" | awk '{print $2}')
-rmin=$(echo "$rstring" | awk '{print $1}')
-rmax=$(echo "$rstring" | awk '{print $2}')
-vmin=$(echo "$vstring" | awk '{print $1}')
-vmax=$(echo "$vstring" | awk '{print $2}')
+dmin=$(echo "$dstring" | awk '{printf "%lf", $1}')
+dmax=$(echo "$dstring" | awk '{printf "%lf", $2}')
+rmin=$(echo "$rstring" | awk '{printf "%lf", $1}')
+rmax=$(echo "$rstring" | awk '{printf "%lf", $2}')
+vmin=$(echo "$vstring" | awk '{printf "%lf", $1}')
+vmax=$(echo "$vstring" | awk '{printf "%lf", $2}')
 
 ermax=$(echo "1.01 * $rmax" | bc -l)
 
@@ -177,18 +177,18 @@ dmean=$(echo "($dmin + $dmax) / 2" | bc -l)
 rmean=$(echo "($rmin + $rmax) / 2" | bc -l)
 
 dlabeld=$(echo "$dmean" | bc -l)
-dlabelr=$(echo "0.60 * $rmin" | bc -l)
+dlabelr=$(echo "0.77 * $rmin" | bc -l)
 rlabeld=$(echo "$dmin - 0.25 * $drange" | bc -l)
 rlabelr=$(echo "1.2 * $rmean" | bc -l)
 
-gmt project -C$lon1/$lat1 -E$lon2/$lat2 -G100 -Q > great_circle_points.xyp
+gmt project -C$lon1/$lat1 -E$lon2/$lat2 -G10 -Q > great_circle_points.xyp
 gmt grdtrack -Gextra/earth_relief_15m.grd great_circle_points.xyp | awk '{print $3" "$4}' > profile.dat
 
 string=$(gmt info profile.dat | cut -f3 | awk -F '[</>]' '{print $2" "$3}')
 
-emin=$(echo $string | awk '{print $1}')
-emax=$(echo $string | awk '{print $2}')
-erange=$(echo $string | awk '{print $2 - $1}')
+emin=$(echo $string | awk '{printf "%lf", $1}')
+emax=$(echo $string | awk '{printf "%lf", $2}')
+erange=$(echo $string | awk '{printf "%lf", $2 - $1}')
 scale=$(echo "$erange / ($TOPOSCALE * $rrange)" | bc -l)
 shift=$(echo "((0.2 * $erange) - $emin) / $scale" | bc -l)
 Rmax=$(echo "1.015 * ($rmax + $shift)" | bc -l)

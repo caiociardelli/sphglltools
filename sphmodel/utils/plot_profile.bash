@@ -118,23 +118,23 @@ ndep=$(head -n1 $filename | cut -f2 -d' ')
 
 line=$(sed '2q;d' $filename)
 
-lat=$(echo "$line" | awk '{print $3}')
-lon=$(echo "$line" | awk '{print $4}')
+lat=$(echo "$line" | awk '{printf "%lf", $3}')
+lon=$(echo "$line" | awk '{printf "%lf", $4}')
 
 string=$(gmt info $filename)
 
 dstring=$(echo "$string" | cut -f2 | awk -F '[</>]' '{print $2" "$3}')
 vstring=$(echo "$string" | cut -f3 | awk -F '[</>]' '{print $2" "$3}')
 
-dmin=$(echo "$dstring" | awk '{print $1}')
-dmax=$(echo "$dstring" | awk '{print $2}')
-vmin=$(echo "$vstring" | awk '{print $1}')
-vmax=$(echo "$vstring" | awk '{print $2}')
+dmin=$(echo "$dstring" | awk '{printf "%lf", $1}')
+dmax=$(echo "$dstring" | awk '{printf "%lf", $2}')
+vmin=$(echo "$vstring" | awk '{printf "%lf", $1}')
+vmax=$(echo "$vstring" | awk '{printf "%lf", $2}')
 
 awk -v min=$vmin -v max=$vmax 'BEGIN {printf "Min = %E Max = %E\n", min, max}'
 echo 'Creating figure...'
 
-vrange=$(echo "$vstring" | awk '{print $2 - $1}')
+vrange=$(echo "$vstring" | awk '{printf "%lf", $2 - $1}')
 
 vmin=$(echo "$vmin - 0.1 * $vrange" | bc -l)
 vmax=$(echo "$vmax + 0.1 * $vrange" | bc -l)

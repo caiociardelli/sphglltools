@@ -127,8 +127,8 @@ dt=$(echo "180 / ($nt - 1)" | bc -l)
 
 info=$(./bin/getinfo $filename)
 
-mean=$(echo $info | awk '{print $5}')
-stdv=$(echo $info | awk '{print $6}')
+mean=$(echo $info | awk '{printf "%lf", $5}')
+stdv=$(echo $info | awk '{printf "%lf", $6}')
 
 cbmin=$(echo "$mean - 3 * $stdv" | bc -l)
 cbmax=$(echo "$mean + 3 * $stdv" | bc -l)
@@ -140,8 +140,8 @@ fi
 
 string=$(gmt info $filename | cut -f4 | awk -F '[</>]' '{print $2" "$3}')
 
-min=$(echo $string | awk '{print $1}')
-max=$(echo $string | awk '{print $2}')
+min=$(echo $string | awk '{printf "%lf", $1}')
+max=$(echo $string | awk '{printf "%lf", $2}')
 
 awk -v min=$min -v max=$max 'BEGIN {printf "Min = %E Max = %E\n", min, max}'
 echo 'Creating figure...'
