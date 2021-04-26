@@ -7,7 +7,7 @@ Author: Caio Ciardelli
 
 If you use SphModel, please, cite the following paper:
 
-Ciardelli, C., Bozdağ, E., Peter, D. and van der Lee, S., 2020. SphGLLTools: A set of routines for visualization, processing, sharing, and spherical harmonics analysis of tomographic models defined on GLL meshes. Computer & Geosciences, submitted.
+Ciardelli, C., Bozdağ, E., Peter, D., and van der Lee, S., 2021. SphGLLTools: A toolbox for visualization of large seismic model files based on 3D spectral-element simulations. Computer & Geosciences, submitted.
 
 # YOUR_MODEL_NAME
 -----------------------
