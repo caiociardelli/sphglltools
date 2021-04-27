@@ -22,7 +22,7 @@
  BKMNS2DD
 
  USAGE
-   ./bin/bkmns2dd PARAMETER MIN_RADIUS MAX_RADIUS LAT1 LON1 LAT2 LON2 HORIZONTAL_RESOLUTION
+   ./bin/bkmns2dd PARAMETER MIN_DEPTH MAX_DEPTH LAT1 LON1 LAT2 LON2 HORIZONTAL_RESOLUTION
                   RADIAL_RESOLUTION NMAX
 
  EXAMPLE
@@ -280,7 +280,7 @@ static void helpMenu (void)
   char *help_menu = "\n BKMNS2DD"
 
                     "\n\n USAGE"
-                    "\n    ./bin/bkmns2dd PARAMETER MIN_RADIUS MAX_RADIUS LAT1 LON1 LAT2 LON2 HORIZONTAL_RESOLUTION"
+                    "\n    ./bin/bkmns2dd PARAMETER MIN_DEPTH MAX_DEPTH LAT1 LON1 LAT2 LON2 HORIZONTAL_RESOLUTION"
                     "\n                   RADIAL_RESOLUTION NMAX"
 
                     "\n\n EXAMPLE"
