@@ -10,7 +10,7 @@ Ciardelli, C., Bozdağ, E., Peter, D., and van der Lee, S., 2021. SphGLLTools: A
 
 ## Installation
 
-Instructions on how to install and use `SphGLLTools` are available in the PDF manual: User_Manual.pdf
+Instructions on how to install and use `SphGLLTools` are available in the PDF manual: [User_Manual.pdf](https://github.com/caiociardelli/sphglltools/blob/main/doc/User_Manual.pdf)
 
 ## Development
 
