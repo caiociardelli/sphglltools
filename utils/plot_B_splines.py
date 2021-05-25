@@ -37,7 +37,7 @@
    Plots the recreation of the mean model from the B-splines against the mean model computed using
    the GLL2MEAN to check the quality of the radial expansion.
 
------------------------------------------------------------------------------------------------ */
+-----------------------------------------------------------------------------------------------
 """
 
 from __future__ import absolute_import, division, print_function

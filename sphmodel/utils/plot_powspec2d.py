@@ -37,7 +37,7 @@
  DESCRIPTION
    Plots the 2D power spectrum created by POWSPEC2D.
 
------------------------------------------------------------------------------------------------ */
+-----------------------------------------------------------------------------------------------
 """
 
 from __future__ import absolute_import, division, print_function

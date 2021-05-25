@@ -37,7 +37,7 @@
  DESCRIPTION
    Plots the 1D power spectrum created by POWSPEC.
 
------------------------------------------------------------------------------------------------ */
+-----------------------------------------------------------------------------------------------
 """
 
 from __future__ import absolute_import, division, print_function

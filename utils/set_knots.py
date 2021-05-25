@@ -37,7 +37,7 @@
    Creates the files with the positions of the accurate knots, used to recreate the model from
    the spherical harmonics coefficients.
 
------------------------------------------------------------------------------------------------ */
+-----------------------------------------------------------------------------------------------
 """
 
 from __future__ import absolute_import, division, print_function

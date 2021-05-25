@@ -42,7 +42,7 @@
    applies to the Vp/Vs (use parameter 'vpvs'). To calculate the transverse isotropy from Vsv and
    Vsh, use the parameter 'ti'.
 
------------------------------------------------------------------------------------------------ */
+-----------------------------------------------------------------------------------------------
 """
 
 from __future__ import absolute_import, division, print_function
