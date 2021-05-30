@@ -42,7 +42,7 @@
    one-dimensional profile of the model up to the requested spherical harmonics degree. In case
    you don't provide NMAX, all the coefficients, the routine will expand all the coefficients.
    If you want the perturbations instead of the absolute values, just add a 'd' at beginning of
-   the parameter code (e.g dvs, drho, etc). The routine writes the output to a file called
+   the parameter code (e.g., dvs, drho, etc). The routine writes the output to a file called
    PARAMETER_PF.dat.
 
 ----------------------------------------------------------------------------------------------- */
@@ -288,7 +288,7 @@ static void helpMenu (void)
                     "\n    one-dimensional profile of the model up to the requested spherical harmonics degree. In case"
                     "\n    you don't provide NMAX, all the coefficients, the routine will expand all the coefficients."
                     "\n    If you want the perturbations instead of the absolute values, just add a 'd' at beginning of"
-                    "\n    the parameter code (e.g dvs, drho, etc). The routine writes the output to a file called"
+                    "\n    the parameter code (e.g., dvs, drho, etc). The routine writes the output to a file called"
                     "\n    PARAMETER_PF.dat.\n\n";
 
   fprintf (stderr, "%s", help_menu);
@@ -378,7 +378,7 @@ int main (int argc, char *argv[])
            r2Depth (r1max), r2Depth (r1min));
   fprintf (stderr, "Expanding zone 1...");
 
-  expandCrust (&sb, r1min, r1max, nr, R, p, t,
+  expandCrust (&sb, r1min, r1max, nr, R, t, p,
                np_b, nt_b, nr_b, Bm, M, nl, Mm, dvv);
 
   free (Bm);
