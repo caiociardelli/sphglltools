@@ -39,7 +39,7 @@
 
 #-----------------------------------------------------------------------------------------------
 
-title="S362ANI"
+title="GLAD-M15"
 
 if [ $1 = "vp" ]; then
   label="V@-P@- (km s@+-1@+)"
@@ -160,6 +160,10 @@ vstring=$(echo "$string" | cut -f4 | awk -F '[</>]' '{print $2" "$3}')
 
 drange=$(echo $dstring | awk '{printf "%lf", $2 - $1}')
 rrange=$(echo $rstring | awk '{printf "%lf", $2 - $1}')
+
+if [ $drange > 180 ]; then
+  lon0=$(echo "$lon0 + 180" | bc -l)
+fi
 
 dd=$(echo "$drange / ($nd - 1)" | bc -l)
 dr=$(echo "$rrange / ($nr - 1)" | bc -l)
