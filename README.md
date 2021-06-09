@@ -8,6 +8,8 @@ If you use SphGLLTools, please, cite the following paper:
 
 Ciardelli, C., Bozdağ, E., Peter, D., and van der Lee, S., 2021. SphGLLTools: A toolbox for visualization of large seismic model files based on 3D spectral-element simulations. Computer & Geosciences, submitted.
 
+[![DOI](https://zenodo.org/badge/307187153.svg)](https://zenodo.org/badge/latestdoi/307187153)
+
 ## Installation
 
 Instructions on how to install and use `SphGLLTools` are available in the PDF manual: [User_Manual.pdf](https://github.com/caiociardelli/sphglltools/blob/main/doc/User_Manual.pdf)
