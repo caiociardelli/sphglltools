@@ -54,13 +54,15 @@ void basisMatrix (double r1, double r2, unsigned Nr,
                   double R[Nr][ns], double Bm[ns][ns])
 {
   /* Computes the radial basis matrix */
+  int nsi = (int) ns;
+
   double dr = (r2 - r1) / (Nr - 1);
 
   double f[Nr];
 
-  for (unsigned i = 0; i < ns; i++)
+  for (int i = 0; i < nsi; i++)
 
-    for (unsigned j = 0; j < ns; j++)
+    for (int j = 0; j < nsi; j++)
     {
       Bm[i][j] = 0;
 

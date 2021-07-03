@@ -1041,12 +1041,12 @@ static void computeMeans (struct Means *mo,
       #endif
 
       #if QMU
-      if (m.rho > TOLERANCE)
+      if (m.qmu > TOLERANCE)
       {
-        mo->a.rho += m.rho;
-        mo->g.rho += log (m.rho);
+        mo->a.qmu += m.rho;
+        mo->g.qmu += log (m.rho);
 
-        nrho++;
+        nqmu++;
       }
       #endif
     }
