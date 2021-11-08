@@ -1,6 +1,0 @@
-#Basis splines description (from top to bottom): Number of knots, degree, minimum radius, maximum radius, nodes positions
-3
-3
-0.8979751
-0.9356458
-0.918
