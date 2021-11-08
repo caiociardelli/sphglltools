@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 # -*- coding: utf-8 -*-
 
 """
@@ -39,11 +39,6 @@
 
 -----------------------------------------------------------------------------------------------
 """
-
-from __future__ import absolute_import, division, print_function
-from builtins import (ascii, bytes, chr, dict, filter, hex, input,
-                      int, map, next, oct, open, pow, range, round,
-                      str, super, zip)
 
 from scipy.integrate import simps
 
@@ -203,6 +198,40 @@ def sB (n, c, B):
   return s
 
 
+def computeError (r, y, s):
+  """
+  Evaluates the relative error between S(x) and the mean model
+  """
+  err   = 100 * np.log (s / y)
+  err_c = err.copy ()
+  dt    = r[1] - r[0]
+
+  i = 1
+
+  while i < len (err) - 1:
+
+    slope1 = abs ((err_c[i] - err_c[i - 1]) / dt)
+    slope2 = abs ((err_c[i] - err_c[i + 1]) / dt)
+
+    # At the seismic discontinuities, the ratio is
+    # not meaningful due to limited sampling.
+    # To get arround this problem, we find them by
+    # measuring the slope and interpolate the values.
+    if slope1 > 1000 and slope2 > 1000:
+
+      a = (err_c[i + 2] - err_c[i - 1]) / (3 * dt)
+      b = err_c[i - 1]
+
+      err[i]     = a * dt + b
+      err[i + 1] = a * 2 * dt + b
+
+      i += 2
+
+    i += 1
+
+  return err
+
+
 def helpMenu ():
   """
   Prints help menu
@@ -240,8 +269,7 @@ if __name__ == '__main__':
 
   if prm[0] == 'v':
 
-    label = '{}_{{{}}}'.format (prm[0].capitalize (),
-                                prm[1:].upper ())
+    label = f'{prm[0].capitalize ()}_{{{prm[1:].upper ()}}}'
     unity = r'$$\,\,\left(km\,s^{{-1}}\right)'
 
   elif prm[0] == 'r':
@@ -259,14 +287,14 @@ if __name__ == '__main__':
     label = r'Q_{\mu}'
     unity = ''
 
-  t1, c1 = readKnotsAndCoffs ('{}_Z4_KC.dat'.format (prm))
-  t2, c2 = readKnotsAndCoffs ('{}_Z3_KC.dat'.format (prm))
-  t3, c3 = readKnotsAndCoffs ('{}_Z2_KC.dat'.format (prm))
+  t1, c1 = readKnotsAndCoffs (f'{prm}_Z4_KC.dat')
+  t2, c2 = readKnotsAndCoffs (f'{prm}_Z3_KC.dat')
+  t3, c3 = readKnotsAndCoffs (f'{prm}_Z2_KC.dat')
 
   t = np.append (np.append (t1, t2), t3)
   c = np.append (np.append (c1, c2), c3)
 
-  Mm = readMeanModel ('{}.dat'.format (prm))
+  Mm = readMeanModel (f'{prm}.dat')
 
   r1 = np.linspace (t1[0], t1[-1], N)
   r2 = np.linspace (t2[0], t2[-1], N)
@@ -290,36 +318,84 @@ if __name__ == '__main__':
 
   s = np.append (np.append (s1, s2), s3)
 
-  fig = plt.figure (figsize = (10, 10), dpi = 200)
+  fig, (axis1, axis2) = plt.subplots (1, 2, figsize = (17, 10),
+                                      gridspec_kw = {'width_ratios': [3, 1]},
+                                      dpi = 200)
+
+  axis1.axhline (y = 0.987443, color = 'gray', linewidth = 2)
+  axis1.axhline (y = 0.935646, color = 'gray', linewidth = 2)
+  axis1.axhline (y = 0.897975, color = 'gray', linewidth = 2)
+  axis1.axhline (y = 0.546225, color = 'gray', linewidth = 2)
 
   for k in range (len (B1)):
 
-    plt.plot (3 * B1[k], r1, linewidth = 2)
+    axis1.plot (3 * B1[k], r1, linewidth = 2)
 
   for k in range (len (B2)):
 
-    plt.plot (3 * B2[k], r2, linewidth = 2)
+    axis1.plot (3 * B2[k], r2, linewidth = 2)
 
   for k in range (len (B3)):
 
-    plt.plot (3 * B3[k], r3, linewidth = 2)
+    axis1.plot (3 * B3[k], r3, linewidth = 2)
 
-  plt.plot (y, r, color = 'red',
-            linewidth = 2, label = 'GLADM15')
-  plt.plot (s, r, color = 'black', linestyle = 'dashed',
-            linewidth = 2, label = r'$S\,(x)$')
-  plt.xlabel (r'${}{}$'.format (label, unity), fontsize = 32)
-  plt.ylabel (r'$r_n$', labelpad = 20, fontsize = 32, rotation = 0)
-  plt.tick_params (axis = 'x', labelsize = 20)
-  plt.tick_params (axis = 'y', labelsize = 20)
-  plt.xlim (0, 1.1 * y.max ())
-  plt.ylim (0.99 * t[0], 1.01 * t[-1])
-  plt.legend (shadow = True, framealpha = 1.0,
-              handlelength = 1.8, fontsize = 24)
-  plt.grid (linestyle = 'dashed', linewidth = 0.1)
-  plt.title ('Radial cubic B-splines', fontsize = 34, y = 1.03)
+  axis1.plot (y, r, color = 'red',
+              linewidth = 2, label = 'GLAD-M15')
+  axis1.plot (s, r, color = 'black', linestyle = 'dashed',
+              linewidth = 2, label = r'$S\,(x)$')
 
-  plt.subplots_adjust (left = 0.10, right = 0.99, bottom = 0.09, top = 0.93)
+  axis1.set_xlabel (r'${}{}$'.format (label, unity), fontsize = 32)
+  axis1.set_ylabel (r'$r_n$', labelpad = 20, fontsize = 32, rotation = 0)
+  axis1.tick_params (axis = 'x', labelsize = 20)
+  axis1.tick_params (axis = 'y', labelsize = 20)
+  axis1.set_xlim (0, 1.1 * y.max ())
+  axis1.set_ylim (0.99 * t[0], 1.01 * t[-1])
+  axis1.grid (linestyle = 'dashed', linewidth = 0.1)
+  axis1.set_title ('Radial cubic B-splines', fontsize = 34, y = 1.03)
 
-  plt.savefig ('B-splines_{}.pdf'.format (prm))
+  axis1.text (3.0, 0.96, 'Upper Mantle', horizontalalignment = 'center',
+              color = 'darkred', fontsize = 18)
+  axis1.text (3.0, 0.91, 'Transition Zone', horizontalalignment = 'center',
+              color = 'darkred', fontsize = 18)
+  axis1.text (3.0, 0.75, 'Lower Mantle', horizontalalignment = 'center',
+              color = 'darkred', fontsize = 18)
+
+  axis1.legend (shadow = True, framealpha = 1.0,
+              handlelength = 1.8, fontsize = 22, loc = 1)
+
+  err = computeError (r, y, s)
+
+  xmin = -np.ceil (np.max (np.abs (err)))
+  xmax =  np.ceil (np.max (np.abs (err)))
+
+  xticks = np.linspace (xmin, xmax, 5)
+
+  axis2.axhline (y = 0.987443, color = 'gray', linewidth = 2)
+  axis2.axhline (y = 0.935646, color = 'gray', linewidth = 2)
+  axis2.axhline (y = 0.897975, color = 'gray', linewidth = 2)
+  axis2.axhline (y = 0.546225, color = 'gray', linewidth = 2)
+
+  axis2.plot (np.zeros (len (r)), r, color = 'red',
+              linewidth = 2, label = 'GLAD-M15')
+  axis2.plot (err, r, color = 'black', linestyle = 'dashed',
+              linewidth = 2, label = r'$S\,(x)$')
+  axis2.set_xlabel (r'Error (%)', fontsize = 32)
+  axis2.tick_params (axis = 'x', labelsize = 20)
+  axis2.set_xticks (xticks)
+
+  for tick in axis2.yaxis.get_major_ticks ():
+
+    tick.tick1line.set_visible (False)
+    tick.tick2line.set_visible (False)
+    tick.label1.set_visible (False)
+    tick.label2.set_visible (False)
+
+  axis2.set_xlim (xmin, xmax)
+  axis2.set_ylim (0.99 * t[0], 1.01 * t[-1])
+  axis2.grid (linestyle = 'dashed', linewidth = 0.1)
+  axis2.set_title ('Relative Error', fontsize = 34, y = 1.03)
+
+  plt.subplots_adjust (left = 0.062, right = 0.985, bottom = 0.092, top = 0.925)
+
+  plt.savefig (f'B-splines_{prm}.pdf')
 

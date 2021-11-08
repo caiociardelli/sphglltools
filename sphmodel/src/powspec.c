@@ -27,7 +27,7 @@
  EXAMPLE
    ./bin/powspec vsv 60
 
- COMMAND LINE ARGUMENTS
+ COMMAND-LINE ARGUMENTS
    PARAMETER              - model parameter for which the power spectrum will be created
                             (vph, rho, eta, vsv, etc.)
    NMAX                   - maximum degree of the spherical harmonics expansion
@@ -129,7 +129,7 @@ static void helpMenu (void)
                     "\n\n EXAMPLE"
                     "\n    ./bin/powspec vsv 60"
 
-                    "\n\n COMMAND LINE ARGUMENTS"
+                    "\n\n COMMAND-LINE ARGUMENTS"
                     "\n    PARAMETER              - model parameter for which the power spectrum will be created"
                     "\n                             (vph, rho, eta, vsv, etc.)"
                     "\n    NMAX                   - maximum degree of the spherical harmonics expansion"

@@ -351,6 +351,55 @@ unsigned readCoefficients (unsigned zone, char *prm, unsigned N,
   return 0;
 }
 
+unsigned readNumberOfPoints (unsigned *np, char *filename)
+{
+  /* Reads number of points in the
+     input file */
+  FILE *file = fopen (filename, "r");
+
+  if (file == NULL) return 1;
+
+  for (int c = getc (file); c != EOF; c = getc (file))
+
+    if (c == '\n') *np += 1;
+
+  fclose (file);
+
+  return 0;
+}
+
+unsigned readCoordinates (unsigned np, char *filename,
+                          double *rmin, double *rmax,
+                          double R[np], double Theta[np], double Phi[np])
+{
+  /* Reads the coordinates of the points */
+  FILE *file = fopen (filename, "r");
+
+  if (file == NULL) return 1;
+
+  unsigned l = 0;
+
+  double latitude, longitude, depth;
+
+  for (unsigned i = 0; i < np; i++)
+  {
+    l += fscanf (file, "%lf %lf %lf", &latitude, &longitude, &depth);
+
+    R[i]     = depth2R (depth);
+    Theta[i] = degree2Rad (90 - latitude);
+    Phi[i]   = degree2Rad (longitude);
+
+    if (R[i] < *rmin) *rmin = R[i];
+    if (R[i] > *rmax) *rmax = R[i];
+  }
+
+  fclose (file);
+
+  if (l != 3 * np) return 2;
+
+  return 0;
+}
+
 void createProfilePf (double r1, double r2,
                       unsigned nr, double R[nr])
 {
@@ -682,6 +731,7 @@ unsigned writeExpansionPf (char *argv[], bool dvv,
                            unsigned nr,
                            double R[nr], double M[nr])
 {
+  /* Writes 1D profile */
   char *prm = argv[1];
   char name[MAX_STRING_LEN];
 
@@ -782,7 +832,7 @@ unsigned writeExpansionPf (char *argv[], bool dvv,
 unsigned writeModel1D (char *prm, unsigned nr,
                        double R[nr], struct MeanModel Mo[nr])
 {
-  /* Writes vertical cross section */
+  /* Writes mean model */
   char name[MAX_STRING_LEN];
 
   FILE *file;
@@ -837,11 +887,20 @@ unsigned writeModel1D (char *prm, unsigned nr,
   return 0;
 }
 
+void writeExpansionPath (unsigned np, double M[np])
+{
+  /* Writes values along the path to the standard output */
+  for (unsigned i = 0; i < np; i++)
+
+    fprintf (stdout, "%12E\n", M[i]);
+}
+
 unsigned writePowSpec1D (char *prm, unsigned nmax,
                          double Pws1D2[nmax + 1],
                          double Pws1D3[nmax + 1],
                          double Pws1D4[nmax + 1])
 {
+  /* Writes power spectra */
   char name[MAX_STRING_LEN];
 
   if (sprintf (name, "%s_pwspc.dat", prm) < 12) return 1;
@@ -866,6 +925,7 @@ unsigned writePowSpec1D (char *prm, unsigned nmax,
 
 static inline unsigned mapIndex (unsigned i, unsigned nr, unsigned Nr)
 {
+  /* Maps local index to global */
   return (unsigned) (((double) (nr - i) / nr) * (Nr - 1) + 0.5);
 }
 
@@ -875,6 +935,7 @@ unsigned writePowSpec2D (char *prm, unsigned nmax,
                          double Pws2D3[Nr][nmax + 1],
                          double Pws2D4[Nr][nmax + 1])
 {
+  /* Writes power spectra per depth */
   char name[MAX_STRING_LEN];
 
   if (sprintf (name, "%s_pwspc2D.dat", prm) < 14) return 1;
@@ -1100,6 +1161,24 @@ unsigned checkMeanModelIO (unsigned rvalue)
 
   return rvalue;
 }
+
+unsigned checkCoordinatesIO (unsigned rvalue)
+{
+  /* Checks IO of the file containing the coordinates */
+  switch (rvalue)
+  {
+    case 1:
+      fprintf (stderr, "\nError opening the file...\n");
+    break;
+
+    case 2:
+      fprintf (stderr, "\nError reading the file...\n");
+    break;
+  }
+
+  return rvalue;
+}
+
 
 unsigned checkCoefficientsHeaderIO (unsigned rvalue)
 {

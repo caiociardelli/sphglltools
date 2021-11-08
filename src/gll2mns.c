@@ -27,7 +27,7 @@
  EXAMPLE
    mpiexec -n 24 bin/gll2mns vsv 20 4 data/OUTPUT/ .
 
- COMMAND LINE ARGUMENTS
+ COMMAND-LINE ARGUMENTS
    PARAMETER              - model parameter to be expanded (vp, vs, rho, eta, vsv, etc.)
    NMAX                   - maximum degree of the spherical harmonics expansion
    ZONE                   - zone to be expanded (2, 3 or 4)
@@ -201,7 +201,7 @@ static void helpMenu (void)
                     "\n\n EXAMPLE"
                     "\n    mpiexec -n 24 bin/gll2mns vsv 20 4 data/OUTPUT/ ."
 
-                    "\n\n COMMAND LINE ARGUMENTS"
+                    "\n\n COMMAND-LINE ARGUMENTS"
                     "\n    PARAMETER              - model parameter to be expanded (vp, vs, rho, eta, vsv, etc.)"
                     "\n    NMAX                   - maximum degree of the spherical harmonics expansion"
                     "\n    ZONE                   - zone to be expanded (2, 3 or 4)"

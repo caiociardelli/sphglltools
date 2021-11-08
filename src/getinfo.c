@@ -27,7 +27,7 @@
  EXAMPLE
    ./bin/getinfo vp_VCS.dat
 
- COMMAND LINE ARGUMENTS
+ COMMAND-LINE ARGUMENTS
    FILENAME              - name of the grid file
 
  DESCRIPTION
@@ -57,7 +57,7 @@ static void helpMenu (void)
                     "\n\n EXAMPLE"
                     "\n     ./bin/getinfo vp_VCS.dat"
 
-                    "\n\n COMMAND LINE ARGUMENTS"
+                    "\n\n COMMAND-LINE ARGUMENTS"
                     "\n    FILENAME              - name of the grid file"
 
                     "\n\n DESCRIPTION"

@@ -39,7 +39,7 @@
 
 #-----------------------------------------------------------------------------------------------
 
-title="GLAD-M15"
+title="S362ANI"
 
 if [ $1 = "vp" ]; then
   label="V@-P@- (km s@+-1@+)"
@@ -131,18 +131,18 @@ nr=$(head -n1 $filename | cut -f3 -d' ')
 
 line=$(sed '2q;d' $filename)
 
-lat1=$(echo $line | awk '{printf "%lf", $5}')
-lon1=$(echo $line | awk '{printf "%lf", $6}')
-lat2=$(echo $line | awk '{printf "%lf", $7}')
-lon2=$(echo $line | awk '{printf "%lf", $8}')
+lat1=$(echo $line | gawk '{printf "%lf", $5}')
+lon1=$(echo $line | gawk '{printf "%lf", $6}')
+lat2=$(echo $line | gawk '{printf "%lf", $7}')
+lon2=$(echo $line | gawk '{printf "%lf", $8}')
 
 lat0=$(echo "($lat1 + $lat2) / 2" | bc -l)
 lon0=$(echo "($lon1 + $lon2) / 2" | bc -l)
 
 info=$(./bin/getinfo $filename)
 
-mean=$(echo $info | awk '{printf "%lf", $5}')
-stdv=$(echo $info | awk '{printf "%lf", $6}')
+mean=$(echo $info | gawk '{printf "%lf", $5}')
+stdv=$(echo $info | gawk '{printf "%lf", $6}')
 
 if [ "$#" -eq 3 ]; then
   cbmin=$2
@@ -154,26 +154,26 @@ fi
 
 string=$(gmt info $filename)
 
-dstring=$(echo "$string" | cut -f3 | awk -F '[</>]' '{print $2" "$3}')
-rstring=$(echo "$string" | cut -f2 | awk -F '[</>]' '{print $2" "$3}')
-vstring=$(echo "$string" | cut -f4 | awk -F '[</>]' '{print $2" "$3}')
+dstring=$(echo "$string" | cut -f3 | gawk -F '[</>]' '{print $2" "$3}')
+rstring=$(echo "$string" | cut -f2 | gawk -F '[</>]' '{print $2" "$3}')
+vstring=$(echo "$string" | cut -f4 | gawk -F '[</>]' '{print $2" "$3}')
 
-drange=$(echo $dstring | awk '{printf "%lf", $2 - $1}')
-rrange=$(echo $rstring | awk '{printf "%lf", $2 - $1}')
+drange=$(echo $dstring | gawk '{printf "%lf", $2 - $1}')
+rrange=$(echo $rstring | gawk '{printf "%lf", $2 - $1}')
 
-if [ $drange > 180 ]; then
+if [ ${drange%.*} -gt 180 ]; then
   lon0=$(echo "$lon0 + 180" | bc -l)
 fi
 
-dd=$(echo "$drange / ($nd - 1)" | bc -l)
-dr=$(echo "$rrange / ($nr - 1)" | bc -l)
+dmin=$(echo "$dstring" | gawk '{printf "%lf", $1}')
+dmax=$(echo "$dstring" | gawk '{printf "%lf", $2}')
+rmin=$(echo "$rstring" | gawk '{printf "%lf", $1}')
+rmax=$(echo "$rstring" | gawk '{printf "%lf", $2}')
+vmin=$(echo "$vstring" | gawk '{printf "%lf", $1}')
+vmax=$(echo "$vstring" | gawk '{printf "%lf", $2}')
 
-dmin=$(echo "$dstring" | awk '{printf "%lf", $1}')
-dmax=$(echo "$dstring" | awk '{printf "%lf", $2}')
-rmin=$(echo "$rstring" | awk '{printf "%lf", $1}')
-rmax=$(echo "$rstring" | awk '{printf "%lf", $2}')
-vmin=$(echo "$vstring" | awk '{printf "%lf", $1}')
-vmax=$(echo "$vstring" | awk '{printf "%lf", $2}')
+dd=$(echo "($dmax - $dmin) / ($nd - 1)" | bc -l)
+dr=$(echo "($rmax - $rmin) / ($nr - 1)" | bc -l)
 
 ermax=$(echo "1.01 * $rmax" | bc -l)
 
@@ -186,30 +186,31 @@ rlabeld=$(echo "$dmin - 0.25 * $drange" | bc -l)
 rlabelr=$(echo "1.2 * $rmean" | bc -l)
 
 gmt project -C$lon1/$lat1 -E$lon2/$lat2 -G10 -Q > great_circle_points.xyp
-gmt grdtrack -Gextra/earth_relief_15m.grd great_circle_points.xyp | awk '{print $3" "$4}' > profile.dat
+gmt grdtrack -Gextra/earth_relief_15m.grd great_circle_points.xyp | gawk '{print $3" "$4}' > profile.dat
 
-string=$(gmt info profile.dat | cut -f3 | awk -F '[</>]' '{print $2" "$3}')
+string=$(gmt info profile.dat | cut -f3 | gawk -F '[</>]' '{print $2" "$3}')
 
-emin=$(echo $string | awk '{printf "%lf", $1}')
-emax=$(echo $string | awk '{printf "%lf", $2}')
-erange=$(echo $string | awk '{printf "%lf", $2 - $1}')
+emin=$(echo $string | gawk '{printf "%lf", $1}')
+emax=$(echo $string | gawk '{printf "%lf", $2}')
+erange=$(echo $string | gawk '{printf "%lf", $2 - $1}')
 scale=$(echo "$erange / ($TOPOSCALE * $rrange)" | bc -l)
 shift=$(echo "((0.2 * $erange) - $emin) / $scale" | bc -l)
 Rmax=$(echo "1.015 * ($rmax + $shift)" | bc -l)
 
-awk -v km2dg=$KM2DEGREE -v rmax=$rmax -v shift=$shift -v scale=$scale\
+gawk -v km2dg=$KM2DEGREE -v rmax=$rmax -v shift=$shift -v scale=$scale\
     '{print $1 / km2dg" "rmax + shift + $2 / scale}' profile.dat > profile_rescaled.dat
-awk -v dmin=$dmin -v dmax=$dmax -v rmax=$rmax\
+gawk -v dmin=$dmin -v dmax=$dmax -v rmax=$rmax\
     'BEGIN {for (delta = dmax; delta >= 0; delta -= 0.1) printf "%.3f %.1f\n", delta, rmax}' >> profile_rescaled.dat
 
-awk -v min=$vmin -v max=$vmax 'BEGIN {printf "Min = %E Max = %E\n", min, max}'
+gawk -v min=$vmin -v max=$vmax 'BEGIN {printf "Min = %E Max = %E\n", min, max}'
 echo 'Creating figure...'
 
 gmt xyz2grd $filename -G$grdname -R$dmin/$dmax/$rmin/$rmax -I$dd/$dr -: -h4
 gmt makecpt -Cextra/tomo.cpt -T$cbmin/$cbmax > tomo_rescaled.cpt
 
 gmt begin $output pdf
-  gmt set FONT_TITLE 20p,100
+  gmt set FONT_TITLE 20p,Helvetica
+  gmt set FONT_ANNOT 11p,Helvetica
 
   gmt grdimage $grdname -JPa10c/$dmean -R$dmin/$dmax/$rmin/$Rmax -BWeS+t$title -Baf -Ctomo_rescaled.cpt
 

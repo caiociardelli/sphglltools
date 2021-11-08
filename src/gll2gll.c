@@ -27,7 +27,7 @@
  EXAMPLE
    mpiexec -n 24 bin/gll2gll data/INPUT/ data/OUTPUT/
 
- COMMAND LINE ARGUMENTS
+ COMMAND-LINE ARGUMENTS
    INPUT_DIRECTORY        - directory containing the input files
    OUTPUT_DIRECTORY       - directory where the routine will write the output files
 
@@ -265,6 +265,300 @@ static void trilinearInterpolation (struct Parameters *mo,
   c1 = c01 * (1 - yd) + c11 * yd;
 
   mo->qmu = c0 * (1 - zd) + c1 * zd;
+  #endif
+
+  #if GCP
+  c000 = Mi[el][i - 1][j - 1][k - 1].gcp;
+  c001 =     Mi[el][i - 1][j - 1][k].gcp;
+  c010 =     Mi[el][i - 1][j][k - 1].gcp;
+  c100 =     Mi[el][i][j - 1][k - 1].gcp;
+  c011 =         Mi[el][i - 1][j][k].gcp;
+  c101 =         Mi[el][i][j - 1][k].gcp;
+  c110 =         Mi[el][i][j][k - 1].gcp;
+  c111 =             Mi[el][i][j][k].gcp;
+
+  c00 = c000 * (1 - xd) + c100 * xd;
+  c01 = c001 * (1 - xd) + c101 * xd;
+  c10 = c010 * (1 - xd) + c110 * xd;
+  c11 = c011 * (1 - xd) + c111 * xd;
+
+  c0 = c00 * (1 - yd) + c10 * yd;
+  c1 = c01 * (1 - yd) + c11 * yd;
+
+  mo->gcp = c0 * (1 - zd) + c1 * zd;
+  #endif
+
+  #if GSP
+  c000 = Mi[el][i - 1][j - 1][k - 1].gsp;
+  c001 =     Mi[el][i - 1][j - 1][k].gsp;
+  c010 =     Mi[el][i - 1][j][k - 1].gsp;
+  c100 =     Mi[el][i][j - 1][k - 1].gsp;
+  c011 =         Mi[el][i - 1][j][k].gsp;
+  c101 =         Mi[el][i][j - 1][k].gsp;
+  c110 =         Mi[el][i][j][k - 1].gsp;
+  c111 =             Mi[el][i][j][k].gsp;
+
+  c00 = c000 * (1 - xd) + c100 * xd;
+  c01 = c001 * (1 - xd) + c101 * xd;
+  c10 = c010 * (1 - xd) + c110 * xd;
+  c11 = c011 * (1 - xd) + c111 * xd;
+
+  c0 = c00 * (1 - yd) + c10 * yd;
+  c1 = c01 * (1 - yd) + c11 * yd;
+
+  mo->gsp = c0 * (1 - zd) + c1 * zd;
+  #endif
+
+  #if MU0
+  c000 = Mi[el][i - 1][j - 1][k - 1].mu0;
+  c001 =     Mi[el][i - 1][j - 1][k].mu0;
+  c010 =     Mi[el][i - 1][j][k - 1].mu0;
+  c100 =     Mi[el][i][j - 1][k - 1].mu0;
+  c011 =         Mi[el][i - 1][j][k].mu0;
+  c101 =         Mi[el][i][j - 1][k].mu0;
+  c110 =         Mi[el][i][j][k - 1].mu0;
+  c111 =             Mi[el][i][j][k].mu0;
+
+  c00 = c000 * (1 - xd) + c100 * xd;
+  c01 = c001 * (1 - xd) + c101 * xd;
+  c10 = c010 * (1 - xd) + c110 * xd;
+  c11 = c011 * (1 - xd) + c111 * xd;
+
+  c0 = c00 * (1 - yd) + c10 * yd;
+  c1 = c01 * (1 - yd) + c11 * yd;
+
+  mo->mu0 = c0 * (1 - zd) + c1 * zd;
+  #endif
+
+  #if APK
+  c000 = Mi[el][i - 1][j - 1][k - 1].apk;
+  c001 =     Mi[el][i - 1][j - 1][k].apk;
+  c010 =     Mi[el][i - 1][j][k - 1].apk;
+  c100 =     Mi[el][i][j - 1][k - 1].apk;
+  c011 =         Mi[el][i - 1][j][k].apk;
+  c101 =         Mi[el][i][j - 1][k].apk;
+  c110 =         Mi[el][i][j][k - 1].apk;
+  c111 =             Mi[el][i][j][k].apk;
+
+  c00 = c000 * (1 - xd) + c100 * xd;
+  c01 = c001 * (1 - xd) + c101 * xd;
+  c10 = c010 * (1 - xd) + c110 * xd;
+  c11 = c011 * (1 - xd) + c111 * xd;
+
+  c0 = c00 * (1 - yd) + c10 * yd;
+  c1 = c01 * (1 - yd) + c11 * yd;
+
+  mo->apk = c0 * (1 - zd) + c1 * zd;
+  #endif
+
+  #if BTK
+  c000 = Mi[el][i - 1][j - 1][k - 1].btk;
+  c001 =     Mi[el][i - 1][j - 1][k].btk;
+  c010 =     Mi[el][i - 1][j][k - 1].btk;
+  c100 =     Mi[el][i][j - 1][k - 1].btk;
+  c011 =         Mi[el][i - 1][j][k].btk;
+  c101 =         Mi[el][i][j - 1][k].btk;
+  c110 =         Mi[el][i][j][k - 1].btk;
+  c111 =             Mi[el][i][j][k].btk;
+
+  c00 = c000 * (1 - xd) + c100 * xd;
+  c01 = c001 * (1 - xd) + c101 * xd;
+  c10 = c010 * (1 - xd) + c110 * xd;
+  c11 = c011 * (1 - xd) + c111 * xd;
+
+  c0 = c00 * (1 - yd) + c10 * yd;
+  c1 = c01 * (1 - yd) + c11 * yd;
+
+  mo->btk = c0 * (1 - zd) + c1 * zd;
+  #endif
+
+  #if RHK
+  c000 = Mi[el][i - 1][j - 1][k - 1].rhk;
+  c001 =     Mi[el][i - 1][j - 1][k].rhk;
+  c010 =     Mi[el][i - 1][j][k - 1].rhk;
+  c100 =     Mi[el][i][j - 1][k - 1].rhk;
+  c011 =         Mi[el][i - 1][j][k].rhk;
+  c101 =         Mi[el][i][j - 1][k].rhk;
+  c110 =         Mi[el][i][j][k - 1].rhk;
+  c111 =             Mi[el][i][j][k].rhk;
+
+  c00 = c000 * (1 - xd) + c100 * xd;
+  c01 = c001 * (1 - xd) + c101 * xd;
+  c10 = c010 * (1 - xd) + c110 * xd;
+  c11 = c011 * (1 - xd) + c111 * xd;
+
+  c0 = c00 * (1 - yd) + c10 * yd;
+  c1 = c01 * (1 - yd) + c11 * yd;
+
+  mo->rhk = c0 * (1 - zd) + c1 * zd;
+  #endif
+
+  #if BCK
+  c000 = Mi[el][i - 1][j - 1][k - 1].bck;
+  c001 =     Mi[el][i - 1][j - 1][k].bck;
+  c010 =     Mi[el][i - 1][j][k - 1].bck;
+  c100 =     Mi[el][i][j - 1][k - 1].bck;
+  c011 =         Mi[el][i - 1][j][k].bck;
+  c101 =         Mi[el][i][j - 1][k].bck;
+  c110 =         Mi[el][i][j][k - 1].bck;
+  c111 =             Mi[el][i][j][k].bck;
+
+  c00 = c000 * (1 - xd) + c100 * xd;
+  c01 = c001 * (1 - xd) + c101 * xd;
+  c10 = c010 * (1 - xd) + c110 * xd;
+  c11 = c011 * (1 - xd) + c111 * xd;
+
+  c0 = c00 * (1 - yd) + c10 * yd;
+  c1 = c01 * (1 - yd) + c11 * yd;
+
+  mo->bck = c0 * (1 - zd) + c1 * zd;
+  #endif
+
+  #if BBK
+  c000 = Mi[el][i - 1][j - 1][k - 1].bbk;
+  c001 =     Mi[el][i - 1][j - 1][k].bbk;
+  c010 =     Mi[el][i - 1][j][k - 1].bbk;
+  c100 =     Mi[el][i][j - 1][k - 1].bbk;
+  c011 =         Mi[el][i - 1][j][k].bbk;
+  c101 =         Mi[el][i][j - 1][k].bbk;
+  c110 =         Mi[el][i][j][k - 1].bbk;
+  c111 =             Mi[el][i][j][k].bbk;
+
+  c00 = c000 * (1 - xd) + c100 * xd;
+  c01 = c001 * (1 - xd) + c101 * xd;
+  c10 = c010 * (1 - xd) + c110 * xd;
+  c11 = c011 * (1 - xd) + c111 * xd;
+
+  c0 = c00 * (1 - yd) + c10 * yd;
+  c1 = c01 * (1 - yd) + c11 * yd;
+
+  mo->bbk = c0 * (1 - zd) + c1 * zd;
+  #endif
+
+  #if BVK
+  c000 = Mi[el][i - 1][j - 1][k - 1].bbk;
+  c001 =     Mi[el][i - 1][j - 1][k].bbk;
+  c010 =     Mi[el][i - 1][j][k - 1].bbk;
+  c100 =     Mi[el][i][j - 1][k - 1].bbk;
+  c011 =         Mi[el][i - 1][j][k].bbk;
+  c101 =         Mi[el][i][j - 1][k].bbk;
+  c110 =         Mi[el][i][j][k - 1].bbk;
+  c111 =             Mi[el][i][j][k].bbk;
+
+  c00 = c000 * (1 - xd) + c100 * xd;
+  c01 = c001 * (1 - xd) + c101 * xd;
+  c10 = c010 * (1 - xd) + c110 * xd;
+  c11 = c011 * (1 - xd) + c111 * xd;
+
+  c0 = c00 * (1 - yd) + c10 * yd;
+  c1 = c01 * (1 - yd) + c11 * yd;
+
+  mo->bbk = c0 * (1 - zd) + c1 * zd;
+  #endif
+
+  #if BHK
+  c000 = Mi[el][i - 1][j - 1][k - 1].bhk;
+  c001 =     Mi[el][i - 1][j - 1][k].bhk;
+  c010 =     Mi[el][i - 1][j][k - 1].bhk;
+  c100 =     Mi[el][i][j - 1][k - 1].bhk;
+  c011 =         Mi[el][i - 1][j][k].bhk;
+  c101 =         Mi[el][i][j - 1][k].bhk;
+  c110 =         Mi[el][i][j][k - 1].bhk;
+  c111 =             Mi[el][i][j][k].bhk;
+
+  c00 = c000 * (1 - xd) + c100 * xd;
+  c01 = c001 * (1 - xd) + c101 * xd;
+  c10 = c010 * (1 - xd) + c110 * xd;
+  c11 = c011 * (1 - xd) + c111 * xd;
+
+  c0 = c00 * (1 - yd) + c10 * yd;
+  c1 = c01 * (1 - yd) + c11 * yd;
+
+  mo->bhk = c0 * (1 - zd) + c1 * zd;
+  #endif
+
+  #if ETK
+  c000 = Mi[el][i - 1][j - 1][k - 1].etk;
+  c001 =     Mi[el][i - 1][j - 1][k].etk;
+  c010 =     Mi[el][i - 1][j][k - 1].etk;
+  c100 =     Mi[el][i][j - 1][k - 1].etk;
+  c011 =         Mi[el][i - 1][j][k].etk;
+  c101 =         Mi[el][i][j - 1][k].etk;
+  c110 =         Mi[el][i][j][k - 1].etk;
+  c111 =             Mi[el][i][j][k].etk;
+
+  c00 = c000 * (1 - xd) + c100 * xd;
+  c01 = c001 * (1 - xd) + c101 * xd;
+  c10 = c010 * (1 - xd) + c110 * xd;
+  c11 = c011 * (1 - xd) + c111 * xd;
+
+  c0 = c00 * (1 - yd) + c10 * yd;
+  c1 = c01 * (1 - yd) + c11 * yd;
+
+  mo->etk = c0 * (1 - zd) + c1 * zd;
+  #endif
+
+  #if GCK
+  c000 = Mi[el][i - 1][j - 1][k - 1].gck;
+  c001 =     Mi[el][i - 1][j - 1][k].gck;
+  c010 =     Mi[el][i - 1][j][k - 1].gck;
+  c100 =     Mi[el][i][j - 1][k - 1].gck;
+  c011 =         Mi[el][i - 1][j][k].gck;
+  c101 =         Mi[el][i][j - 1][k].gck;
+  c110 =         Mi[el][i][j][k - 1].gck;
+  c111 =             Mi[el][i][j][k].gck;
+
+  c00 = c000 * (1 - xd) + c100 * xd;
+  c01 = c001 * (1 - xd) + c101 * xd;
+  c10 = c010 * (1 - xd) + c110 * xd;
+  c11 = c011 * (1 - xd) + c111 * xd;
+
+  c0 = c00 * (1 - yd) + c10 * yd;
+  c1 = c01 * (1 - yd) + c11 * yd;
+
+  mo->gck = c0 * (1 - zd) + c1 * zd;
+  #endif
+
+  #if GSK
+  c000 = Mi[el][i - 1][j - 1][k - 1].gsk;
+  c001 =     Mi[el][i - 1][j - 1][k].gsk;
+  c010 =     Mi[el][i - 1][j][k - 1].gsk;
+  c100 =     Mi[el][i][j - 1][k - 1].gsk;
+  c011 =         Mi[el][i - 1][j][k].gsk;
+  c101 =         Mi[el][i][j - 1][k].gsk;
+  c110 =         Mi[el][i][j][k - 1].gsk;
+  c111 =             Mi[el][i][j][k].gsk;
+
+  c00 = c000 * (1 - xd) + c100 * xd;
+  c01 = c001 * (1 - xd) + c101 * xd;
+  c10 = c010 * (1 - xd) + c110 * xd;
+  c11 = c011 * (1 - xd) + c111 * xd;
+
+  c0 = c00 * (1 - yd) + c10 * yd;
+  c1 = c01 * (1 - yd) + c11 * yd;
+
+  mo->gsk = c0 * (1 - zd) + c1 * zd;
+  #endif
+
+  #if HSK
+  c000 = Mi[el][i - 1][j - 1][k - 1].hsk;
+  c001 =     Mi[el][i - 1][j - 1][k].hsk;
+  c010 =     Mi[el][i - 1][j][k - 1].hsk;
+  c100 =     Mi[el][i][j - 1][k - 1].hsk;
+  c011 =         Mi[el][i - 1][j][k].hsk;
+  c101 =         Mi[el][i][j - 1][k].hsk;
+  c110 =         Mi[el][i][j][k - 1].hsk;
+  c111 =             Mi[el][i][j][k].hsk;
+
+  c00 = c000 * (1 - xd) + c100 * xd;
+  c01 = c001 * (1 - xd) + c101 * xd;
+  c10 = c010 * (1 - xd) + c110 * xd;
+  c11 = c011 * (1 - xd) + c111 * xd;
+
+  c0 = c00 * (1 - yd) + c10 * yd;
+  c1 = c01 * (1 - yd) + c11 * yd;
+
+  mo->hsk = c0 * (1 - zd) + c1 * zd;
   #endif
 }
 
@@ -914,6 +1208,62 @@ static unsigned computeInterpolator (unsigned nel, struct Parameters a[nel][NX *
           v[r].qmu = Mi[el][i][j][k].qmu;
           #endif
 
+          #if GCP
+          v[r].gcp = Mi[el][i][j][k].gcp;
+          #endif
+
+          #if GSP
+          v[r].gsp = Mi[el][i][j][k].gsp;
+          #endif
+
+          #if MU0
+          v[r].mu0 = Mi[el][i][j][k].mu0;
+          #endif
+
+          #if APK
+          v[r].apk = Mi[el][i][j][k].apk;
+          #endif
+
+          #if BTK
+          v[r].btk = Mi[el][i][j][k].btk;
+          #endif
+
+          #if RHK
+          v[r].rhk = Mi[el][i][j][k].rhk;
+          #endif
+
+          #if BCK
+          v[r].bck = Mi[el][i][j][k].bck;
+          #endif
+
+          #if BBK
+          v[r].bbk = Mi[el][i][j][k].bbk;
+          #endif
+
+          #if BVK
+          v[r].bvk = Mi[el][i][j][k].bvk;
+          #endif
+
+          #if BHK
+          v[r].bhk = Mi[el][i][j][k].bhk;
+          #endif
+
+          #if ETK
+          v[r].etk = Mi[el][i][j][k].etk;
+          #endif
+
+          #if GCK
+          v[r].gck = Mi[el][i][j][k].gck;
+          #endif
+
+          #if GSK
+          v[r].gsk = Mi[el][i][j][k].gsk;
+          #endif
+
+          #if HSK
+          v[r].hsk = Mi[el][i][j][k].hsk;
+          #endif
+
           r++;
         }
 
@@ -955,6 +1305,62 @@ static unsigned computeInterpolator (unsigned nel, struct Parameters a[nel][NX *
       a[el][r].qmu = 0.L;
       #endif
 
+      #if GCP
+      a[el][r].gcp = 0.L;
+      #endif
+
+      #if GSP
+      a[el][r].gsp = 0.L;
+      #endif
+
+      #if MU0
+      a[el][r].mu0 = 0.L;
+      #endif
+
+      #if APK
+      a[el][r].apk = 0.L;
+      #endif
+
+      #if BTK
+      a[el][r].btk = 0.L;
+      #endif
+
+      #if RHK
+      a[el][r].rhk = 0.L;
+      #endif
+
+      #if BCK
+      a[el][r].bck = 0.L;
+      #endif
+
+      #if BBK
+      a[el][r].bbk = 0.L;
+      #endif
+
+      #if BVK
+      a[el][r].bvk = 0.L;
+      #endif
+
+      #if BHK
+      a[el][r].bhk = 0.L;
+      #endif
+
+      #if ETK
+      a[el][r].etk = 0.L;
+      #endif
+
+      #if GCK
+      a[el][r].gck = 0.L;
+      #endif
+
+      #if GSK
+      a[el][r].gsk = 0.L;
+      #endif
+
+      #if HSK
+      a[el][r].hsk = 0.L;
+      #endif
+
       for (unsigned c = 0; c < N; c++)
       {
         #if VP
@@ -991,6 +1397,62 @@ static unsigned computeInterpolator (unsigned nel, struct Parameters a[nel][NX *
 
         #if QMU
         a[el][r].qmu += C[r][c] * v[c].qmu;
+        #endif
+
+        #if GCP
+        a[el][r].gcp += C[r][c] * v[c].gcp;
+        #endif
+
+        #if GSP
+        a[el][r].gsp += C[r][c] * v[c].gsp;
+        #endif
+
+        #if MU0
+        a[el][r].mu0 += C[r][c] * v[c].mu0;
+        #endif
+
+        #if APK
+        a[el][r].apk += C[r][c] * v[c].apk;
+        #endif
+
+        #if BTK
+        a[el][r].btk += C[r][c] * v[c].btk;
+        #endif
+
+        #if RHK
+        a[el][r].rhk += C[r][c] * v[c].rhk;
+        #endif
+
+        #if BCK
+        a[el][r].bck += C[r][c] * v[c].bck;
+        #endif
+
+        #if BBK
+        a[el][r].bbk += C[r][c] * v[c].bbk;
+        #endif
+
+        #if BVK
+        a[el][r].bvk += C[r][c] * v[c].bvk;
+        #endif
+
+        #if BHK
+        a[el][r].bhk += C[r][c] * v[c].bhk;
+        #endif
+
+        #if ETK
+        a[el][r].etk += C[r][c] * v[c].etk;
+        #endif
+
+        #if GCK
+        a[el][r].gck += C[r][c] * v[c].gck;
+        #endif
+
+        #if GSK
+        a[el][r].gsk += C[r][c] * v[c].gsk;
+        #endif
+
+        #if HSK
+        a[el][r].hsk += C[r][c] * v[c].hsk;
         #endif
       }
     }
@@ -1040,6 +1502,62 @@ static unsigned computeInterpolator (unsigned nel, struct Parameters a[nel][NX *
           v[r].qmu = Mi[imic[el]][i][j][k].qmu;
           #endif
 
+          #if GCP
+          v[r].gcp = Mi[imic[el]][i][j][k].gcp;
+          #endif
+
+          #if GSP
+          v[r].gsp = Mi[imic[el]][i][j][k].gsp;
+          #endif
+
+          #if MU0
+          v[r].mu0 = Mi[imic[el]][i][j][k].mu0;
+          #endif
+
+          #if APK
+          v[r].apk = Mi[imic[el]][i][j][k].apk;
+          #endif
+
+          #if BTK
+          v[r].btk = Mi[imic[el]][i][j][k].btk;
+          #endif
+
+          #if RHK
+          v[r].rhk = Mi[imic[el]][i][j][k].rhk;
+          #endif
+
+          #if BCK
+          v[r].bck = Mi[imic[el]][i][j][k].bck;
+          #endif
+
+          #if BBK
+          v[r].bbk = Mi[imic[el]][i][j][k].bbk;
+          #endif
+
+          #if BVK
+          v[r].bvk = Mi[imic[el]][i][j][k].bvk;
+          #endif
+
+          #if BHK
+          v[r].bhk = Mi[imic[el]][i][j][k].bhk;
+          #endif
+
+          #if ETK
+          v[r].etk = Mi[imic[el]][i][j][k].etk;
+          #endif
+
+          #if GCK
+          v[r].gck = Mi[imic[el]][i][j][k].gck;
+          #endif
+
+          #if GSK
+          v[r].gsk = Mi[imic[el]][i][j][k].gsk;
+          #endif
+
+          #if HSK
+          v[r].hsk = Mi[imic[el]][i][j][k].hsk;
+          #endif
+
           r++;
         }
 
@@ -1081,6 +1599,62 @@ static unsigned computeInterpolator (unsigned nel, struct Parameters a[nel][NX *
       ac[el][r].qmu = 0.L;
       #endif
 
+      #if GCP
+      ac[el][r].gcp = 0.L;
+      #endif
+
+      #if GSP
+      ac[el][r].gsp = 0.L;
+      #endif
+
+      #if MU0
+      ac[el][r].mu0 = 0.L;
+      #endif
+
+      #if APK
+      ac[el][r].apk = 0.L;
+      #endif
+
+      #if BTK
+      ac[el][r].btk = 0.L;
+      #endif
+
+      #if RHK
+      ac[el][r].rhk = 0.L;
+      #endif
+
+      #if BCK
+      ac[el][r].bck = 0.L;
+      #endif
+
+      #if BBK
+      ac[el][r].bbk = 0.L;
+      #endif
+
+      #if BVK
+      ac[el][r].bvk = 0.L;
+      #endif
+
+      #if BHK
+      ac[el][r].bhk = 0.L;
+      #endif
+
+      #if ETK
+      ac[el][r].etk = 0.L;
+      #endif
+
+      #if GCK
+      ac[el][r].gck = 0.L;
+      #endif
+
+      #if GSK
+      ac[el][r].gsk = 0.L;
+      #endif
+
+      #if HSK
+      ac[el][r].hsk = 0.L;
+      #endif
+
       for (unsigned c = 0; c < N; c++)
       {
         #if VP
@@ -1117,6 +1691,62 @@ static unsigned computeInterpolator (unsigned nel, struct Parameters a[nel][NX *
 
         #if QMU
         ac[el][r].qmu += C[r][c] * v[c].qmu;
+        #endif
+
+        #if GCP
+        ac[el][r].gcp += C[r][c] * v[c].gcp;
+        #endif
+
+        #if GSP
+        ac[el][r].gsp += C[r][c] * v[c].gsp;
+        #endif
+
+        #if MU0
+        ac[el][r].mu0 += C[r][c] * v[c].mu0;
+        #endif
+
+        #if APK
+        ac[el][r].apk += C[r][c] * v[c].apk;
+        #endif
+
+        #if BTK
+        ac[el][r].btk += C[r][c] * v[c].btk;
+        #endif
+
+        #if RHK
+        ac[el][r].rhk += C[r][c] * v[c].rhk;
+        #endif
+
+        #if BCK
+        ac[el][r].bck += C[r][c] * v[c].bck;
+        #endif
+
+        #if BBK
+        ac[el][r].bbk += C[r][c] * v[c].bbk;
+        #endif
+
+        #if BVK
+        ac[el][r].bvk += C[r][c] * v[c].bvk;
+        #endif
+
+        #if BHK
+        ac[el][r].bhk += C[r][c] * v[c].bhk;
+        #endif
+
+        #if ETK
+        ac[el][r].etk += C[r][c] * v[c].etk;
+        #endif
+
+        #if GCK
+        ac[el][r].gck += C[r][c] * v[c].gck;
+        #endif
+
+        #if GSK
+        ac[el][r].gsk += C[r][c] * v[c].gsk;
+        #endif
+
+        #if HSK
+        ac[el][r].hsk += C[r][c] * v[c].hsk;
         #endif
       }
     }
@@ -1168,6 +1798,62 @@ static void surface (struct Parameters *m, unsigned nel, unsigned el,
   m->qmu = 0.L;
   #endif
 
+  #if GCP
+  m->gcp = 0.L;
+  #endif
+
+  #if GSP
+  m->gsp = 0.L;
+  #endif
+
+  #if MU0
+  m->mu0 = 0.L;
+  #endif
+
+  #if APK
+  m->apk = 0.L;
+  #endif
+
+  #if BTK
+  m->btk = 0.L;
+  #endif
+
+  #if RHK
+  m->rhk = 0.L;
+  #endif
+
+  #if BCK
+  m->bck = 0.L;
+  #endif
+
+  #if BBK
+  m->bbk = 0.L;
+  #endif
+
+  #if BVK
+  m->bvk = 0.L;
+  #endif
+
+  #if BHK
+  m->bhk = 0.L;
+  #endif
+
+  #if ETK
+  m->etk = 0.L;
+  #endif
+
+  #if GCK
+  m->gck = 0.L;
+  #endif
+
+  #if GSK
+  m->gsk = 0.L;
+  #endif
+
+  #if HSK
+  m->hsk = 0.L;
+  #endif
+
   for (unsigned k = 0; k < NZ; k++)
 
     for (unsigned j = 0; j < NY; j++)
@@ -1210,6 +1896,62 @@ static void surface (struct Parameters *m, unsigned nel, unsigned el,
 
         #if QMU
         m->qmu += a[el][r].qmu * cn;
+        #endif
+
+        #if GCP
+        m->gcp += a[el][r].gcp * cn;
+        #endif
+
+        #if GSP
+        m->gsp += a[el][r].gsp * cn;
+        #endif
+
+        #if MU0
+        m->mu0 += a[el][r].mu0 * cn;
+        #endif
+
+        #if APK
+        m->apk += a[el][r].apk * cn;
+        #endif
+
+        #if BTK
+        m->btk += a[el][r].btk * cn;
+        #endif
+
+        #if RHK
+        m->rhk += a[el][r].rhk * cn;
+        #endif
+
+        #if BCK
+        m->bck += a[el][r].bck * cn;
+        #endif
+
+        #if BBK
+        m->bbk += a[el][r].bbk * cn;
+        #endif
+
+        #if BVK
+        m->bvk += a[el][r].bvk * cn;
+        #endif
+
+        #if BHK
+        m->bhk += a[el][r].bhk * cn;
+        #endif
+
+        #if ETK
+        m->etk += a[el][r].etk * cn;
+        #endif
+
+        #if GCK
+        m->gck += a[el][r].gck * cn;
+        #endif
+
+        #if GSK
+        m->gsk += a[el][r].gsk * cn;
+        #endif
+
+        #if HSK
+        m->hsk += a[el][r].hsk * cn;
         #endif
 
         r++;
@@ -1292,6 +2034,34 @@ static unsigned optimize (int ic, unsigned nel, unsigned nelic, unsigned neloc,
             pp = fabsl (mo1.eta - mo2.eta) / mo2.eta;
             #elif QMU
             pp = fabsl (mo1.qmu - mo2.qmu) / mo2.qmu;
+            #elif GCP
+            pp = fabsl (mo1.gcp - mo2.gcp) / mo2.gcp;
+            #elif GSP
+            pp = fabsl (mo1.gsp - mo2.gsp) / mo2.gsp;
+            #elif MU0
+            pp = fabsl (mo1.mu0 - mo2.mu0) / mo2.mu0;
+            #elif APK
+            pp = fabsl (mo1.apk - mo2.apk) / mo2.apk;
+            #elif BTK
+            pp = fabsl (mo1.btk - mo2.btk) / mo2.btk;
+            #elif RHK
+            pp = fabsl (mo1.rhk - mo2.rhk) / mo2.rhk;
+            #elif BCK
+            pp = fabsl (mo1.bck - mo2.bck) / mo2.bck;
+            #elif BBK
+            pp = fabsl (mo1.bbk - mo2.bbk) / mo2.bbk;
+            #elif BVK
+            pp = fabsl (mo1.bvk - mo2.bvk) / mo2.bvk;
+            #elif BHK
+            pp = fabsl (mo1.bhk - mo2.bhk) / mo2.bhk;
+            #elif ETK
+            pp = fabsl (mo1.etk - mo2.etk) / mo2.etk;
+            #elif GCK
+            pp = fabsl (mo1.gck - mo2.gck) / mo2.gck;
+            #elif GSK
+            pp = fabsl (mo1.gsk - mo2.gsk) / mo2.gsk;
+            #elif HSK
+            pp = fabsl (mo1.hsk - mo2.hsk) / mo2.hsk;
             #endif
 
             Mo[el][i][j][k] = (pp < MAX_PERTURBATION) ? mo1 : mo2;
@@ -1318,7 +2088,7 @@ static void helpMenu (void)
                     "\n\n EXAMPLE"
                     "\n    mpiexec -n 24 bin/gll2gll data/INPUT/ data/OUTPUT/"
 
-                    "\n\n COMMAND LINE ARGUMENTS"
+                    "\n\n COMMAND-LINE ARGUMENTS"
                     "\n    INPUT_DIRECTORY        - directory containing the input files"
                     "\n    OUTPUT_DIRECTORY       - directory where the routine will write the output files"
 

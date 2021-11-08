@@ -19,7 +19,7 @@
 
 ----------------------------------------------------------------------------------------------- */
 
-#include "config_smooth.h"
+#include "config.h"
 #include "constants.h"
 
 #ifndef STRUCTS_SMOOTH_H
@@ -75,6 +75,18 @@ struct Parameters
   double qmu;
   #endif
 
+  #if GCP
+  double gcp;
+  #endif
+
+  #if GSP
+  double gsp;
+  #endif
+
+  #if MU0
+  double mu0;
+  #endif
+
   #if APK
   double apk;
   #endif
@@ -105,6 +117,14 @@ struct Parameters
 
   #if ETK
   double etk;
+  #endif
+
+  #if GCK
+  double gck;
+  #endif
+
+  #if GSK
+  double gsk;
   #endif
 
   #if HSK

@@ -20,7 +20,7 @@
 ----------------------------------------------------------------------------------------------- */
 
 #include "constants.h"
-#include "config_smooth.h"
+#include "config.h"
 
 #ifndef IO_SMOOTH_H
 #define IO_SMOOTH_H

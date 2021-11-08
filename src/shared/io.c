@@ -119,6 +119,62 @@ static void insertPmNode (struct Parameters M[NX][NY][NZ],
         #if QMU
         new->M[i][j][k].qmu = M[i][j][k].qmu;
         #endif
+
+        #if GCP
+        new->M[i][j][k].gcp = M[i][j][k].gcp;
+        #endif
+
+        #if GSP
+        new->M[i][j][k].gsp = M[i][j][k].gsp;
+        #endif
+
+        #if MU0
+        new->M[i][j][k].mu0 = M[i][j][k].mu0;
+        #endif
+
+        #if APK
+        new->M[i][j][k].apk = M[i][j][k].apk;
+        #endif
+
+        #if BTK
+        new->M[i][j][k].btk = M[i][j][k].btk;
+        #endif
+
+        #if RHK
+        new->M[i][j][k].rhk = M[i][j][k].rhk;
+        #endif
+
+        #if BCK
+        new->M[i][j][k].bck = M[i][j][k].bck;
+        #endif
+
+        #if BBK
+        new->M[i][j][k].bbk = M[i][j][k].bbk;
+        #endif
+
+        #if BVK
+        new->M[i][j][k].bvk = M[i][j][k].bvk;
+        #endif
+
+        #if BHK
+        new->M[i][j][k].bhk = M[i][j][k].bhk;
+        #endif
+
+        #if ETK
+        new->M[i][j][k].etk = M[i][j][k].etk;
+        #endif
+
+        #if GCK
+        new->M[i][j][k].gck = M[i][j][k].gck;
+        #endif
+
+        #if GSK
+        new->M[i][j][k].gsk = M[i][j][k].gsk;
+        #endif
+
+        #if HSK
+        new->M[i][j][k].hsk = M[i][j][k].hsk;
+        #endif
       }
 
   new->next = p->next;
@@ -408,6 +464,216 @@ static unsigned readInputMeshAndModel (int ic, char *prm, unsigned nelm, unsigne
   fclose (file);
   #endif
 
+  #if GCP
+  if (sprintf (filename, "%s/proc%06d_reg1_Gc_prime.bin", prm, ic) < 24) return 1;
+
+  file = fopen (filename, "rb");
+
+  if (file == NULL) return 4;
+
+  float gcp[nelm][NZ][NY][NX];
+
+  if (fread (&junk, sizeof (unsigned), 1, file) != 1) return 5;
+  if (fread (gcp, sizeof (float), N, file) != N) return 5;
+
+  fclose (file);
+  #endif
+
+  #if GSP
+  if (sprintf (filename, "%s/proc%06d_reg1_Gs_prime.bin", prm, ic) < 24) return 1;
+
+  file = fopen (filename, "rb");
+
+  if (file == NULL) return 4;
+
+  float gsp[nelm][NZ][NY][NX];
+
+  if (fread (&junk, sizeof (unsigned), 1, file) != 1) return 5;
+  if (fread (gsp, sizeof (float), N, file) != N) return 5;
+
+  fclose (file);
+  #endif
+
+  #if MU0
+  if (sprintf (filename, "%s/proc%06d_reg1_mu0.bin", prm, ic) < 24) return 1;
+
+  file = fopen (filename, "rb");
+
+  if (file == NULL) return 4;
+
+  float mu0[nelm][NZ][NY][NX];
+
+  if (fread (&junk, sizeof (unsigned), 1, file) != 1) return 5;
+  if (fread (mu0, sizeof (float), N, file) != N) return 5;
+
+  fclose (file);
+  #endif
+
+  #if APK
+  if (sprintf (filename, "%s/proc%06d_reg1_alpha_kernel.bin", prm, ic) < 24) return 1;
+
+  file = fopen (filename, "rb");
+
+  if (file == NULL) return 4;
+
+  float apk[nelm][NZ][NY][NX];
+
+  if (fread (&junk, sizeof (unsigned), 1, file) != 1) return 5;
+  if (fread (apk, sizeof (float), N, file) != N) return 5;
+
+  fclose (file);
+  #endif
+
+  #if BTK
+  if (sprintf (filename, "%s/proc%06d_reg1_beta_kernel.bin", prm, ic) < 24) return 1;
+
+  file = fopen (filename, "rb");
+
+  if (file == NULL) return 4;
+
+  float btk[nelm][NZ][NY][NX];
+
+  if (fread (&junk, sizeof (unsigned), 1, file) != 1) return 5;
+  if (fread (btk, sizeof (float), N, file) != N) return 5;
+
+  fclose (file);
+  #endif
+
+  #if RHK
+  if (sprintf (filename, "%s/proc%06d_reg1_rho_kernel.bin", prm, ic) < 24) return 1;
+
+  file = fopen (filename, "rb");
+
+  if (file == NULL) return 4;
+
+  float rhk[nelm][NZ][NY][NX];
+
+  if (fread (&junk, sizeof (unsigned), 1, file) != 1) return 5;
+  if (fread (rhk, sizeof (float), N, file) != N) return 5;
+
+  fclose (file);
+  #endif
+
+  #if BCK
+  if (sprintf (filename, "%s/proc%06d_reg1_bulk_c_kernel.bin", prm, ic) < 24) return 1;
+
+  file = fopen (filename, "rb");
+
+  if (file == NULL) return 4;
+
+  float bck[nelm][NZ][NY][NX];
+
+  if (fread (&junk, sizeof (unsigned), 1, file) != 1) return 5;
+  if (fread (bck, sizeof (float), N, file) != N) return 5;
+
+  fclose (file);
+  #endif
+
+  #if BBK
+  if (sprintf (filename, "%s/proc%06d_reg1_bulk_beta_kernel.bin", prm, ic) < 24) return 1;
+
+  file = fopen (filename, "rb");
+
+  if (file == NULL) return 4;
+
+  float bbk[nelm][NZ][NY][NX];
+
+  if (fread (&junk, sizeof (unsigned), 1, file) != 1) return 5;
+  if (fread (bbk, sizeof (float), N, file) != N) return 5;
+
+  fclose (file);
+  #endif
+
+  #if BVK
+  if (sprintf (filename, "%s/proc%06d_reg1_bulk_betav_kernel.bin", prm, ic) < 24) return 1;
+
+  file = fopen (filename, "rb");
+
+  if (file == NULL) return 4;
+
+  float bvk[nelm][NZ][NY][NX];
+
+  if (fread (&junk, sizeof (unsigned), 1, file) != 1) return 5;
+  if (fread (bvk, sizeof (float), N, file) != N) return 5;
+
+  fclose (file);
+  #endif
+
+  #if BHK
+  if (sprintf (filename, "%s/proc%06d_reg1_bulk_betah_kernel.bin", prm, ic) < 24) return 1;
+
+  file = fopen (filename, "rb");
+
+  if (file == NULL) return 4;
+
+  float bhk[nelm][NZ][NY][NX];
+
+  if (fread (&junk, sizeof (unsigned), 1, file) != 1) return 5;
+  if (fread (bhk, sizeof (float), N, file) != N) return 5;
+
+  fclose (file);
+  #endif
+
+  #if ETK
+  if (sprintf (filename, "%s/proc%06d_reg1_eta_kernel.bin", prm, ic) < 24) return 1;
+
+  file = fopen (filename, "rb");
+
+  if (file == NULL) return 4;
+
+  float etk[nelm][NZ][NY][NX];
+
+  if (fread (&junk, sizeof (unsigned), 1, file) != 1) return 5;
+  if (fread (etk, sizeof (float), N, file) != N) return 5;
+
+  fclose (file);
+  #endif
+
+  #if GCK
+  if (sprintf (filename, "%s/proc%06d_reg1_Gc_prime_kernel.bin", prm, ic) < 24) return 1;
+
+  file = fopen (filename, "rb");
+
+  if (file == NULL) return 4;
+
+  float gck[nelm][NZ][NY][NX];
+
+  if (fread (&junk, sizeof (unsigned), 1, file) != 1) return 5;
+  if (fread (gck, sizeof (float), N, file) != N) return 5;
+
+  fclose (file);
+  #endif
+
+  #if GSK
+  if (sprintf (filename, "%s/proc%06d_reg1_Gs_prime_kernel.bin", prm, ic) < 24) return 1;
+
+  file = fopen (filename, "rb");
+
+  if (file == NULL) return 4;
+
+  float gsk[nelm][NZ][NY][NX];
+
+  if (fread (&junk, sizeof (unsigned), 1, file) != 1) return 5;
+  if (fread (gsk, sizeof (float), N, file) != N) return 5;
+
+  fclose (file);
+  #endif
+
+  #if HSK
+  if (sprintf (filename, "%s/proc%06d_reg1_hess_kernel.bin", prm, ic) < 24) return 1;
+
+  file = fopen (filename, "rb");
+
+  if (file == NULL) return 4;
+
+  float hsk[nelm][NZ][NY][NX];
+
+  if (fread (&junk, sizeof (unsigned), 1, file) != 1) return 5;
+  if (fread (hsk, sizeof (float), N, file) != N) return 5;
+
+  fclose (file);
+  #endif
+
   struct Point T[NX][NY][NZ];
   struct Parameters M[NX][NY][NZ];
 
@@ -478,6 +744,62 @@ static unsigned readInputMeshAndModel (int ic, char *prm, unsigned nelm, unsigne
 
           #if QMU
           M[i][j][k].qmu = qmu[el][k][j][i];
+          #endif
+
+          #if GCP
+          M[i][j][k].gcp = gcp[el][k][j][i];
+          #endif
+
+          #if GSP
+          M[i][j][k].gsp = gsp[el][k][j][i];
+          #endif
+
+          #if MU0
+          M[i][j][k].mu0 = mu0[el][k][j][i];
+          #endif
+
+          #if APK
+          M[i][j][k].apk = apk[el][k][j][i];
+          #endif
+
+          #if BTK
+          M[i][j][k].btk = btk[el][k][j][i];
+          #endif
+
+          #if RHK
+          M[i][j][k].rhk = rhk[el][k][j][i];
+          #endif
+
+          #if BCK
+          M[i][j][k].bck = bck[el][k][j][i];
+          #endif
+
+          #if BBK
+          M[i][j][k].bbk = bbk[el][k][j][i];
+          #endif
+
+          #if BVK
+          M[i][j][k].bvk = bvk[el][k][j][i];
+          #endif
+
+          #if BHK
+          M[i][j][k].bhk = bhk[el][k][j][i];
+          #endif
+
+          #if ETK
+          M[i][j][k].etk = etk[el][k][j][i];
+          #endif
+
+          #if GCK
+          M[i][j][k].gck = gck[el][k][j][i];
+          #endif
+
+          #if GSK
+          M[i][j][k].gsk = gsk[el][k][j][i];
+          #endif
+
+          #if HSK
+          M[i][j][k].hsk = hsk[el][k][j][i];
           #endif
 
           if (x < xmin)     xmin = x;
@@ -558,6 +880,62 @@ unsigned scanMeshAndModel (int ic, char *prm, unsigned nelm, unsigned nglob,
       #if QMU
       fprintf (stderr, "Reading model file 'proc%06d_reg1_qmu.bin'...\n", iic);
       #endif
+
+      #if GCP
+      fprintf (stderr, "Reading model file 'proc%06d_reg1_Gc_prime.bin'...\n", iic);
+      #endif
+
+      #if GSP
+      fprintf (stderr, "Reading model file 'proc%06d_reg1_Gs_prime.bin'...\n", iic);
+      #endif
+
+      #if MU0
+      fprintf (stderr, "Reading model file 'proc%06d_reg1_mu0.bin'...\n", iic);
+      #endif
+
+      #if APK
+      fprintf (stderr, "Reading model file 'proc%06d_reg1_alpha_kernel.bin'...\n", iic);
+      #endif
+
+      #if BTK
+      fprintf (stderr, "Reading model file 'proc%06d_reg1_beta_kernel.bin'...\n", iic);
+      #endif
+
+      #if RHK
+      fprintf (stderr, "Reading model file 'proc%06d_reg1_rho_kernel.bin'...\n", iic);
+      #endif
+
+      #if BCK
+      fprintf (stderr, "Reading model file 'proc%06d_reg1_bulk_c_kernel.bin'...\n", iic);
+      #endif
+
+      #if BBK
+      fprintf (stderr, "Reading model file 'proc%06d_reg1_bulk_beta_kernel.bin'...\n", iic);
+      #endif
+
+      #if BVK
+      fprintf (stderr, "Reading model file 'proc%06d_reg1_bulk_betav_kernel.bin'...\n", iic);
+      #endif
+
+      #if BHK
+      fprintf (stderr, "Reading model file 'proc%06d_reg1_bulk_betah_kernel.bin'...\n", iic);
+      #endif
+
+      #if ETK
+      fprintf (stderr, "Reading model file 'proc%06d_reg1_eta_kernel.bin'...\n", iic);
+      #endif
+
+      #if GCK
+      fprintf (stderr, "Reading model file 'proc%06d_reg1_Gc_prime_kernel.bin'...\n", iic);
+      #endif
+
+      #if GSK
+      fprintf (stderr, "Reading model file 'proc%06d_reg1_Gs_prime_kernel.bin'...\n", iic);
+      #endif
+
+      #if HSK
+      fprintf (stderr, "Reading model file 'proc%06d_reg1_hess_kernel.bin'...\n", iic);
+      #endif
     }
 
     unsigned r = readInputMeshAndModel (iic, prm, nelm, nglob, gb, lle, llm, nel); if (r) return r;
@@ -624,6 +1002,62 @@ void toArrayElAndPmNodes (unsigned nel, struct ElNode *lle, struct PmNode *llm,
 
           #if QMU
           M[el][i][j][k].qmu = q->M[i][j][k].qmu;
+          #endif
+
+          #if GCP
+          M[el][i][j][k].gcp = q->M[i][j][k].gcp;
+          #endif
+
+          #if GSP
+          M[el][i][j][k].gsp = q->M[i][j][k].gsp;
+          #endif
+
+          #if MU0
+          M[el][i][j][k].mu0 = q->M[i][j][k].mu0;
+          #endif
+
+          #if APK
+          M[el][i][j][k].apk = q->M[i][j][k].apk;
+          #endif
+
+          #if BTK
+          M[el][i][j][k].btk = q->M[i][j][k].btk;
+          #endif
+
+          #if RHK
+          M[el][i][j][k].rhk = q->M[i][j][k].rhk;
+          #endif
+
+          #if BCK
+          M[el][i][j][k].bck = q->M[i][j][k].bck;
+          #endif
+
+          #if BBK
+          M[el][i][j][k].bbk = q->M[i][j][k].bbk;
+          #endif
+
+          #if BVK
+          M[el][i][j][k].bvk = q->M[i][j][k].bvk;
+          #endif
+
+          #if BHK
+          M[el][i][j][k].bhk = q->M[i][j][k].bhk;
+          #endif
+
+          #if ETK
+          M[el][i][j][k].etk = q->M[i][j][k].etk;
+          #endif
+
+          #if GCK
+          M[el][i][j][k].gck = q->M[i][j][k].gck;
+          #endif
+
+          #if GSK
+          M[el][i][j][k].gsk = q->M[i][j][k].gsk;
+          #endif
+
+          #if HSK
+          M[el][i][j][k].hsk = q->M[i][j][k].hsk;
           #endif
         }
 
@@ -1457,7 +1891,7 @@ void createOutputGrid1D (int ic, int nc, int k[nc], int kk[nc],
   gb->zmax = -INFINITY;
   gb->rmin =  r1 <= r2 ? r1 : r2;
   gb->rmax =  r1 >= r2 ? r1 : r2;
-  gb->tmin =  0.00;
+  gb->tmin =  0;
   gb->tmax =  PI;
 
   long double dr = (gb->rmax - gb->rmin) / (nr - 1);
@@ -1612,6 +2046,62 @@ unsigned writeModelBk (char *prm,
   float qmu[np][nt][nr];
   #endif
 
+  #if GCP
+  float gcp[np][nt][nr];
+  #endif
+
+  #if GSP
+  float gsp[np][nt][nr];
+  #endif
+
+  #if MU0
+  float mu0[np][nt][nr];
+  #endif
+
+  #if APK
+  float apk[np][nt][nr];
+  #endif
+
+  #if BTK
+  float btk[np][nt][nr];
+  #endif
+
+  #if RHK
+  float rhk[np][nt][nr];
+  #endif
+
+  #if BCK
+  float bck[np][nt][nr];
+  #endif
+
+  #if BBK
+  float bbk[np][nt][nr];
+  #endif
+
+  #if BVK
+  float bvk[np][nt][nr];
+  #endif
+
+  #if BHK
+  float bhk[np][nt][nr];
+  #endif
+
+  #if ETK
+  float etk[np][nt][nr];
+  #endif
+
+  #if GCK
+  float gck[np][nt][nr];
+  #endif
+
+  #if GSK
+  float gsk[np][nt][nr];
+  #endif
+
+  #if HSK
+  float hsk[np][nt][nr];
+  #endif
+
   for (unsigned i = 0; i < np; i++)
 
     for (unsigned j = 0; j < nt; j++)
@@ -1661,6 +2151,76 @@ unsigned writeModelBk (char *prm,
         #if QMU
         qmu[i][j][k] = (float) Mo[i][j][k].qmu;
         if (qmu[i][j][k] < 0) qmu[i][j][k] = 0;
+        #endif
+
+        #if GCP
+        gcp[i][j][k] = (float) Mo[i][j][k].gcp;
+        if (gcp[i][j][k] < 0) gcp[i][j][k] = 0;
+        #endif
+
+        #if GSP
+        gsp[i][j][k] = (float) Mo[i][j][k].gsp;
+        if (gsp[i][j][k] < 0) gsp[i][j][k] = 0;
+        #endif
+
+        #if MU0
+        mu0[i][j][k] = (float) Mo[i][j][k].mu0;
+        if (mu0[i][j][k] < 0) mu0[i][j][k] = 0;
+        #endif
+
+        #if APK
+        apk[i][j][k] = (float) Mo[i][j][k].apk;
+        if (apk[i][j][k] < 0) apk[i][j][k] = 0;
+        #endif
+
+        #if BTK
+        btk[i][j][k] = (float) Mo[i][j][k].btk;
+        if (btk[i][j][k] < 0) btk[i][j][k] = 0;
+        #endif
+
+        #if RHK
+        rhk[i][j][k] = (float) Mo[i][j][k].rhk;
+        if (rhk[i][j][k] < 0) rhk[i][j][k] = 0;
+        #endif
+
+        #if BCK
+        bck[i][j][k] = (float) Mo[i][j][k].bck;
+        if (bck[i][j][k] < 0) bck[i][j][k] = 0;
+        #endif
+
+        #if BBK
+        bbk[i][j][k] = (float) Mo[i][j][k].bbk;
+        if (bbk[i][j][k] < 0) bbk[i][j][k] = 0;
+        #endif
+
+        #if BVK
+        bvk[i][j][k] = (float) Mo[i][j][k].bvk;
+        if (bvk[i][j][k] < 0) bvk[i][j][k] = 0;
+        #endif
+
+        #if BHK
+        bhk[i][j][k] = (float) Mo[i][j][k].bhk;
+        if (bhk[i][j][k] < 0) bhk[i][j][k] = 0;
+        #endif
+
+        #if ETK
+        etk[i][j][k] = (float) Mo[i][j][k].etk;
+        if (etk[i][j][k] < 0) etk[i][j][k] = 0;
+        #endif
+
+        #if GCK
+        gck[i][j][k] = (float) Mo[i][j][k].gck;
+        if (gck[i][j][k] < 0) gck[i][j][k] = 0;
+        #endif
+
+        #if GSK
+        gsk[i][j][k] = (float) Mo[i][j][k].gsk;
+        if (gsk[i][j][k] < 0) gsk[i][j][k] = 0;
+        #endif
+
+        #if HSK
+        hsk[i][j][k] = (float) Mo[i][j][k].hsk;
+        if (hsk[i][j][k] < 0) hsk[i][j][k] = 0;
         #endif
       }
 
@@ -1804,6 +2364,230 @@ unsigned writeModelBk (char *prm,
   fwrite (&nt, sizeof (unsigned), 1, file);
   fwrite (&nr, sizeof (unsigned), 1, file);
   fwrite (qmu, sizeof (float), n, file);
+
+  fclose (file);
+  #endif
+
+  #if GCP
+  if (sprintf (name, "%s/Gc_prime.bin", prm) < 8) return 1;
+
+  file = fopen (name, "wb");
+
+  if (file == NULL) return 2;
+
+  fwrite (&e, sizeof (char), 1, file);
+  fwrite (&np, sizeof (unsigned), 1, file);
+  fwrite (&nt, sizeof (unsigned), 1, file);
+  fwrite (&nr, sizeof (unsigned), 1, file);
+  fwrite (gcp, sizeof (float), n, file);
+
+  fclose (file);
+  #endif
+
+  #if GSP
+  if (sprintf (name, "%s/Gs_prime.bin", prm) < 8) return 1;
+
+  file = fopen (name, "wb");
+
+  if (file == NULL) return 2;
+
+  fwrite (&e, sizeof (char), 1, file);
+  fwrite (&np, sizeof (unsigned), 1, file);
+  fwrite (&nt, sizeof (unsigned), 1, file);
+  fwrite (&nr, sizeof (unsigned), 1, file);
+  fwrite (gsp, sizeof (float), n, file);
+
+  fclose (file);
+  #endif
+
+  #if MU0
+  if (sprintf (name, "%s/mu0.bin", prm) < 8) return 1;
+
+  file = fopen (name, "wb");
+
+  if (file == NULL) return 2;
+
+  fwrite (&e, sizeof (char), 1, file);
+  fwrite (&np, sizeof (unsigned), 1, file);
+  fwrite (&nt, sizeof (unsigned), 1, file);
+  fwrite (&nr, sizeof (unsigned), 1, file);
+  fwrite (mu0, sizeof (float), n, file);
+
+  fclose (file);
+  #endif
+
+  #if APK
+  if (sprintf (name, "%s/alpha_kernel.bin", prm) < 8) return 1;
+
+  file = fopen (name, "wb");
+
+  if (file == NULL) return 2;
+
+  fwrite (&e, sizeof (char), 1, file);
+  fwrite (&np, sizeof (unsigned), 1, file);
+  fwrite (&nt, sizeof (unsigned), 1, file);
+  fwrite (&nr, sizeof (unsigned), 1, file);
+  fwrite (apk, sizeof (float), n, file);
+
+  fclose (file);
+  #endif
+
+  #if BTK
+  if (sprintf (name, "%s/beta_kernel.bin", prm) < 8) return 1;
+
+  file = fopen (name, "wb");
+
+  if (file == NULL) return 2;
+
+  fwrite (&e, sizeof (char), 1, file);
+  fwrite (&np, sizeof (unsigned), 1, file);
+  fwrite (&nt, sizeof (unsigned), 1, file);
+  fwrite (&nr, sizeof (unsigned), 1, file);
+  fwrite (btk, sizeof (float), n, file);
+
+  fclose (file);
+  #endif
+
+  #if RHK
+  if (sprintf (name, "%s/rho_kernel.bin", prm) < 8) return 1;
+
+  file = fopen (name, "wb");
+
+  if (file == NULL) return 2;
+
+  fwrite (&e, sizeof (char), 1, file);
+  fwrite (&np, sizeof (unsigned), 1, file);
+  fwrite (&nt, sizeof (unsigned), 1, file);
+  fwrite (&nr, sizeof (unsigned), 1, file);
+  fwrite (rhk, sizeof (float), n, file);
+
+  fclose (file);
+  #endif
+
+  #if BCK
+  if (sprintf (name, "%s/bulk_c_kernel.bin", prm) < 8) return 1;
+
+  file = fopen (name, "wb");
+
+  if (file == NULL) return 2;
+
+  fwrite (&e, sizeof (char), 1, file);
+  fwrite (&np, sizeof (unsigned), 1, file);
+  fwrite (&nt, sizeof (unsigned), 1, file);
+  fwrite (&nr, sizeof (unsigned), 1, file);
+  fwrite (bck, sizeof (float), n, file);
+
+  fclose (file);
+  #endif
+
+  #if BBK
+  if (sprintf (name, "%s/bulk_beta_kernel.bin", prm) < 8) return 1;
+
+  file = fopen (name, "wb");
+
+  if (file == NULL) return 2;
+
+  fwrite (&e, sizeof (char), 1, file);
+  fwrite (&np, sizeof (unsigned), 1, file);
+  fwrite (&nt, sizeof (unsigned), 1, file);
+  fwrite (&nr, sizeof (unsigned), 1, file);
+  fwrite (bbk, sizeof (float), n, file);
+
+  fclose (file);
+  #endif
+
+  #if BVK
+  if (sprintf (name, "%s/bulk_betav_kernel.bin", prm) < 8) return 1;
+
+  file = fopen (name, "wb");
+
+  if (file == NULL) return 2;
+
+  fwrite (&e, sizeof (char), 1, file);
+  fwrite (&np, sizeof (unsigned), 1, file);
+  fwrite (&nt, sizeof (unsigned), 1, file);
+  fwrite (&nr, sizeof (unsigned), 1, file);
+  fwrite (bvk, sizeof (float), n, file);
+
+  fclose (file);
+  #endif
+
+  #if BHK
+  if (sprintf (name, "%s/bulk_betah_kernel.bin", prm) < 8) return 1;
+
+  file = fopen (name, "wb");
+
+  if (file == NULL) return 2;
+
+  fwrite (&e, sizeof (char), 1, file);
+  fwrite (&np, sizeof (unsigned), 1, file);
+  fwrite (&nt, sizeof (unsigned), 1, file);
+  fwrite (&nr, sizeof (unsigned), 1, file);
+  fwrite (bhk, sizeof (float), n, file);
+
+  fclose (file);
+  #endif
+
+  #if ETK
+  if (sprintf (name, "%s/eta_kernel.bin", prm) < 8) return 1;
+
+  file = fopen (name, "wb");
+
+  if (file == NULL) return 2;
+
+  fwrite (&e, sizeof (char), 1, file);
+  fwrite (&np, sizeof (unsigned), 1, file);
+  fwrite (&nt, sizeof (unsigned), 1, file);
+  fwrite (&nr, sizeof (unsigned), 1, file);
+  fwrite (etk, sizeof (float), n, file);
+
+  fclose (file);
+  #endif
+
+  #if GCK
+  if (sprintf (name, "%s/Gc_prime_kernel.bin", prm) < 8) return 1;
+
+  file = fopen (name, "wb");
+
+  if (file == NULL) return 2;
+
+  fwrite (&e, sizeof (char), 1, file);
+  fwrite (&np, sizeof (unsigned), 1, file);
+  fwrite (&nt, sizeof (unsigned), 1, file);
+  fwrite (&nr, sizeof (unsigned), 1, file);
+  fwrite (gck, sizeof (float), n, file);
+
+  fclose (file);
+  #endif
+
+  #if GSK
+  if (sprintf (name, "%s/Gs_prime_kernel.bin", prm) < 8) return 1;
+
+  file = fopen (name, "wb");
+
+  if (file == NULL) return 2;
+
+  fwrite (&e, sizeof (char), 1, file);
+  fwrite (&np, sizeof (unsigned), 1, file);
+  fwrite (&nt, sizeof (unsigned), 1, file);
+  fwrite (&nr, sizeof (unsigned), 1, file);
+  fwrite (gsk, sizeof (float), n, file);
+
+  fclose (file);
+  #endif
+
+  #if HSK
+  if (sprintf (name, "%s/hessian_kernel.bin", prm) < 8) return 1;
+
+  file = fopen (name, "wb");
+
+  if (file == NULL) return 2;
+
+  fwrite (&e, sizeof (char), 1, file);
+  fwrite (&np, sizeof (unsigned), 1, file);
+  fwrite (&nt, sizeof (unsigned), 1, file);
+  fwrite (&nr, sizeof (unsigned), 1, file);
+  fwrite (hsk, sizeof (float), n, file);
 
   fclose (file);
   #endif
@@ -2027,6 +2811,328 @@ unsigned writeModelDD (char *argv[], unsigned nd, unsigned nr,
   fclose (file);
   #endif
 
+  #if GCP
+  if (sprintf (name, "%s/Gc_prime_VCS.dat", argv[10]) < 12) return 1;
+
+  file = fopen (name, "w");
+
+  if (file == NULL) return 2;
+
+  fprintf (file, "#nrad ndel: %u %u\n", nr, nd);
+  fprintf (file, "#lat1 lon1 lat2 lon2: %s %s %s %s\n",
+           argv[3], argv[4], argv[5], argv[6]);
+  fprintf (file, "##radius (km)   delta (degrees)       Gc'\n");
+
+  for (unsigned i = 0; i < nr; i++)
+
+    for (unsigned j = 0; j < nd; j++)
+
+      fprintf (file, "%10.3Lf %14.3Lf %19LE\n", R[i] * EARTH_R,
+                                                Delta[j],
+                                                Mo[j][i].gcp);
+
+  fclose (file);
+  #endif
+
+  #if GSP
+  if (sprintf (name, "%s/Gs_prime_VCS.dat", argv[10]) < 12) return 1;
+
+  file = fopen (name, "w");
+
+  if (file == NULL) return 2;
+
+  fprintf (file, "#nrad ndel: %u %u\n", nr, nd);
+  fprintf (file, "#lat1 lon1 lat2 lon2: %s %s %s %s\n",
+           argv[3], argv[4], argv[5], argv[6]);
+  fprintf (file, "##radius (km)   delta (degrees)       Gs'\n");
+
+  for (unsigned i = 0; i < nr; i++)
+
+    for (unsigned j = 0; j < nd; j++)
+
+      fprintf (file, "%10.3Lf %14.3Lf %19LE\n", R[i] * EARTH_R,
+                                                Delta[j],
+                                                Mo[j][i].gsp);
+
+  fclose (file);
+  #endif
+
+  #if MU0
+  if (sprintf (name, "%s/mu0_VCS.dat", argv[10]) < 12) return 1;
+
+  file = fopen (name, "w");
+
+  if (file == NULL) return 2;
+
+  fprintf (file, "#nrad ndel: %u %u\n", nr, nd);
+  fprintf (file, "#lat1 lon1 lat2 lon2: %s %s %s %s\n",
+           argv[3], argv[4], argv[5], argv[6]);
+  fprintf (file, "##radius (km)   delta (degrees)       Mu0\n");
+
+  for (unsigned i = 0; i < nr; i++)
+
+    for (unsigned j = 0; j < nd; j++)
+
+      fprintf (file, "%10.3Lf %14.3Lf %19LE\n", R[i] * EARTH_R,
+                                                Delta[j],
+                                                Mo[j][i].mu0);
+
+  fclose (file);
+  #endif
+
+  #if APK
+  if (sprintf (name, "%s/alpha_kernel_VCS.dat", argv[10]) < 12) return 1;
+
+  file = fopen (name, "w");
+
+  if (file == NULL) return 2;
+
+  fprintf (file, "#nrad ndel: %u %u\n", nr, nd);
+  fprintf (file, "#lat1 lon1 lat2 lon2: %s %s %s %s\n",
+           argv[3], argv[4], argv[5], argv[6]);
+  fprintf (file, "##radius (km)   delta (degrees)   Alpha Kernel\n");
+
+  for (unsigned i = 0; i < nr; i++)
+
+    for (unsigned j = 0; j < nd; j++)
+
+      fprintf (file, "%10.3Lf %14.3Lf %19LE\n", R[i] * EARTH_R,
+                                                Delta[j],
+                                                Mo[j][i].apk);
+
+  fclose (file);
+  #endif
+
+  #if BTK
+  if (sprintf (name, "%s/beta_kernel_VCS.dat", argv[10]) < 12) return 1;
+
+  file = fopen (name, "w");
+
+  if (file == NULL) return 2;
+
+  fprintf (file, "#nrad ndel: %u %u\n", nr, nd);
+  fprintf (file, "#lat1 lon1 lat2 lon2: %s %s %s %s\n",
+           argv[3], argv[4], argv[5], argv[6]);
+  fprintf (file, "##radius (km)   delta (degrees)   Beta Kernel\n");
+
+  for (unsigned i = 0; i < nr; i++)
+
+    for (unsigned j = 0; j < nd; j++)
+
+      fprintf (file, "%10.3Lf %14.3Lf %19LE\n", R[i] * EARTH_R,
+                                                Delta[j],
+                                                Mo[j][i].btk);
+
+  fclose (file);
+  #endif
+
+  #if RHK
+  if (sprintf (name, "%s/rho_kernel_VCS.dat", argv[10]) < 12) return 1;
+
+  file = fopen (name, "w");
+
+  if (file == NULL) return 2;
+
+  fprintf (file, "#nrad ndel: %u %u\n", nr, nd);
+  fprintf (file, "#lat1 lon1 lat2 lon2: %s %s %s %s\n",
+           argv[3], argv[4], argv[5], argv[6]);
+  fprintf (file, "##radius (km)   delta (degrees)   Rho Kernel\n");
+
+  for (unsigned i = 0; i < nr; i++)
+
+    for (unsigned j = 0; j < nd; j++)
+
+      fprintf (file, "%10.3Lf %14.3Lf %19LE\n", R[i] * EARTH_R,
+                                                Delta[j],
+                                                Mo[j][i].rhk);
+
+  fclose (file);
+  #endif
+
+  #if BCK
+  if (sprintf (name, "%s/bulk_c_kernel_VCS.dat", argv[10]) < 12) return 1;
+
+  file = fopen (name, "w");
+
+  if (file == NULL) return 2;
+
+  fprintf (file, "#nrad ndel: %u %u\n", nr, nd);
+  fprintf (file, "#lat1 lon1 lat2 lon2: %s %s %s %s\n",
+           argv[3], argv[4], argv[5], argv[6]);
+  fprintf (file, "##radius (km)   delta (degrees)   Bulk_c Kernel\n");
+
+  for (unsigned i = 0; i < nr; i++)
+
+    for (unsigned j = 0; j < nd; j++)
+
+      fprintf (file, "%10.3Lf %14.3Lf %19LE\n", R[i] * EARTH_R,
+                                                Delta[j],
+                                                Mo[j][i].bck);
+
+  fclose (file);
+  #endif
+
+  #if BBK
+  if (sprintf (name, "%s/bulk_beta_kernel_VCS.dat", argv[10]) < 12) return 1;
+
+  file = fopen (name, "w");
+
+  if (file == NULL) return 2;
+
+  fprintf (file, "#nrad ndel: %u %u\n", nr, nd);
+  fprintf (file, "#lat1 lon1 lat2 lon2: %s %s %s %s\n",
+           argv[3], argv[4], argv[5], argv[6]);
+  fprintf (file, "##radius (km)   delta (degrees)   Bulk_beta Kernel\n");
+
+  for (unsigned i = 0; i < nr; i++)
+
+    for (unsigned j = 0; j < nd; j++)
+
+      fprintf (file, "%10.3Lf %14.3Lf %19LE\n", R[i] * EARTH_R,
+                                                Delta[j],
+                                                Mo[j][i].bbk);
+
+  fclose (file);
+  #endif
+
+  #if BVK
+  if (sprintf (name, "%s/bulk_betav_kernel_VCS.dat", argv[10]) < 12) return 1;
+
+  file = fopen (name, "w");
+
+  if (file == NULL) return 2;
+
+  fprintf (file, "#nrad ndel: %u %u\n", nr, nd);
+  fprintf (file, "#lat1 lon1 lat2 lon2: %s %s %s %s\n",
+           argv[3], argv[4], argv[5], argv[6]);
+  fprintf (file, "##radius (km)   delta (degrees)   Bulk_betav Kernel\n");
+
+  for (unsigned i = 0; i < nr; i++)
+
+    for (unsigned j = 0; j < nd; j++)
+
+      fprintf (file, "%10.3Lf %14.3Lf %19LE\n", R[i] * EARTH_R,
+                                                Delta[j],
+                                                Mo[j][i].bvk);
+
+  fclose (file);
+  #endif
+
+  #if BHK
+  if (sprintf (name, "%s/bulk_betah_kernel_VCS.dat", argv[10]) < 12) return 1;
+
+  file = fopen (name, "w");
+
+  if (file == NULL) return 2;
+
+  fprintf (file, "#nrad ndel: %u %u\n", nr, nd);
+  fprintf (file, "#lat1 lon1 lat2 lon2: %s %s %s %s\n",
+           argv[3], argv[4], argv[5], argv[6]);
+  fprintf (file, "##radius (km)   delta (degrees)   Bulk_betah Kernel\n");
+
+  for (unsigned i = 0; i < nr; i++)
+
+    for (unsigned j = 0; j < nd; j++)
+
+      fprintf (file, "%10.3Lf %14.3Lf %19LE\n", R[i] * EARTH_R,
+                                                Delta[j],
+                                                Mo[j][i].bhk);
+
+  fclose (file);
+  #endif
+
+  #if ETK
+  if (sprintf (name, "%s/eta_kernel_VCS.dat", argv[10]) < 12) return 1;
+
+  file = fopen (name, "w");
+
+  if (file == NULL) return 2;
+
+  fprintf (file, "#nrad ndel: %u %u\n", nr, nd);
+  fprintf (file, "#lat1 lon1 lat2 lon2: %s %s %s %s\n",
+           argv[3], argv[4], argv[5], argv[6]);
+  fprintf (file, "##radius (km)   delta (degrees)   Eta Kernel\n");
+
+  for (unsigned i = 0; i < nr; i++)
+
+    for (unsigned j = 0; j < nd; j++)
+
+      fprintf (file, "%10.3Lf %14.3Lf %19LE\n", R[i] * EARTH_R,
+                                                Delta[j],
+                                                Mo[j][i].etk);
+
+  fclose (file);
+  #endif
+
+  #if GCK
+  if (sprintf (name, "%s/Gc_prime_kernel_VCS.dat", argv[10]) < 12) return 1;
+
+  file = fopen (name, "w");
+
+  if (file == NULL) return 2;
+
+  fprintf (file, "#nrad ndel: %u %u\n", nr, nd);
+  fprintf (file, "#lat1 lon1 lat2 lon2: %s %s %s %s\n",
+           argv[3], argv[4], argv[5], argv[6]);
+  fprintf (file, "##radius (km)   delta (degrees)    Gc' Kernel\n");
+
+  for (unsigned i = 0; i < nr; i++)
+
+    for (unsigned j = 0; j < nd; j++)
+
+      fprintf (file, "%10.3Lf %14.3Lf %19LE\n", R[i] * EARTH_R,
+                                                Delta[j],
+                                                Mo[j][i].gck);
+
+  fclose (file);
+  #endif
+
+  #if GSK
+  if (sprintf (name, "%s/Gs_prime_kernel_VCS.dat", argv[10]) < 12) return 1;
+
+  file = fopen (name, "w");
+
+  if (file == NULL) return 2;
+
+  fprintf (file, "#nrad ndel: %u %u\n", nr, nd);
+  fprintf (file, "#lat1 lon1 lat2 lon2: %s %s %s %s\n",
+           argv[3], argv[4], argv[5], argv[6]);
+  fprintf (file, "##radius (km)   delta (degrees)    Gs' Kernel\n");
+
+  for (unsigned i = 0; i < nr; i++)
+
+    for (unsigned j = 0; j < nd; j++)
+
+      fprintf (file, "%10.3Lf %14.3Lf %19LE\n", R[i] * EARTH_R,
+                                                Delta[j],
+                                                Mo[j][i].gsk);
+
+  fclose (file);
+  #endif
+
+  #if HSK
+  if (sprintf (name, "%s/hessian_kernel_VCS.dat", argv[10]) < 12) return 1;
+
+  file = fopen (name, "w");
+
+  if (file == NULL) return 2;
+
+  fprintf (file, "#nrad ndel: %u %u\n", nr, nd);
+  fprintf (file, "#lat1 lon1 lat2 lon2: %s %s %s %s\n",
+           argv[3], argv[4], argv[5], argv[6]);
+  fprintf (file, "##radius (km)   delta (degrees)   Hessian Kernel\n");
+
+  for (unsigned i = 0; i < nr; i++)
+
+    for (unsigned j = 0; j < nd; j++)
+
+      fprintf (file, "%10.3Lf %14.3Lf %19LE\n", R[i] * EARTH_R,
+                                                Delta[j],
+                                                Mo[j][i].hsk);
+
+  fclose (file);
+  #endif
+
   return 0;
 }
 
@@ -2075,6 +3181,62 @@ unsigned writeModelGLL (int ic, char *prm,
   float qmu[NEL2][NZ][NY][NX];
   #endif
 
+  #if GCP
+  float gcp[NEL2][NZ][NY][NX];
+  #endif
+
+  #if GSP
+  float gsp[NEL2][NZ][NY][NX];
+  #endif
+
+  #if MU0
+  float mu0[NEL2][NZ][NY][NX];
+  #endif
+
+  #if APK
+  float apk[NEL2][NZ][NY][NX];
+  #endif
+
+  #if BTK
+  float btk[NEL2][NZ][NY][NX];
+  #endif
+
+  #if RHK
+  float rhk[NEL2][NZ][NY][NX];
+  #endif
+
+  #if BCK
+  float bck[NEL2][NZ][NY][NX];
+  #endif
+
+  #if BBK
+  float bbk[NEL2][NZ][NY][NX];
+  #endif
+
+  #if BVK
+  float bvk[NEL2][NZ][NY][NX];
+  #endif
+
+  #if BHK
+  float bhk[NEL2][NZ][NY][NX];
+  #endif
+
+  #if ETK
+  float etk[NEL2][NZ][NY][NX];
+  #endif
+
+  #if GCK
+  float gck[NEL2][NZ][NY][NX];
+  #endif
+
+  #if GSK
+  float gsk[NEL2][NZ][NY][NX];
+  #endif
+
+  #if HSK
+  float hsk[NEL2][NZ][NY][NX];
+  #endif
+
   for (unsigned el = 0; el < NEL2; el++)
 
     for (unsigned i = 0; i < NX; i++)
@@ -2117,6 +3279,62 @@ unsigned writeModelGLL (int ic, char *prm,
 
           #if QMU
           qmu[el][k][j][i] = (float) M[el][i][j][k].qmu;
+          #endif
+
+          #if GCP
+          gcp[el][k][j][i] = (float) M[el][i][j][k].gcp;
+          #endif
+
+          #if GSP
+          gsp[el][k][j][i] = (float) M[el][i][j][k].gsp;
+          #endif
+
+          #if MU0
+          mu0[el][k][j][i] = (float) M[el][i][j][k].mu0;
+          #endif
+
+          #if APK
+          apk[el][k][j][i] = (float) M[el][i][j][k].apk;
+          #endif
+
+          #if BTK
+          btk[el][k][j][i] = (float) M[el][i][j][k].btk;
+          #endif
+
+          #if RHK
+          rhk[el][k][j][i] = (float) M[el][i][j][k].rhk;
+          #endif
+
+          #if BCK
+          bck[el][k][j][i] = (float) M[el][i][j][k].bck;
+          #endif
+
+          #if BBK
+          bbk[el][k][j][i] = (float) M[el][i][j][k].bbk;
+          #endif
+
+          #if BVK
+          bvk[el][k][j][i] = (float) M[el][i][j][k].bvk;
+          #endif
+
+          #if BHK
+          bhk[el][k][j][i] = (float) M[el][i][j][k].bhk;
+          #endif
+
+          #if ETK
+          etk[el][k][j][i] = (float) M[el][i][j][k].etk;
+          #endif
+
+          #if GCK
+          gck[el][k][j][i] = (float) M[el][i][j][k].gck;
+          #endif
+
+          #if GSK
+          gsk[el][k][j][i] = (float) M[el][i][j][k].gsk;
+          #endif
+
+          #if HSK
+          hsk[el][k][j][i] = (float) M[el][i][j][k].hsk;
           #endif
         }
 
@@ -2234,6 +3452,188 @@ unsigned writeModelGLL (int ic, char *prm,
   if (file == NULL) return 2;
   if (fwrite (&size, sizeof (unsigned), 1, file) != 1) return 3;
   if (fwrite (qmu, sizeof (float), N, file) != N) return 3;
+  if (fwrite (&size, sizeof (unsigned), 1, file) != 1) return 3;
+
+  fclose (file);
+  #endif
+
+  #if GCP
+  if (sprintf (filename, "%s/proc%06d_reg1_Gc_prime.bin", prm, ic) < 24) return 1;
+
+  file = fopen (filename, "wb");
+
+  if (file == NULL) return 2;
+  if (fwrite (&size, sizeof (unsigned), 1, file) != 1) return 3;
+  if (fwrite (gcp, sizeof (float), N, file) != N) return 3;
+  if (fwrite (&size, sizeof (unsigned), 1, file) != 1) return 3;
+
+  fclose (file);
+  #endif
+
+  #if GSP
+  if (sprintf (filename, "%s/proc%06d_reg1_Gs_prime.bin", prm, ic) < 24) return 1;
+
+  file = fopen (filename, "wb");
+
+  if (file == NULL) return 2;
+  if (fwrite (&size, sizeof (unsigned), 1, file) != 1) return 3;
+  if (fwrite (gsp, sizeof (float), N, file) != N) return 3;
+  if (fwrite (&size, sizeof (unsigned), 1, file) != 1) return 3;
+
+  fclose (file);
+  #endif
+
+  #if MU0
+  if (sprintf (filename, "%s/proc%06d_reg1_mu0.bin", prm, ic) < 24) return 1;
+
+  file = fopen (filename, "wb");
+
+  if (file == NULL) return 2;
+  if (fwrite (&size, sizeof (unsigned), 1, file) != 1) return 3;
+  if (fwrite (mu0, sizeof (float), N, file) != N) return 3;
+  if (fwrite (&size, sizeof (unsigned), 1, file) != 1) return 3;
+
+  fclose (file);
+  #endif
+
+  #if APK
+  if (sprintf (filename, "%s/proc%06d_reg1_alpha_kernel.bin", prm, ic) < 24) return 1;
+
+  file = fopen (filename, "wb");
+
+  if (file == NULL) return 2;
+  if (fwrite (&size, sizeof (unsigned), 1, file) != 1) return 3;
+  if (fwrite (apk, sizeof (float), N, file) != N) return 3;
+  if (fwrite (&size, sizeof (unsigned), 1, file) != 1) return 3;
+
+  fclose (file);
+  #endif
+
+  #if BTK
+  if (sprintf (filename, "%s/proc%06d_reg1_beta_kernel.bin", prm, ic) < 24) return 1;
+
+  file = fopen (filename, "wb");
+
+  if (file == NULL) return 2;
+  if (fwrite (&size, sizeof (unsigned), 1, file) != 1) return 3;
+  if (fwrite (btk, sizeof (float), N, file) != N) return 3;
+  if (fwrite (&size, sizeof (unsigned), 1, file) != 1) return 3;
+
+  fclose (file);
+  #endif
+
+  #if RHK
+  if (sprintf (filename, "%s/proc%06d_reg1_rho_kernel.bin", prm, ic) < 24) return 1;
+
+  file = fopen (filename, "wb");
+
+  if (file == NULL) return 2;
+  if (fwrite (&size, sizeof (unsigned), 1, file) != 1) return 3;
+  if (fwrite (rhk, sizeof (float), N, file) != N) return 3;
+  if (fwrite (&size, sizeof (unsigned), 1, file) != 1) return 3;
+
+  fclose (file);
+  #endif
+
+  #if BCK
+  if (sprintf (filename, "%s/proc%06d_reg1_bulk_c_kernel.bin", prm, ic) < 24) return 1;
+
+  file = fopen (filename, "wb");
+
+  if (file == NULL) return 2;
+  if (fwrite (&size, sizeof (unsigned), 1, file) != 1) return 3;
+  if (fwrite (bck, sizeof (float), N, file) != N) return 3;
+  if (fwrite (&size, sizeof (unsigned), 1, file) != 1) return 3;
+
+  fclose (file);
+  #endif
+
+  #if BBK
+  if (sprintf (filename, "%s/proc%06d_reg1_bulk_beta_kernel.bin", prm, ic) < 24) return 1;
+
+  file = fopen (filename, "wb");
+
+  if (file == NULL) return 2;
+  if (fwrite (&size, sizeof (unsigned), 1, file) != 1) return 3;
+  if (fwrite (bbk, sizeof (float), N, file) != N) return 3;
+  if (fwrite (&size, sizeof (unsigned), 1, file) != 1) return 3;
+
+  fclose (file);
+  #endif
+
+  #if BVK
+  if (sprintf (filename, "%s/proc%06d_reg1_bulk_betav_kernel.bin", prm, ic) < 24) return 1;
+
+  file = fopen (filename, "wb");
+
+  if (file == NULL) return 2;
+  if (fwrite (&size, sizeof (unsigned), 1, file) != 1) return 3;
+  if (fwrite (bvk, sizeof (float), N, file) != N) return 3;
+  if (fwrite (&size, sizeof (unsigned), 1, file) != 1) return 3;
+
+  fclose (file);
+  #endif
+
+  #if BHK
+  if (sprintf (filename, "%s/proc%06d_reg1_bulk_betah_kernel.bin", prm, ic) < 24) return 1;
+
+  file = fopen (filename, "wb");
+
+  if (file == NULL) return 2;
+  if (fwrite (&size, sizeof (unsigned), 1, file) != 1) return 3;
+  if (fwrite (bhk, sizeof (float), N, file) != N) return 3;
+  if (fwrite (&size, sizeof (unsigned), 1, file) != 1) return 3;
+
+  fclose (file);
+  #endif
+
+  #if ETK
+  if (sprintf (filename, "%s/proc%06d_reg1_eta_kernel.bin", prm, ic) < 24) return 1;
+
+  file = fopen (filename, "wb");
+
+  if (file == NULL) return 2;
+  if (fwrite (&size, sizeof (unsigned), 1, file) != 1) return 3;
+  if (fwrite (etk, sizeof (float), N, file) != N) return 3;
+  if (fwrite (&size, sizeof (unsigned), 1, file) != 1) return 3;
+
+  fclose (file);
+  #endif
+
+  #if GCK
+  if (sprintf (filename, "%s/proc%06d_reg1_Gc_prime_kernel.bin", prm, ic) < 24) return 1;
+
+  file = fopen (filename, "wb");
+
+  if (file == NULL) return 2;
+  if (fwrite (&size, sizeof (unsigned), 1, file) != 1) return 3;
+  if (fwrite (gck, sizeof (float), N, file) != N) return 3;
+  if (fwrite (&size, sizeof (unsigned), 1, file) != 1) return 3;
+
+  fclose (file);
+  #endif
+
+  #if GSK
+  if (sprintf (filename, "%s/proc%06d_reg1_Gs_prime_kernel.bin", prm, ic) < 24) return 1;
+
+  file = fopen (filename, "wb");
+
+  if (file == NULL) return 2;
+  if (fwrite (&size, sizeof (unsigned), 1, file) != 1) return 3;
+  if (fwrite (gsk, sizeof (float), N, file) != N) return 3;
+  if (fwrite (&size, sizeof (unsigned), 1, file) != 1) return 3;
+
+  fclose (file);
+  #endif
+
+  #if HSK
+  if (sprintf (filename, "%s/proc%06d_reg1_hess_kernel.bin", prm, ic) < 24) return 1;
+
+  file = fopen (filename, "wb");
+
+  if (file == NULL) return 2;
+  if (fwrite (&size, sizeof (unsigned), 1, file) != 1) return 3;
+  if (fwrite (hsk, sizeof (float), N, file) != N) return 3;
   if (fwrite (&size, sizeof (unsigned), 1, file) != 1) return 3;
 
   fclose (file);
@@ -2449,6 +3849,286 @@ unsigned writeModelLL (char *prm, struct Boundaries *gb,
   fclose (file);
   #endif
 
+  #if GCP
+  if (sprintf (name, "%s/Gc_prime_%Lg_DS.dat", prm, depth) < 10) return 1;
+
+  file = fopen (name, "w");
+
+  if (file == NULL) return 2;
+
+  fprintf (file, "#depth (km) nlat nlon: %Lg %u %u\n", depth, nt, np);
+  fprintf (file, "#latitude (degrees)   longitude (degrees)       Gc'\n");
+
+  for (unsigned i = 0; i < nt; i++)
+
+    for (unsigned j = 0; j < np; j++)
+
+      fprintf (file, "%15.7lf %21.7lf %18LE\n", Theta[i], Phi[j],
+                                                Mo[j][nt - i - 1].gcp);
+
+  fclose (file);
+  #endif
+
+  #if GSP
+  if (sprintf (name, "%s/Gs_prime_%Lg_DS.dat", prm, depth) < 10) return 1;
+
+  file = fopen (name, "w");
+
+  if (file == NULL) return 2;
+
+  fprintf (file, "#depth (km) nlat nlon: %Lg %u %u\n", depth, nt, np);
+  fprintf (file, "#latitude (degrees)   longitude (degrees)       Gs'\n");
+
+  for (unsigned i = 0; i < nt; i++)
+
+    for (unsigned j = 0; j < np; j++)
+
+      fprintf (file, "%15.7lf %21.7lf %18LE\n", Theta[i], Phi[j],
+                                                Mo[j][nt - i - 1].gsp);
+
+  fclose (file);
+  #endif
+
+  #if MU0
+  if (sprintf (name, "%s/mu0_%Lg_DS.dat", prm, depth) < 10) return 1;
+
+  file = fopen (name, "w");
+
+  if (file == NULL) return 2;
+
+  fprintf (file, "#depth (km) nlat nlon: %Lg %u %u\n", depth, nt, np);
+  fprintf (file, "#latitude (degrees)   longitude (degrees)       Mu0\n");
+
+  for (unsigned i = 0; i < nt; i++)
+
+    for (unsigned j = 0; j < np; j++)
+
+      fprintf (file, "%15.7lf %21.7lf %18LE\n", Theta[i], Phi[j],
+                                                Mo[j][nt - i - 1].mu0);
+
+  fclose (file);
+  #endif
+
+  #if APK
+  if (sprintf (name, "%s/alpha_kernel_%Lg_DS.dat", prm, depth) < 10) return 1;
+
+  file = fopen (name, "w");
+
+  if (file == NULL) return 2;
+
+  fprintf (file, "#depth (km) nlat nlon: %Lg %u %u\n", depth, nt, np);
+  fprintf (file, "#latitude (degrees)   longitude (degrees)   Alpha Kernel\n");
+
+  for (unsigned i = 0; i < nt; i++)
+
+    for (unsigned j = 0; j < np; j++)
+
+      fprintf (file, "%15.7lf %21.7lf %18LE\n", Theta[i], Phi[j],
+                                                Mo[j][nt - i - 1].apk);
+
+  fclose (file);
+  #endif
+
+  #if BTK
+  if (sprintf (name, "%s/beta_kernel_%Lg_DS.dat", prm, depth) < 10) return 1;
+
+  file = fopen (name, "w");
+
+  if (file == NULL) return 2;
+
+  fprintf (file, "#depth (km) nlat nlon: %Lg %u %u\n", depth, nt, np);
+  fprintf (file, "#latitude (degrees)   longitude (degrees)   Beta Kernel\n");
+
+  for (unsigned i = 0; i < nt; i++)
+
+    for (unsigned j = 0; j < np; j++)
+
+      fprintf (file, "%15.7lf %21.7lf %18LE\n", Theta[i], Phi[j],
+                                                Mo[j][nt - i - 1].btk);
+
+  fclose (file);
+  #endif
+
+  #if RHK
+  if (sprintf (name, "%s/rho_kernel_%Lg_DS.dat", prm, depth) < 10) return 1;
+
+  file = fopen (name, "w");
+
+  if (file == NULL) return 2;
+
+  fprintf (file, "#depth (km) nlat nlon: %Lg %u %u\n", depth, nt, np);
+  fprintf (file, "#latitude (degrees)   longitude (degrees)   Rho Kernel\n");
+
+  for (unsigned i = 0; i < nt; i++)
+
+    for (unsigned j = 0; j < np; j++)
+
+      fprintf (file, "%15.7lf %21.7lf %18LE\n", Theta[i], Phi[j],
+                                                Mo[j][nt - i - 1].rhk);
+
+  fclose (file);
+  #endif
+
+  #if BCK
+  if (sprintf (name, "%s/bulk_c_kernel_%Lg_DS.dat", prm, depth) < 10) return 1;
+
+  file = fopen (name, "w");
+
+  if (file == NULL) return 2;
+
+  fprintf (file, "#depth (km) nlat nlon: %Lg %u %u\n", depth, nt, np);
+  fprintf (file, "#latitude (degrees)   longitude (degrees)   Bulk_c Kernel\n");
+
+  for (unsigned i = 0; i < nt; i++)
+
+    for (unsigned j = 0; j < np; j++)
+
+      fprintf (file, "%15.7lf %21.7lf %18LE\n", Theta[i], Phi[j],
+                                                Mo[j][nt - i - 1].bck);
+
+  fclose (file);
+  #endif
+
+  #if BBK
+  if (sprintf (name, "%s/bulk_beta_kernel_%Lg_DS.dat", prm, depth) < 10) return 1;
+
+  file = fopen (name, "w");
+
+  if (file == NULL) return 2;
+
+  fprintf (file, "#depth (km) nlat nlon: %Lg %u %u\n", depth, nt, np);
+  fprintf (file, "#latitude (degrees)   longitude (degrees)   Bulk_beta Kernel\n");
+
+  for (unsigned i = 0; i < nt; i++)
+
+    for (unsigned j = 0; j < np; j++)
+
+      fprintf (file, "%15.7lf %21.7lf %18LE\n", Theta[i], Phi[j],
+                                                Mo[j][nt - i - 1].bbk);
+
+  fclose (file);
+  #endif
+
+  #if BVK
+  if (sprintf (name, "%s/bulk_betav_kernel_%Lg_DS.dat", prm, depth) < 10) return 1;
+
+  file = fopen (name, "w");
+
+  if (file == NULL) return 2;
+
+  fprintf (file, "#depth (km) nlat nlon: %Lg %u %u\n", depth, nt, np);
+  fprintf (file, "#latitude (degrees)   longitude (degrees)   Bulk_betav Kernel\n");
+
+  for (unsigned i = 0; i < nt; i++)
+
+    for (unsigned j = 0; j < np; j++)
+
+      fprintf (file, "%15.7lf %21.7lf %18LE\n", Theta[i], Phi[j],
+                                                Mo[j][nt - i - 1].bvk);
+
+  fclose (file);
+  #endif
+
+  #if BHK
+  if (sprintf (name, "%s/bulk_betah_kernel_%Lg_DS.dat", prm, depth) < 10) return 1;
+
+  file = fopen (name, "w");
+
+  if (file == NULL) return 2;
+
+  fprintf (file, "#depth (km) nlat nlon: %Lg %u %u\n", depth, nt, np);
+  fprintf (file, "#latitude (degrees)   longitude (degrees)   Bulk_betah Kernel\n");
+
+  for (unsigned i = 0; i < nt; i++)
+
+    for (unsigned j = 0; j < np; j++)
+
+      fprintf (file, "%15.7lf %21.7lf %18LE\n", Theta[i], Phi[j],
+                                                Mo[j][nt - i - 1].bhk);
+
+  fclose (file);
+  #endif
+
+  #if ETK
+  if (sprintf (name, "%s/eta_kernel_%Lg_DS.dat", prm, depth) < 10) return 1;
+
+  file = fopen (name, "w");
+
+  if (file == NULL) return 2;
+
+  fprintf (file, "#depth (km) nlat nlon: %Lg %u %u\n", depth, nt, np);
+  fprintf (file, "#latitude (degrees)   longitude (degrees)   Eta Kernel\n");
+
+  for (unsigned i = 0; i < nt; i++)
+
+    for (unsigned j = 0; j < np; j++)
+
+      fprintf (file, "%15.7lf %21.7lf %18LE\n", Theta[i], Phi[j],
+                                                Mo[j][nt - i - 1].etk);
+
+  fclose (file);
+  #endif
+
+  #if GCK
+  if (sprintf (name, "%s/Gc_prime_kernel_%Lg_DS.dat", prm, depth) < 10) return 1;
+
+  file = fopen (name, "w");
+
+  if (file == NULL) return 2;
+
+  fprintf (file, "#depth (km) nlat nlon: %Lg %u %u\n", depth, nt, np);
+  fprintf (file, "#latitude (degrees)   longitude (degrees)    Gc' Kernel\n");
+
+  for (unsigned i = 0; i < nt; i++)
+
+    for (unsigned j = 0; j < np; j++)
+
+      fprintf (file, "%15.7lf %21.7lf %18LE\n", Theta[i], Phi[j],
+                                                Mo[j][nt - i - 1].gck);
+
+  fclose (file);
+  #endif
+
+  #if GSK
+  if (sprintf (name, "%s/Gs_prime_kernel_%Lg_DS.dat", prm, depth) < 10) return 1;
+
+  file = fopen (name, "w");
+
+  if (file == NULL) return 2;
+
+  fprintf (file, "#depth (km) nlat nlon: %Lg %u %u\n", depth, nt, np);
+  fprintf (file, "#latitude (degrees)   longitude (degrees)    Gs' Kernel\n");
+
+  for (unsigned i = 0; i < nt; i++)
+
+    for (unsigned j = 0; j < np; j++)
+
+      fprintf (file, "%15.7lf %21.7lf %18LE\n", Theta[i], Phi[j],
+                                                Mo[j][nt - i - 1].gsk);
+
+  fclose (file);
+  #endif
+
+  #if HSK
+  if (sprintf (name, "%s/hessian_kernel_%Lg_DS.dat", prm, depth) < 10) return 1;
+
+  file = fopen (name, "w");
+
+  if (file == NULL) return 2;
+
+  fprintf (file, "#depth (km) nlat nlon: %Lg %u %u\n", depth, nt, np);
+  fprintf (file, "#latitude (degrees)   longitude (degrees)   Hessian Kernel\n");
+
+  for (unsigned i = 0; i < nt; i++)
+
+    for (unsigned j = 0; j < np; j++)
+
+      fprintf (file, "%15.7lf %21.7lf %18LE\n", Theta[i], Phi[j],
+                                                Mo[j][nt - i - 1].hsk);
+
+  fclose (file);
+  #endif
+
   return 0;
 }
 
@@ -2622,6 +4302,258 @@ unsigned writeModelPf (char *argv[], unsigned nr,
   fclose (file);
   #endif
 
+  #if GCP
+  if (sprintf (name, "%s/Gc_prime_PF.dat", argv[7]) < 11) return 1;
+
+  file = fopen (name, "w");
+
+  if (file == NULL) return 2;
+
+  fprintf (file, "#ndep: %u\n", nr);
+  fprintf (file, "#lat lon: %s %s\n", argv[3], argv[4]);
+  fprintf (file, "#depth (km)        Gc'\n");
+
+  for (int i = nr - 1; i >= 0; i--)
+
+    fprintf (file, "%9.3Lf %17LE\n", r2Depthl (R[i]), Mo[i].gcp);
+
+  fclose (file);
+  #endif
+
+  #if GSP
+  if (sprintf (name, "%s/Gs_prime_PF.dat", argv[7]) < 11) return 1;
+
+  file = fopen (name, "w");
+
+  if (file == NULL) return 2;
+
+  fprintf (file, "#ndep: %u\n", nr);
+  fprintf (file, "#lat lon: %s %s\n", argv[3], argv[4]);
+  fprintf (file, "#depth (km)        Gs'\n");
+
+  for (int i = nr - 1; i >= 0; i--)
+
+    fprintf (file, "%9.3Lf %17LE\n", r2Depthl (R[i]), Mo[i].gsp);
+
+  fclose (file);
+  #endif
+
+  #if MU0
+  if (sprintf (name, "%s/mu0_PF.dat", argv[7]) < 11) return 1;
+
+  file = fopen (name, "w");
+
+  if (file == NULL) return 2;
+
+  fprintf (file, "#ndep: %u\n", nr);
+  fprintf (file, "#lat lon: %s %s\n", argv[3], argv[4]);
+  fprintf (file, "#depth (km)        Mu0\n");
+
+  for (int i = nr - 1; i >= 0; i--)
+
+    fprintf (file, "%9.3Lf %17LE\n", r2Depthl (R[i]), Mo[i].mu0);
+
+  fclose (file);
+  #endif
+
+  #if APK
+  if (sprintf (name, "%s/alpha_kernel_PF.dat", argv[7]) < 11) return 1;
+
+  file = fopen (name, "w");
+
+  if (file == NULL) return 2;
+
+  fprintf (file, "#ndep: %u\n", nr);
+  fprintf (file, "#lat lon: %s %s\n", argv[3], argv[4]);
+  fprintf (file, "#depth (km)     Alpha Kernel\n");
+
+  for (int i = nr - 1; i >= 0; i--)
+
+    fprintf (file, "%9.3Lf %17LE\n", r2Depthl (R[i]), Mo[i].apk);
+
+  fclose (file);
+  #endif
+
+  #if BTK
+  if (sprintf (name, "%s/beta_kernel_PF.dat", argv[7]) < 11) return 1;
+
+  file = fopen (name, "w");
+
+  if (file == NULL) return 2;
+
+  fprintf (file, "#ndep: %u\n", nr);
+  fprintf (file, "#lat lon: %s %s\n", argv[3], argv[4]);
+  fprintf (file, "#depth (km)     Beta Kernel\n");
+
+  for (int i = nr - 1; i >= 0; i--)
+
+    fprintf (file, "%9.3Lf %17LE\n", r2Depthl (R[i]), Mo[i].btk);
+
+  fclose (file);
+  #endif
+
+  #if RHK
+  if (sprintf (name, "%s/rho_kernel_PF.dat", argv[7]) < 11) return 1;
+
+  file = fopen (name, "w");
+
+  if (file == NULL) return 2;
+
+  fprintf (file, "#ndep: %u\n", nr);
+  fprintf (file, "#lat lon: %s %s\n", argv[3], argv[4]);
+  fprintf (file, "#depth (km)     Rho Kernel\n");
+
+  for (int i = nr - 1; i >= 0; i--)
+
+    fprintf (file, "%9.3Lf %17LE\n", r2Depthl (R[i]), Mo[i].rhk);
+
+  fclose (file);
+  #endif
+
+  #if BCK
+  if (sprintf (name, "%s/bulk_c_kernel_PF.dat", argv[7]) < 11) return 1;
+
+  file = fopen (name, "w");
+
+  if (file == NULL) return 2;
+
+  fprintf (file, "#ndep: %u\n", nr);
+  fprintf (file, "#lat lon: %s %s\n", argv[3], argv[4]);
+  fprintf (file, "#depth (km)     Bulk_c Kernel\n");
+
+  for (int i = nr - 1; i >= 0; i--)
+
+    fprintf (file, "%9.3Lf %17LE\n", r2Depthl (R[i]), Mo[i].bck);
+
+  fclose (file);
+  #endif
+
+  #if BBK
+  if (sprintf (name, "%s/bulk_beta_kernel_PF.dat", argv[7]) < 11) return 1;
+
+  file = fopen (name, "w");
+
+  if (file == NULL) return 2;
+
+  fprintf (file, "#ndep: %u\n", nr);
+  fprintf (file, "#lat lon: %s %s\n", argv[3], argv[4]);
+  fprintf (file, "#depth (km)     Bulk_beta Kernel\n");
+
+  for (int i = nr - 1; i >= 0; i--)
+
+    fprintf (file, "%9.3Lf %17LE\n", r2Depthl (R[i]), Mo[i].bbk);
+
+  fclose (file);
+  #endif
+
+  #if BVK
+  if (sprintf (name, "%s/bulk_betav_kernel_PF.dat", argv[7]) < 11) return 1;
+
+  file = fopen (name, "w");
+
+  if (file == NULL) return 2;
+
+  fprintf (file, "#ndep: %u\n", nr);
+  fprintf (file, "#lat lon: %s %s\n", argv[3], argv[4]);
+  fprintf (file, "#depth (km)     Bulk_betav Kernel\n");
+
+  for (int i = nr - 1; i >= 0; i--)
+
+    fprintf (file, "%9.3Lf %17LE\n", r2Depthl (R[i]), Mo[i].bvk);
+
+  fclose (file);
+  #endif
+
+  #if BHK
+  if (sprintf (name, "%s/bulk_betah_kernel_PF.dat", argv[7]) < 11) return 1;
+
+  file = fopen (name, "w");
+
+  if (file == NULL) return 2;
+
+  fprintf (file, "#ndep: %u\n", nr);
+  fprintf (file, "#lat lon: %s %s\n", argv[3], argv[4]);
+  fprintf (file, "#depth (km)     Bulk_betah Kernel\n");
+
+  for (int i = nr - 1; i >= 0; i--)
+
+    fprintf (file, "%9.3Lf %17LE\n", r2Depthl (R[i]), Mo[i].bhk);
+
+  fclose (file);
+  #endif
+
+  #if ETK
+  if (sprintf (name, "%s/eta_kernel_PF.dat", argv[7]) < 11) return 1;
+
+  file = fopen (name, "w");
+
+  if (file == NULL) return 2;
+
+  fprintf (file, "#ndep: %u\n", nr);
+  fprintf (file, "#lat lon: %s %s\n", argv[3], argv[4]);
+  fprintf (file, "#depth (km)     Eta Kernel\n");
+
+  for (int i = nr - 1; i >= 0; i--)
+
+    fprintf (file, "%9.3Lf %17LE\n", r2Depthl (R[i]), Mo[i].etk);
+
+  fclose (file);
+  #endif
+
+  #if GCK
+  if (sprintf (name, "%s/Gc_prime_kernel_PF.dat", argv[7]) < 11) return 1;
+
+  file = fopen (name, "w");
+
+  if (file == NULL) return 2;
+
+  fprintf (file, "#ndep: %u\n", nr);
+  fprintf (file, "#lat lon: %s %s\n", argv[3], argv[4]);
+  fprintf (file, "#depth (km)     Gc' Kernel\n");
+
+  for (int i = nr - 1; i >= 0; i--)
+
+    fprintf (file, "%9.3Lf %17LE\n", r2Depthl (R[i]), Mo[i].gck);
+
+  fclose (file);
+  #endif
+
+  #if GSK
+  if (sprintf (name, "%s/Gs_prime_kernel_PF.dat", argv[7]) < 11) return 1;
+
+  file = fopen (name, "w");
+
+  if (file == NULL) return 2;
+
+  fprintf (file, "#ndep: %u\n", nr);
+  fprintf (file, "#lat lon: %s %s\n", argv[3], argv[4]);
+  fprintf (file, "#depth (km)     Gs' Kernel\n");
+
+  for (int i = nr - 1; i >= 0; i--)
+
+    fprintf (file, "%9.3Lf %17LE\n", r2Depthl (R[i]), Mo[i].gsk);
+
+  fclose (file);
+  #endif
+
+  #if HSK
+  if (sprintf (name, "%s/hessian_kernel_PF.dat", argv[7]) < 11) return 1;
+
+  file = fopen (name, "w");
+
+  if (file == NULL) return 2;
+
+  fprintf (file, "#ndep: %u\n", nr);
+  fprintf (file, "#lat lon: %s %s\n", argv[3], argv[4]);
+  fprintf (file, "#depth (km)     Hessian Kernel\n");
+
+  for (int i = nr - 1; i >= 0; i--)
+
+    fprintf (file, "%9.3Lf %17LE\n", r2Depthl (R[i]), Mo[i].hsk);
+
+  fclose (file);
+  #endif
+
   return 0;
 }
 
@@ -2791,6 +4723,258 @@ unsigned writeModel1D (char *prm, unsigned nr,
 
     fprintf (file, "%8.1Lf %20.4LE %23.4LE\n", r2Depthl (R[i]),
                                                Mo[i].a.qmu, Mo[i].g.qmu);
+
+  fclose (file);
+  #endif
+
+  #if GCP
+  if (sprintf (name, "%s/Gc_prime.dat", prm) < 8) return 1;
+
+  file = fopen (name, "w");
+
+  if (file == NULL) return 2;
+
+  fprintf (file, "#ndep: %u\n", nr);
+  fprintf (file, "#depth (km)      Gc'_arithmetic          Gc'_geometric\n");
+
+  for (int i = nr - 1; i >= 0; i--)
+
+    fprintf (file, "%8.1Lf %20.4LE %23.4LE\n", r2Depthl (R[i]),
+                                               Mo[i].a.gcp, Mo[i].g.gcp);
+
+  fclose (file);
+  #endif
+
+  #if GSP
+  if (sprintf (name, "%s/Gs_prime.dat", prm) < 8) return 1;
+
+  file = fopen (name, "w");
+
+  if (file == NULL) return 2;
+
+  fprintf (file, "#ndep: %u\n", nr);
+  fprintf (file, "#depth (km)      Gs'_arithmetic          Gs'_geometric\n");
+
+  for (int i = nr - 1; i >= 0; i--)
+
+    fprintf (file, "%8.1Lf %20.4LE %23.4LE\n", r2Depthl (R[i]),
+                                               Mo[i].a.gsp, Mo[i].g.gsp);
+
+  fclose (file);
+  #endif
+
+  #if MU0
+  if (sprintf (name, "%s/mu0.dat", prm) < 8) return 1;
+
+  file = fopen (name, "w");
+
+  if (file == NULL) return 2;
+
+  fprintf (file, "#ndep: %u\n", nr);
+  fprintf (file, "#depth (km)      Mu0_arithmetic          Mu0_geometric\n");
+
+  for (int i = nr - 1; i >= 0; i--)
+
+    fprintf (file, "%8.1Lf %20.4LE %23.4LE\n", r2Depthl (R[i]),
+                                               Mo[i].a.mu0, Mo[i].g.mu0);
+
+  fclose (file);
+  #endif
+
+  #if APK
+  if (sprintf (name, "%s/alpha_kernel.dat", prm) < 8) return 1;
+
+  file = fopen (name, "w");
+
+  if (file == NULL) return 2;
+
+  fprintf (file, "#ndep: %u\n", nr);
+  fprintf (file, "#depth (km)   Alpha_Kernel_arithmetic   Alpha_Kernel_geometric\n");
+
+  for (int i = nr - 1; i >= 0; i--)
+
+    fprintf (file, "%8.1Lf %20.4LE %23.4LE\n", r2Depthl (R[i]),
+                                               Mo[i].a.apk, Mo[i].g.apk);
+
+  fclose (file);
+  #endif
+
+  #if BTK
+  if (sprintf (name, "%s/beta_kernel.dat", prm) < 8) return 1;
+
+  file = fopen (name, "w");
+
+  if (file == NULL) return 2;
+
+  fprintf (file, "#ndep: %u\n", nr);
+  fprintf (file, "#depth (km)   Beta_Kernel_arithmetic   Beta_Kernel_geometric\n");
+
+  for (int i = nr - 1; i >= 0; i--)
+
+    fprintf (file, "%8.1Lf %20.4LE %23.4LE\n", r2Depthl (R[i]),
+                                               Mo[i].a.btk, Mo[i].g.btk);
+
+  fclose (file);
+  #endif
+
+  #if RHK
+  if (sprintf (name, "%s/rho_kernel.dat", prm) < 8) return 1;
+
+  file = fopen (name, "w");
+
+  if (file == NULL) return 2;
+
+  fprintf (file, "#ndep: %u\n", nr);
+  fprintf (file, "#depth (km)   Rho_Kernel_arithmetic   Rho_Kernel_geometric\n");
+
+  for (int i = nr - 1; i >= 0; i--)
+
+    fprintf (file, "%8.1Lf %20.4LE %23.4LE\n", r2Depthl (R[i]),
+                                               Mo[i].a.rhk, Mo[i].g.rhk);
+
+  fclose (file);
+  #endif
+
+  #if BCK
+  if (sprintf (name, "%s/bulk_c_kernel.dat", prm) < 8) return 1;
+
+  file = fopen (name, "w");
+
+  if (file == NULL) return 2;
+
+  fprintf (file, "#ndep: %u\n", nr);
+  fprintf (file, "#depth (km)   Bulk_c_Kernel_arithmetic   Bulk_c_Kernel_geometric\n");
+
+  for (int i = nr - 1; i >= 0; i--)
+
+    fprintf (file, "%8.1Lf %20.4LE %23.4LE\n", r2Depthl (R[i]),
+                                               Mo[i].a.bck, Mo[i].g.bck);
+
+  fclose (file);
+  #endif
+
+  #if BBK
+  if (sprintf (name, "%s/bulk_beta_kernel.dat", prm) < 8) return 1;
+
+  file = fopen (name, "w");
+
+  if (file == NULL) return 2;
+
+  fprintf (file, "#ndep: %u\n", nr);
+  fprintf (file, "#depth (km)   Bulk_beta_Kernel_arithmetic   Bulk_beta_Kernel_geometric\n");
+
+  for (int i = nr - 1; i >= 0; i--)
+
+    fprintf (file, "%8.1Lf %20.4LE %23.4LE\n", r2Depthl (R[i]),
+                                               Mo[i].a.bbk, Mo[i].g.bbk);
+
+  fclose (file);
+  #endif
+
+  #if BVK
+  if (sprintf (name, "%s/bulk_betav_kernel.dat", prm) < 8) return 1;
+
+  file = fopen (name, "w");
+
+  if (file == NULL) return 2;
+
+  fprintf (file, "#ndep: %u\n", nr);
+  fprintf (file, "#depth (km)   Bulk_betav_Kernel_arithmetic   Bulk_betav_Kernel_geometric\n");
+
+  for (int i = nr - 1; i >= 0; i--)
+
+    fprintf (file, "%8.1Lf %20.4LE %23.4LE\n", r2Depthl (R[i]),
+                                               Mo[i].a.bvk, Mo[i].g.bvk);
+
+  fclose (file);
+  #endif
+
+  #if BHK
+  if (sprintf (name, "%s/bulk_betah_kernel.dat", prm) < 8) return 1;
+
+  file = fopen (name, "w");
+
+  if (file == NULL) return 2;
+
+  fprintf (file, "#ndep: %u\n", nr);
+  fprintf (file, "#depth (km)   Bulk_betah_Kernel_arithmetic   Bulk_betah_Kernel_geometric\n");
+
+  for (int i = nr - 1; i >= 0; i--)
+
+    fprintf (file, "%8.1Lf %20.4LE %23.4LE\n", r2Depthl (R[i]),
+                                               Mo[i].a.bhk, Mo[i].g.bhk);
+
+  fclose (file);
+  #endif
+
+  #if ETK
+  if (sprintf (name, "%s/eta_kernel.dat", prm) < 8) return 1;
+
+  file = fopen (name, "w");
+
+  if (file == NULL) return 2;
+
+  fprintf (file, "#ndep: %u\n", nr);
+  fprintf (file, "#depth (km)   Eta_Kernel_arithmetic   Eta_Kernel_geometric\n");
+
+  for (int i = nr - 1; i >= 0; i--)
+
+    fprintf (file, "%8.1Lf %20.4LE %23.4LE\n", r2Depthl (R[i]),
+                                               Mo[i].a.etk, Mo[i].g.etk);
+
+  fclose (file);
+  #endif
+
+  #if GCK
+  if (sprintf (name, "%s/Gc_prime_kernel.dat", prm) < 8) return 1;
+
+  file = fopen (name, "w");
+
+  if (file == NULL) return 2;
+
+  fprintf (file, "#ndep: %u\n", nr);
+  fprintf (file, "#depth (km)   Gc'_kernel_arithmetic   Gc'_kernel_geometric\n");
+
+  for (int i = nr - 1; i >= 0; i--)
+
+    fprintf (file, "%8.1Lf %20.4LE %23.4LE\n", r2Depthl (R[i]),
+                                               Mo[i].a.gck, Mo[i].g.gck);
+
+  fclose (file);
+  #endif
+
+  #if GSK
+  if (sprintf (name, "%s/Gs_prime_kernel.dat", prm) < 8) return 1;
+
+  file = fopen (name, "w");
+
+  if (file == NULL) return 2;
+
+  fprintf (file, "#ndep: %u\n", nr);
+  fprintf (file, "#depth (km)   Gs'_kernel_arithmetic   Gs'_kernel_geometric\n");
+
+  for (int i = nr - 1; i >= 0; i--)
+
+    fprintf (file, "%8.1Lf %20.4LE %23.4LE\n", r2Depthl (R[i]),
+                                               Mo[i].a.gsk, Mo[i].g.gsk);
+
+  fclose (file);
+  #endif
+
+  #if HSK
+  if (sprintf (name, "%s/hessian_kernel.dat", prm) < 8) return 1;
+
+  file = fopen (name, "w");
+
+  if (file == NULL) return 2;
+
+  fprintf (file, "#ndep: %u\n", nr);
+  fprintf (file, "#depth (km)   Hessian_Kernel_arithmetic   Hessian_Kernel_geometric\n");
+
+  for (int i = nr - 1; i >= 0; i--)
+
+    fprintf (file, "%8.1Lf %20.4LE %23.4LE\n", r2Depthl (R[i]),
+                                               Mo[i].a.hsk, Mo[i].g.hsk);
 
   fclose (file);
   #endif

@@ -27,7 +27,7 @@
  EXAMPLE
    mpiexec -n 24 bin/smooth data/INPUT/ data/INPUT/ smooth/
 
- COMMAND LINE ARGUMENTS
+ COMMAND-LINE ARGUMENTS
    INPUT_TOPO_DIRECTORY   - directory containing the input topological files
    INPUT_TOPO_DIRECTORY   - directory containing the input model files
    OUTPUT_DIRECTORY       - directory where the routine will write the output files
@@ -55,7 +55,7 @@
 #include "io_smooth.h"
 #include "progress.h"
 #include "constants.h"
-#include "config_smooth.h"
+#include "config.h"
 
 static double arcDistance (struct Point *p1, struct Point *p2)
 {
@@ -193,6 +193,18 @@ static void smooth3D (int ic, double rmax, struct Smooth sm[NP],
             Mo[elo][io][jo][ko].qmu = 0.0;
             #endif
 
+            #if GCP
+            Mo[elo][io][jo][ko].gcp = 0.0;
+            #endif
+
+            #if GSP
+            Mo[elo][io][jo][ko].gcp = 0.0;
+            #endif
+
+            #if MU0
+            Mo[elo][io][jo][ko].gcp = 0.0;
+            #endif
+
             #if APK
             Mo[elo][io][jo][ko].apk = 0.0;
             #endif
@@ -223,6 +235,14 @@ static void smooth3D (int ic, double rmax, struct Smooth sm[NP],
 
             #if ETK
             Mo[elo][io][jo][ko].etk = 0.0;
+            #endif
+
+            #if GCK
+            Mo[elo][io][jo][ko].gck = 0.0;
+            #endif
+
+            #if GSK
+            Mo[elo][io][jo][ko].gsk = 0.0;
             #endif
 
             #if HSK
@@ -305,6 +325,18 @@ static void smooth3D (int ic, double rmax, struct Smooth sm[NP],
                       Mo[elo][io][jo][ko].qmu += w * Mi[eli][ii][ji][ki].qmu;
                       #endif
 
+                      #if GCP
+                      Mo[elo][io][jo][ko].gcp += w * Mi[eli][ii][ji][ki].gcp;
+                      #endif
+
+                      #if GSP
+                      Mo[elo][io][jo][ko].gsp += w * Mi[eli][ii][ji][ki].gsp;
+                      #endif
+
+                      #if MU0
+                      Mo[elo][io][jo][ko].mu0 += w * Mi[eli][ii][ji][ki].mu0;
+                      #endif
+
                       #if APK
                       Mo[elo][io][jo][ko].apk += w * Mi[eli][ii][ji][ki].apk;
                       #endif
@@ -335,6 +367,14 @@ static void smooth3D (int ic, double rmax, struct Smooth sm[NP],
 
                       #if ETK
                       Mo[elo][io][jo][ko].etk += w * Mi[eli][ii][ji][ki].etk;
+                      #endif
+
+                      #if GCK
+                      Mo[elo][io][jo][ko].gck += w * Mi[eli][ii][ji][ki].gck;
+                      #endif
+
+                      #if GSK
+                      Mo[elo][io][jo][ko].gsk += w * Mi[eli][ii][ji][ki].gsk;
                       #endif
 
                       #if HSK
@@ -384,6 +424,18 @@ static void smooth3D (int ic, double rmax, struct Smooth sm[NP],
             Mo[elo][io][jo][ko].qmu *= isw;
             #endif
 
+            #if GCP
+            Mo[elo][io][jo][ko].gcp *= isw;
+            #endif
+
+            #if GSP
+            Mo[elo][io][jo][ko].gsp *= isw;
+            #endif
+
+            #if MU0
+            Mo[elo][io][jo][ko].mu0 *= isw;
+            #endif
+
             #if APK
             Mo[elo][io][jo][ko].apk *= isw;
             #endif
@@ -416,6 +468,14 @@ static void smooth3D (int ic, double rmax, struct Smooth sm[NP],
             Mo[elo][io][jo][ko].etk *= isw;
             #endif
 
+            #if GCK
+            Mo[elo][io][jo][ko].gck *= isw;
+            #endif
+
+            #if GSK
+            Mo[elo][io][jo][ko].gsk *= isw;
+            #endif
+
             #if HSK
             Mo[elo][io][jo][ko].hsk *= isw;
             #endif
@@ -438,7 +498,7 @@ static void helpMenu (void)
                     "\n\n EXAMPLE"
                     "\n    mpiexec -n 24 bin/smooth data/INPUT/ data/INPUT/ smooth/"
 
-                    "\n\n COMMAND LINE ARGUMENTS"
+                    "\n\n COMMAND-LINE ARGUMENTS"
                     "\n    INPUT_TOPO_DIRECTORY   - directory containing the input topological files"
                     "\n    INPUT_TOPO_DIRECTORY   - directory containing the input model files"
                     "\n    OUTPUT_DIRECTORY       - directory where the routine will write the output files"

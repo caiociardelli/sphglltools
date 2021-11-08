@@ -303,6 +303,7 @@ if __name__ == '__main__':
 
     mm = meanModel ('{}.dat'.format (prm[1:]))
 
+    M[M == 0] = mm (depth)
     M = 100 * np.log (M / mm (depth))
 
     label = '  dln{} (%)'.format (prm[1:].capitalize ())

@@ -30,6 +30,7 @@ DEFAULT := \
 	bkmns2dd \
 	bkmns2ll \
 	bkmns2pf \
+	bkmns2path \
 	bkmns2mean \
 	powspec \
 	getinfo
@@ -78,6 +79,12 @@ $(BIN)/bkmns2ll: $(OBJS1) $(OBJ)/bkmns2ll.o
 	@ echo ' '
 
 $(BIN)/bkmns2pf: $(OBJS1) $(OBJ)/bkmns2pf.o
+	@ echo 'Building binary using $(GCC) linker: $@'
+	$(CC) $(FLAGS) $(INC) $^ -o $@ $(LIB)
+	@ echo 'Finished building binary: $@'
+	@ echo ' '
+
+$(BIN)/bkmns2path: $(OBJS1) $(OBJ)/bkmns2path.o
 	@ echo 'Building binary using $(GCC) linker: $@'
 	$(CC) $(FLAGS) $(INC) $^ -o $@ $(LIB)
 	@ echo 'Finished building binary: $@'
@@ -144,6 +151,11 @@ $(OBJ)/bkmns2ll.o: $(SRC)/bkmns2ll.c $(SETUP)
 $(OBJ)/bkmns2pf.o: $(SRC)/bkmns2pf.c $(SETUP)
 	@ echo 'Building target using $(GCC) compiler: $@'
 	$(CC) $(FLAGS) $(INC) -c $(SRC)/bkmns2pf.c -o $@
+	@ echo ' '
+
+$(OBJ)/bkmns2path.o: $(SRC)/bkmns2path.c $(SETUP)
+	@ echo 'Building target using $(GCC) compiler: $@'
+	$(CC) $(FLAGS) $(INC) -c $(SRC)/bkmns2path.c -o $@
 	@ echo ' '
 
 $(OBJ)/bkmns2mean.o: $(SRC)/bkmns2mean.c $(SETUP)

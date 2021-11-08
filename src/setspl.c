@@ -27,7 +27,7 @@
  EXAMPLE
    mpiexec -n 24 bin/setspl vsv 4 data/OUTPUT/ .
 
- COMMAND LINE ARGUMENTS
+ COMMAND-LINE ARGUMENTS
    PARAMETER              - model parameter to be expanded (vp, vs, rho, eta, vsv, etc.)
    ZONE                   - zone to be expanded (2, 3 or 4)
    INPUT_DIRECTORY        - directory containing the input files
@@ -194,7 +194,7 @@ static void helpMenu (void)
                     "\n\n EXAMPLE"
                     "\n    mpiexec -n 24 bin/setspl vsv 4 data/OUTPUT/ ."
 
-                    "\n\n COMMAND LINE ARGUMENTS"
+                    "\n\n COMMAND-LINE ARGUMENTS"
                     "\n    PARAMETER              - model parameter to be expanded (vp, vs, rho, eta, vsv, etc.)"
                     "\n    ZONE                   - zone to be expanded (2, 3 or 4)"
                     "\n    INPUT_DIRECTORY        - directory containing the input files"

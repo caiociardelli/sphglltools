@@ -59,6 +59,12 @@ elif [ $1 = "rho" ]; then
   label="@~\162@~ (g cm@+-3@+)"
 elif [ $1 = "qmu" ]; then
   label="Q@-@~\155@~@-"
+elif [ $1 = "Gc_prime" ]; then
+  label="G@-c@-'"
+elif [ $1 = "Gs_prime" ]; then
+  label="G@-s@-'"
+elif [ $1 = "mu0" ]; then
+  label="@~\155@~ (GPa)"
 elif [ $1 = "cb" ]; then
   label="C@-Bulk@- (km s@+-1@+)"
 elif [ $1 = "ti" ]; then
@@ -127,8 +133,8 @@ dt=$(echo "180 / ($nt - 1)" | bc -l)
 
 info=$(./bin/getinfo $filename)
 
-mean=$(echo $info | awk '{printf "%lf", $5}')
-stdv=$(echo $info | awk '{printf "%lf", $6}')
+mean=$(echo $info | gawk '{printf "%lf", $5}')
+stdv=$(echo $info | gawk '{printf "%lf", $6}')
 
 cbmin=$(echo "$mean - 3 * $stdv" | bc -l)
 cbmax=$(echo "$mean + 3 * $stdv" | bc -l)
@@ -138,19 +144,19 @@ if [ "$#" -eq 4 ]; then
   cbmax=$4
 fi
 
-string=$(gmt info $filename | cut -f4 | awk -F '[</>]' '{print $2" "$3}')
+string=$(gmt info $filename | cut -f4 | gawk -F '[</>]' '{print $2" "$3}')
 
-min=$(echo $string | awk '{printf "%lf", $1}')
-max=$(echo $string | awk '{printf "%lf", $2}')
+min=$(echo $string | gawk '{printf "%lf", $1}')
+max=$(echo $string | gawk '{printf "%lf", $2}')
 
-awk -v min=$min -v max=$max 'BEGIN {printf "Min = %E Max = %E\n", min, max}'
+gawk -v min=$min -v max=$max 'BEGIN {printf "Min = %E Max = %E\n", min, max}'
 echo 'Creating figure...'
 
 gmt xyz2grd $filename -G$grdname -Rg -I$dp/$dt -: -h3
 gmt makecpt -Cextra/tomo.cpt -T$cbmin/$cbmax > tomo_rescaled.cpt
 
 gmt begin $output pdf
-gmt set FONT_TITLE 20p,100
+gmt set FONT_TITLE 20p,Helvetica
 
   gmt grdimage $grdname -JR0/12c -Rg -Bxa90fg90 -Bya30fg30 -BWeSn+t"$title ($2 km depth)" -Ctomo_rescaled.cpt
 

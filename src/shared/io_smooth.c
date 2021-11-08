@@ -120,6 +120,18 @@ static void insertPmNode (struct Parameters M[NX][NY][NZ],
         new->M[i][j][k].qmu = M[i][j][k].qmu;
         #endif
 
+        #if GCP
+        new->M[i][j][k].gcp = M[i][j][k].gcp;
+        #endif
+
+        #if GSP
+        new->M[i][j][k].gsp = M[i][j][k].gsp;
+        #endif
+
+        #if MU0
+        new->M[i][j][k].mu0 = M[i][j][k].mu0;
+        #endif
+
         #if APK
         new->M[i][j][k].apk = M[i][j][k].apk;
         #endif
@@ -150,6 +162,14 @@ static void insertPmNode (struct Parameters M[NX][NY][NZ],
 
         #if ETK
         new->M[i][j][k].etk = M[i][j][k].etk;
+        #endif
+
+        #if GCK
+        new->M[i][j][k].gck = M[i][j][k].gck;
+        #endif
+
+        #if GSK
+        new->M[i][j][k].gsk = M[i][j][k].gsk;
         #endif
 
         #if HSK
@@ -445,6 +465,51 @@ unsigned readInputMeshAndModel (int ic, char *prm1, char *prm2,
   fclose (file);
   #endif
 
+  #if GCP
+  if (sprintf (filename, "%s/proc%06d_reg1_Gc_prime.bin", prm2, ic) < 24) return 1;
+
+  file = fopen (filename, "rb");
+
+  if (file == NULL) return 4;
+
+  float gcp[NEL][NZ][NY][NX];
+
+  if (fread (&junk, sizeof (unsigned), 1, file) != 1) return 5;
+  if (fread (gcp, sizeof (float), N, file) != N) return 5;
+
+  fclose (file);
+  #endif
+
+  #if GCP
+  if (sprintf (filename, "%s/proc%06d_reg1_Gs_prime.bin", prm2, ic) < 24) return 1;
+
+  file = fopen (filename, "rb");
+
+  if (file == NULL) return 4;
+
+  float gsp[NEL][NZ][NY][NX];
+
+  if (fread (&junk, sizeof (unsigned), 1, file) != 1) return 5;
+  if (fread (gsp, sizeof (float), N, file) != N) return 5;
+
+  fclose (file);
+  #endif
+
+  #if MU0
+  if (sprintf (filename, "%s/proc%06d_reg1_mu0.bin", prm2, ic) < 24) return 1;
+
+  file = fopen (filename, "rb");
+
+  if (file == NULL) return 4;
+
+  float mu0[NEL][NZ][NY][NX];
+
+  if (fread (&junk, sizeof (unsigned), 1, file) != 1) return 5;
+  if (fread (mu0, sizeof (float), N, file) != N) return 5;
+
+  fclose (file);
+  #endif
+
   #if APK
   if (sprintf (filename, "%s/proc%06d_reg1_alpha_kernel.bin", prm2, ic) < 24) return 1;
 
@@ -561,6 +626,36 @@ unsigned readInputMeshAndModel (int ic, char *prm1, char *prm2,
 
   if (fread (&junk, sizeof (unsigned), 1, file) != 1) return 5;
   if (fread (etk, sizeof (float), N, file) != N) return 5;
+
+  fclose (file);
+  #endif
+
+  #if GCK
+  if (sprintf (filename, "%s/proc%06d_reg1_Gc_prime_kernel.bin", prm2, ic) < 24) return 1;
+
+  file = fopen (filename, "rb");
+
+  if (file == NULL) return 4;
+
+  float gck[NEL][NZ][NY][NX];
+
+  if (fread (&junk, sizeof (unsigned), 1, file) != 1) return 5;
+  if (fread (gck, sizeof (float), N, file) != N) return 5;
+
+  fclose (file);
+  #endif
+
+  #if GCK
+  if (sprintf (filename, "%s/proc%06d_reg1_Gs_prime_kernel.bin", prm2, ic) < 24) return 1;
+
+  file = fopen (filename, "rb");
+
+  if (file == NULL) return 4;
+
+  float gsk[NEL][NZ][NY][NX];
+
+  if (fread (&junk, sizeof (unsigned), 1, file) != 1) return 5;
+  if (fread (gsk, sizeof (float), N, file) != N) return 5;
 
   fclose (file);
   #endif
@@ -968,6 +1063,51 @@ unsigned readOutputMeshAndModel (int ic, char *prm1, char *prm2,
   fclose (file);
   #endif
 
+  #if GCP
+  if (sprintf (filename, "%s/proc%06d_reg1_Gc_prime.bin", prm2, ic) < 24) return 1;
+
+  file = fopen (filename, "rb");
+
+  if (file == NULL) return 4;
+
+  float gcp[NEL][NZ][NY][NX];
+
+  if (fread (&junk, sizeof (unsigned), 1, file) != 1) return 5;
+  if (fread (gcp, sizeof (float), N, file) != N) return 5;
+
+  fclose (file);
+  #endif
+
+  #if GSP
+  if (sprintf (filename, "%s/proc%06d_reg1_Gs_prime.bin", prm2, ic) < 24) return 1;
+
+  file = fopen (filename, "rb");
+
+  if (file == NULL) return 4;
+
+  float gsp[NEL][NZ][NY][NX];
+
+  if (fread (&junk, sizeof (unsigned), 1, file) != 1) return 5;
+  if (fread (gsp, sizeof (float), N, file) != N) return 5;
+
+  fclose (file);
+  #endif
+
+  #if MU0
+  if (sprintf (filename, "%s/proc%06d_reg1_mu0.bin", prm2, ic) < 24) return 1;
+
+  file = fopen (filename, "rb");
+
+  if (file == NULL) return 4;
+
+  float mu0[NEL][NZ][NY][NX];
+
+  if (fread (&junk, sizeof (unsigned), 1, file) != 1) return 5;
+  if (fread (mu0, sizeof (float), N, file) != N) return 5;
+
+  fclose (file);
+  #endif
+
   #if APK
   if (sprintf (filename, "%s/proc%06d_reg1_alpha_kernel.bin", prm2, ic) < 24) return 1;
 
@@ -1088,6 +1228,36 @@ unsigned readOutputMeshAndModel (int ic, char *prm1, char *prm2,
   fclose (file);
   #endif
 
+  #if GCK
+  if (sprintf (filename, "%s/proc%06d_reg1_Gc_prime_kernel.bin", prm2, ic) < 24) return 1;
+
+  file = fopen (filename, "rb");
+
+  if (file == NULL) return 4;
+
+  float gck[NEL][NZ][NY][NX];
+
+  if (fread (&junk, sizeof (unsigned), 1, file) != 1) return 5;
+  if (fread (gck, sizeof (float), N, file) != N) return 5;
+
+  fclose (file);
+  #endif
+
+  #if GSK
+  if (sprintf (filename, "%s/proc%06d_reg1_Gs_prime_kernel.bin", prm2, ic) < 24) return 1;
+
+  file = fopen (filename, "rb");
+
+  if (file == NULL) return 4;
+
+  float gsk[NEL][NZ][NY][NX];
+
+  if (fread (&junk, sizeof (unsigned), 1, file) != 1) return 5;
+  if (fread (gsk, sizeof (float), N, file) != N) return 5;
+
+  fclose (file);
+  #endif
+
   #if HSK
   if (sprintf (filename, "%s/proc%06d_reg1_hess_kernel.bin", prm2, ic) < 24) return 1;
 
@@ -1179,6 +1349,18 @@ unsigned readOutputMeshAndModel (int ic, char *prm1, char *prm2,
           Mo[el][i][j][k].qmu = qmu[el][k][j][i];
           #endif
 
+          #if GCP
+          Mo[el][i][j][k].gcp = gcp[el][k][j][i];
+          #endif
+
+          #if GSP
+          Mo[el][i][j][k].gsp = gsp[el][k][j][i];
+          #endif
+
+          #if MU0
+          Mo[el][i][j][k].mu0 = mu0[el][k][j][i];
+          #endif
+
           #if APK
           Mo[el][i][j][k].apk = apk[el][k][j][i];
           #endif
@@ -1209,6 +1391,14 @@ unsigned readOutputMeshAndModel (int ic, char *prm1, char *prm2,
 
           #if ETK
           Mo[el][i][j][k].etk = etk[el][k][j][i];
+          #endif
+
+          #if GCK
+          Mo[el][i][j][k].gck = gck[el][k][j][i];
+          #endif
+
+          #if GSK
+          Mo[el][i][j][k].gsk = gsk[el][k][j][i];
           #endif
 
           #if HSK
@@ -1270,6 +1460,18 @@ unsigned scanMeshAndModel (int ic, char *prm1, char *prm2,
       fprintf (stderr, "Reading model file 'proc%06d_reg1_qmu.bin'...\n", iic);
       #endif
 
+      #if GCP
+      fprintf (stderr, "Reading model file 'proc%06d_reg1_Gc_prime.bin'...\n", iic);
+      #endif
+
+      #if GSP
+      fprintf (stderr, "Reading model file 'proc%06d_reg1_Gs_prime.bin'...\n", iic);
+      #endif
+
+      #if MU0
+      fprintf (stderr, "Reading model file 'proc%06d_reg1_mu0.bin'...\n", iic);
+      #endif
+
       #if APK
       fprintf (stderr, "Reading model file 'proc%06d_reg1_alpha_kernel.bin'...\n", iic);
       #endif
@@ -1300,6 +1502,14 @@ unsigned scanMeshAndModel (int ic, char *prm1, char *prm2,
 
       #if ETK
       fprintf (stderr, "Reading model file 'proc%06d_reg1_eta_kernel.bin'...\n", iic);
+      #endif
+
+      #if GCK
+      fprintf (stderr, "Reading model file 'proc%06d_reg1_Gc_prime_kernel.bin'...\n", iic);
+      #endif
+
+      #if GSK
+      fprintf (stderr, "Reading model file 'proc%06d_reg1_Gs_prime_kernel.bin'...\n", iic);
       #endif
 
       #if HSK
@@ -1375,6 +1585,18 @@ void toArrayElAndPmNodes (unsigned nel, struct ElNode *lle,
           M[el][i][j][k].qmu = q->M[i][j][k].qmu;
           #endif
 
+          #if GCP
+          M[el][i][j][k].gcp = q->M[i][j][k].gcp;
+          #endif
+
+          #if GSP
+          M[el][i][j][k].gsp = q->M[i][j][k].gsp;
+          #endif
+
+          #if MU0
+          M[el][i][j][k].mu0 = q->M[i][j][k].mu0;
+          #endif
+
           #if APK
           M[el][i][j][k].apk = q->M[i][j][k].apk;
           #endif
@@ -1405,6 +1627,14 @@ void toArrayElAndPmNodes (unsigned nel, struct ElNode *lle,
 
           #if ETK
           M[el][i][j][k].etk = q->M[i][j][k].etk;
+          #endif
+
+          #if GCK
+          M[el][i][j][k].gck = q->M[i][j][k].gck;
+          #endif
+
+          #if GSK
+          M[el][i][j][k].gsk = q->M[i][j][k].gsk;
           #endif
 
           #if HSK
@@ -1526,6 +1756,18 @@ unsigned writeModel (int ic, char *prm,
   float qmu[NEL][NZ][NY][NX];
   #endif
 
+  #if GCP
+  float gcp[NEL][NZ][NY][NX];
+  #endif
+
+  #if GSP
+  float gsp[NEL][NZ][NY][NX];
+  #endif
+
+  #if MU0
+  float mu0[NEL][NZ][NY][NX];
+  #endif
+
   #if APK
   float apk[NEL][NZ][NY][NX];
   #endif
@@ -1556,6 +1798,14 @@ unsigned writeModel (int ic, char *prm,
 
   #if ETK
   float etk[NEL][NZ][NY][NX];
+  #endif
+
+  #if GCK
+  float gck[NEL][NZ][NY][NX];
+  #endif
+
+  #if GSK
+  float gsk[NEL][NZ][NY][NX];
   #endif
 
   #if HSK
@@ -1606,6 +1856,18 @@ unsigned writeModel (int ic, char *prm,
           qmu[el][k][j][i] = (float) M[el][i][j][k].qmu;
           #endif
 
+          #if GCP
+          gcp[el][k][j][i] = (float) M[el][i][j][k].gcp;
+          #endif
+
+          #if GSP
+          gsp[el][k][j][i] = (float) M[el][i][j][k].gsp;
+          #endif
+
+          #if MU0
+          mu0[el][k][j][i] = (float) M[el][i][j][k].mu0;
+          #endif
+
           #if APK
           apk[el][k][j][i] = (float) M[el][i][j][k].apk;
           #endif
@@ -1636,6 +1898,14 @@ unsigned writeModel (int ic, char *prm,
 
           #if ETK
           etk[el][k][j][i] = (float) M[el][i][j][k].etk;
+          #endif
+
+          #if GCK
+          gck[el][k][j][i] = (float) M[el][i][j][k].gck;
+          #endif
+
+          #if GSK
+          gsk[el][k][j][i] = (float) M[el][i][j][k].gsk;
           #endif
 
           #if HSK
@@ -1762,6 +2032,45 @@ unsigned writeModel (int ic, char *prm,
   fclose (file);
   #endif
 
+  #if GCP
+  if (sprintf (filename, "%s/proc%06d_reg1_Gc_prime.bin", prm, ic) < 24) return 1;
+
+  file = fopen (filename, "wb");
+
+  if (file == NULL) return 2;
+  if (fwrite (&size, sizeof (unsigned), 1, file) != 1) return 3;
+  if (fwrite (gcp, sizeof (float), N, file) != N) return 3;
+  if (fwrite (&size, sizeof (unsigned), 1, file) != 1) return 3;
+
+  fclose (file);
+  #endif
+
+  #if GSP
+  if (sprintf (filename, "%s/proc%06d_reg1_Gs_prime.bin", prm, ic) < 24) return 1;
+
+  file = fopen (filename, "wb");
+
+  if (file == NULL) return 2;
+  if (fwrite (&size, sizeof (unsigned), 1, file) != 1) return 3;
+  if (fwrite (gsp, sizeof (float), N, file) != N) return 3;
+  if (fwrite (&size, sizeof (unsigned), 1, file) != 1) return 3;
+
+  fclose (file);
+  #endif
+
+  #if MU0
+  if (sprintf (filename, "%s/proc%06d_reg1_mu0.bin", prm, ic) < 24) return 1;
+
+  file = fopen (filename, "wb");
+
+  if (file == NULL) return 2;
+  if (fwrite (&size, sizeof (unsigned), 1, file) != 1) return 3;
+  if (fwrite (mu0, sizeof (float), N, file) != N) return 3;
+  if (fwrite (&size, sizeof (unsigned), 1, file) != 1) return 3;
+
+  fclose (file);
+  #endif
+
   #if APK
   if (sprintf (filename, "%s/proc%06d_reg1_alpha_kernel_smooth.bin", prm, ic) < 24) return 1;
 
@@ -1861,6 +2170,32 @@ unsigned writeModel (int ic, char *prm,
   if (file == NULL) return 2;
   if (fwrite (&size, sizeof (unsigned), 1, file) != 1) return 3;
   if (fwrite (etk, sizeof (float), N, file) != N) return 3;
+  if (fwrite (&size, sizeof (unsigned), 1, file) != 1) return 3;
+
+  fclose (file);
+  #endif
+
+  #if GCK
+  if (sprintf (filename, "%s/proc%06d_reg1_Gc_prime_kernel.bin", prm, ic) < 24) return 1;
+
+  file = fopen (filename, "wb");
+
+  if (file == NULL) return 2;
+  if (fwrite (&size, sizeof (unsigned), 1, file) != 1) return 3;
+  if (fwrite (gck, sizeof (float), N, file) != N) return 3;
+  if (fwrite (&size, sizeof (unsigned), 1, file) != 1) return 3;
+
+  fclose (file);
+  #endif
+
+  #if GSK
+  if (sprintf (filename, "%s/proc%06d_reg1_Gs_prime_kernel.bin", prm, ic) < 24) return 1;
+
+  file = fopen (filename, "wb");
+
+  if (file == NULL) return 2;
+  if (fwrite (&size, sizeof (unsigned), 1, file) != 1) return 3;
+  if (fwrite (gsk, sizeof (float), N, file) != N) return 3;
   if (fwrite (&size, sizeof (unsigned), 1, file) != 1) return 3;
 
   fclose (file);

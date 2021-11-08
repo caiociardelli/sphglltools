@@ -27,7 +27,7 @@
  EXAMPLE
    ./bin/bkmns2ll vsv 100 0.5 10
 
- COMMAND LINE ARGUMENTS
+ COMMAND-LINE ARGUMENTS
    PARAMETER              - model parameter to be expanded (vph, rho, eta, vsv, etc.)
    DEPTH                  - depth in which the depth slice will be created
    RESOLUTION             - spatial distance (in degrees) between both latitude and longitude
@@ -268,7 +268,7 @@ static void helpMenu (void)
                     "\n\n EXAMPLE"
                     "\n    ./bin/bkmns2ll vsv 100 0.5 10"
 
-                    "\n\n COMMAND LINE ARGUMENTS"
+                    "\n\n COMMAND-LINE ARGUMENTS"
                     "\n    PARAMETER              - model parameter to be expanded (vph, rho, eta, vsv, etc.)"
                     "\n    DEPTH                  - depth in which the depth slice will be created"
                     "\n    RESOLUTION             - spatial distance (in degrees) between both latitude and longitude"

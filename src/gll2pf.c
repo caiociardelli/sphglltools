@@ -28,7 +28,7 @@
  EXAMPLE
    mpiexec -n 1 bin/gll2pf 0 2891 -28 140 1.0 data/INPUT/ .
 
- COMMAND LINE ARGUMENTS
+ COMMAND-LINE ARGUMENTS
    MIN_DEPTH              - minimum depth
    MAX_DEPTH              - maximum depth
    LAT LON                - latitude and longitude of the point
@@ -690,6 +690,62 @@ static unsigned computeInterpolator (unsigned nel, struct Parameters a[nel][NX *
           v[r].qmu = M[el][i][j][k].qmu;
           #endif
 
+          #if GCP
+          v[r].gcp = M[el][i][j][k].gcp;
+          #endif
+
+          #if GSP
+          v[r].gsp = M[el][i][j][k].gsp;
+          #endif
+
+          #if MU0
+          v[r].mu0 = M[el][i][j][k].mu0;
+          #endif
+
+          #if APK
+          v[r].apk = M[el][i][j][k].apk;
+          #endif
+
+          #if BTK
+          v[r].btk = M[el][i][j][k].btk;
+          #endif
+
+          #if RHK
+          v[r].rhk = M[el][i][j][k].rhk;
+          #endif
+
+          #if BCK
+          v[r].bck = M[el][i][j][k].bck;
+          #endif
+
+          #if BBK
+          v[r].bbk = M[el][i][j][k].bbk;
+          #endif
+
+          #if BVK
+          v[r].bvk = M[el][i][j][k].bvk;
+          #endif
+
+          #if BHK
+          v[r].bhk = M[el][i][j][k].bhk;
+          #endif
+
+          #if ETK
+          v[r].etk = M[el][i][j][k].etk;
+          #endif
+
+          #if GCK
+          v[r].gck = M[el][i][j][k].gck;
+          #endif
+
+          #if GSK
+          v[r].gsk = M[el][i][j][k].gsk;
+          #endif
+
+          #if HSK
+          v[r].hsk = M[el][i][j][k].hsk;
+          #endif
+
           r++;
         }
 
@@ -731,6 +787,62 @@ static unsigned computeInterpolator (unsigned nel, struct Parameters a[nel][NX *
       a[el][r].qmu = 0.L;
       #endif
 
+      #if GCP
+      a[el][r].gcp = 0.L;
+      #endif
+
+      #if GSP
+      a[el][r].gsp = 0.L;
+      #endif
+
+      #if MU0
+      a[el][r].mu0 = 0.L;
+      #endif
+
+      #if APK
+      a[el][r].apk = 0.L;
+      #endif
+
+      #if BTK
+      a[el][r].btk = 0.L;
+      #endif
+
+      #if RHK
+      a[el][r].rhk = 0.L;
+      #endif
+
+      #if BCK
+      a[el][r].bck = 0.L;
+      #endif
+
+      #if BBK
+      a[el][r].bbk = 0.L;
+      #endif
+
+      #if BVK
+      a[el][r].bvk = 0.L;
+      #endif
+
+      #if BHK
+      a[el][r].bhk = 0.L;
+      #endif
+
+      #if ETK
+      a[el][r].etk = 0.L;
+      #endif
+
+      #if GCK
+      a[el][r].gck = 0.L;
+      #endif
+
+      #if GSK
+      a[el][r].gsk = 0.L;
+      #endif
+
+      #if HSK
+      a[el][r].hsk = 0.L;
+      #endif
+
       for (unsigned c = 0; c < N; c++)
       {
         #if VP
@@ -767,6 +879,62 @@ static unsigned computeInterpolator (unsigned nel, struct Parameters a[nel][NX *
 
         #if QMU
         a[el][r].qmu += C[r][c] * v[c].qmu;
+        #endif
+
+        #if GCP
+        a[el][r].gcp += C[r][c] * v[c].gcp;
+        #endif
+
+        #if GSP
+        a[el][r].gsp += C[r][c] * v[c].gsp;
+        #endif
+
+        #if MU0
+        a[el][r].mu0 += C[r][c] * v[c].mu0;
+        #endif
+
+        #if APK
+        a[el][r].apk += C[r][c] * v[c].apk;
+        #endif
+
+        #if BTK
+        a[el][r].btk += C[r][c] * v[c].btk;
+        #endif
+
+        #if RHK
+        a[el][r].rhk += C[r][c] * v[c].rhk;
+        #endif
+
+        #if BCK
+        a[el][r].bck += C[r][c] * v[c].bck;
+        #endif
+
+        #if BBK
+        a[el][r].bbk += C[r][c] * v[c].bbk;
+        #endif
+
+        #if BVK
+        a[el][r].bvk += C[r][c] * v[c].bvk;
+        #endif
+
+        #if BHK
+        a[el][r].bhk += C[r][c] * v[c].bhk;
+        #endif
+
+        #if ETK
+        a[el][r].etk += C[r][c] * v[c].etk;
+        #endif
+
+        #if GCK
+        a[el][r].gck += C[r][c] * v[c].gck;
+        #endif
+
+        #if GSK
+        a[el][r].gsk += C[r][c] * v[c].gsk;
+        #endif
+
+        #if HSK
+        a[el][r].hsk += C[r][c] * v[c].hsk;
         #endif
       }
     }
@@ -818,6 +986,62 @@ static void surface (struct Parameters *m, unsigned nel, unsigned el,
   m->qmu = 0.L;
   #endif
 
+  #if GCP
+  m->gcp = 0.L;
+  #endif
+
+  #if GSP
+  m->gsp = 0.L;
+  #endif
+
+  #if MU0
+  m->mu0 = 0.L;
+  #endif
+
+  #if APK
+  m->apk = 0.L;
+  #endif
+
+  #if BTK
+  m->btk = 0.L;
+  #endif
+
+  #if RHK
+  m->rhk = 0.L;
+  #endif
+
+  #if BCK
+  m->bck = 0.L;
+  #endif
+
+  #if BBK
+  m->bbk = 0.L;
+  #endif
+
+  #if BVK
+  m->bvk = 0.L;
+  #endif
+
+  #if BHK
+  m->bhk = 0.L;
+  #endif
+
+  #if ETK
+  m->etk = 0.L;
+  #endif
+
+  #if GCK
+  m->gck = 0.L;
+  #endif
+
+  #if GSK
+  m->gsk = 0.L;
+  #endif
+
+  #if HSK
+  m->hsk = 0.L;
+  #endif
+
   for (unsigned k = 0; k < NZ; k++)
 
     for (unsigned j = 0; j < NY; j++)
@@ -860,6 +1084,62 @@ static void surface (struct Parameters *m, unsigned nel, unsigned el,
 
         #if QMU
         m->qmu += a[el][r].qmu * cn;
+        #endif
+
+        #if GCP
+        m->gcp += a[el][r].gcp * cn;
+        #endif
+
+        #if GSP
+        m->gsp += a[el][r].gsp * cn;
+        #endif
+
+        #if MU0
+        m->mu0 += a[el][r].mu0 * cn;
+        #endif
+
+        #if APK
+        m->apk += a[el][r].apk * cn;
+        #endif
+
+        #if BTK
+        m->btk += a[el][r].btk * cn;
+        #endif
+
+        #if RHK
+        m->rhk += a[el][r].rhk * cn;
+        #endif
+
+        #if BCK
+        m->bck += a[el][r].bck * cn;
+        #endif
+
+        #if BBK
+        m->bbk += a[el][r].bbk * cn;
+        #endif
+
+        #if BVK
+        m->bvk += a[el][r].bvk * cn;
+        #endif
+
+        #if BHK
+        m->bhk += a[el][r].bhk * cn;
+        #endif
+
+        #if ETK
+        m->etk += a[el][r].etk * cn;
+        #endif
+
+        #if GCK
+        m->gck += a[el][r].gck * cn;
+        #endif
+
+        #if GSK
+        m->gsk += a[el][r].gsk * cn;
+        #endif
+
+        #if HSK
+        m->hsk += a[el][r].hsk * cn;
         #endif
 
         r++;
@@ -919,6 +1199,62 @@ static unsigned optimize (int ic, unsigned nel,
       #if QMU
       Mo[i].qmu = 0.L;
       #endif
+
+      #if GCP
+      Mo[i].gcp = 0.L;
+      #endif
+
+      #if GSP
+      Mo[i].gsp = 0.L;
+      #endif
+
+      #if MU0
+      Mo[i].mu0 = 0.L;
+      #endif
+
+      #if APK
+      Mo[i].apk = 0.L;
+      #endif
+
+      #if BTK
+      Mo[i].btk = 0.L;
+      #endif
+
+      #if RHK
+      Mo[i].rhk = 0.L;
+      #endif
+
+      #if BCK
+      Mo[i].bck = 0.L;
+      #endif
+
+      #if BBK
+      Mo[i].bbk = 0.L;
+      #endif
+
+      #if BVK
+      Mo[i].bvk = 0.L;
+      #endif
+
+      #if BHK
+      Mo[i].bhk = 0.L;
+      #endif
+
+      #if ETK
+      Mo[i].etk = 0.L;
+      #endif
+
+      #if GCK
+      Mo[i].gck = 0.L;
+      #endif
+
+      #if GSK
+      Mo[i].gsk = 0.L;
+      #endif
+
+      #if HSK
+      Mo[i].hsk = 0.L;
+      #endif
     }
 
     else
@@ -961,7 +1297,7 @@ static void helpMenu (void)
                     "\n\n EXAMPLE"
                     "\n    mpiexec -n 1 bin/gll2pf 0 2891 -28 140 1.0 data/INPUT/ ."
 
-                    "\n\n COMMAND LINE ARGUMENTS"
+                    "\n\n COMMAND-LINE ARGUMENTS"
                     "\n    MIN_DEPTH              - minimum depth"
                     "\n    MAX_DEPTH              - maximum depth"
                     "\n    LAT LON                - latitude and longitude of the point"

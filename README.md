@@ -6,7 +6,7 @@ Author: Caio Ciardelli
 
 If you use SphGLLTools, please, cite the following paper:
 
-Ciardelli, C., Bozdağ, E., Peter, D., and van der Lee, S., 2021. SphGLLTools: A toolbox for visualization of large seismic model files based on 3D spectral-element simulations. Computer & Geosciences, submitted.
+Ciardelli, C., Bozdağ, E., Peter, D., and van der Lee, S., 2021. SphGLLTools: A toolbox for visualization of large seismic model files based on 3D spectral-element meshes. Computer & Geosciences, submitted.
 
 ## Installation
 

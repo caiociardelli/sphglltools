@@ -118,29 +118,29 @@ ndep=$(head -n1 $filename | cut -f2 -d' ')
 
 line=$(sed '2q;d' $filename)
 
-lat=$(echo "$line" | awk '{printf "%lf", $3}')
-lon=$(echo "$line" | awk '{printf "%lf", $4}')
+lat=$(echo "$line" | gawk '{printf "%lf", $3}')
+lon=$(echo "$line" | gawk '{printf "%lf", $4}')
 
 string=$(gmt info $filename)
 
-dstring=$(echo "$string" | cut -f2 | awk -F '[</>]' '{print $2" "$3}')
-vstring=$(echo "$string" | cut -f3 | awk -F '[</>]' '{print $2" "$3}')
+dstring=$(echo "$string" | cut -f2 | gawk -F '[</>]' '{print $2" "$3}')
+vstring=$(echo "$string" | cut -f3 | gawk -F '[</>]' '{print $2" "$3}')
 
-dmin=$(echo "$dstring" | awk '{printf "%lf", $1}')
-dmax=$(echo "$dstring" | awk '{printf "%lf", $2}')
-vmin=$(echo "$vstring" | awk '{printf "%lf", $1}')
-vmax=$(echo "$vstring" | awk '{printf "%lf", $2}')
+dmin=$(echo "$dstring" | gawk '{printf "%lf", $1}')
+dmax=$(echo "$dstring" | gawk '{printf "%lf", $2}')
+vmin=$(echo "$vstring" | gawk '{printf "%lf", $1}')
+vmax=$(echo "$vstring" | gawk '{printf "%lf", $2}')
 
-awk -v min=$vmin -v max=$vmax 'BEGIN {printf "Min = %E Max = %E\n", min, max}'
+gawk -v min=$vmin -v max=$vmax 'BEGIN {printf "Min = %E Max = %E\n", min, max}'
 echo 'Creating figure...'
 
-vrange=$(echo "$vstring" | awk '{printf "%lf", $2 - $1}')
+vrange=$(echo "$vstring" | gawk '{printf "%lf", $2 - $1}')
 
 vmin=$(echo "$vmin - 0.1 * $vrange" | bc -l)
 vmax=$(echo "$vmax + 0.1 * $vrange" | bc -l)
 
 gmt begin $output pdf
-  gmt set FONT_TITLE 20p,100
+  gmt set FONT_TITLE 20p,Helvetica
 
   gmt basemap -R$vmin/$vmax/$dmin/$dmax -JX5c/-7.5c -BWSne+t$title -Bxafg+l"$label" -Bya500fg500+l"depth (km)"
 

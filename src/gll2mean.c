@@ -28,7 +28,7 @@
  EXAMPLE
    mpiexec -n 36 bin/gll2mean -5 2891 0.5 1.0 data/INPUT/ .
 
- COMMAND LINE ARGUMENTS
+ COMMAND-LINE ARGUMENTS
    MIN_DEPTH              - minimum depth
    MAX_DEPTH              - maximum depth
    HORIZONTAL_RESOLUTION  - spatial distance (in degrees) between grid points along the
@@ -719,6 +719,62 @@ static unsigned computeInterpolator (unsigned nel, struct Parameters a[nel][NX *
           v[r].qmu = M[el][i][j][k].qmu;
           #endif
 
+          #if GCP
+          v[r].gcp = M[el][i][j][k].gcp;
+          #endif
+
+          #if GSP
+          v[r].gsp = M[el][i][j][k].gsp;
+          #endif
+
+          #if MU0
+          v[r].mu0 = M[el][i][j][k].mu0;
+          #endif
+
+          #if APK
+          v[r].apk = M[el][i][j][k].apk;
+          #endif
+
+          #if BTK
+          v[r].btk = M[el][i][j][k].btk;
+          #endif
+
+          #if RHK
+          v[r].rhk = M[el][i][j][k].rhk;
+          #endif
+
+          #if BCK
+          v[r].bck = M[el][i][j][k].bck;
+          #endif
+
+          #if BBK
+          v[r].bbk = M[el][i][j][k].bbk;
+          #endif
+
+          #if BVK
+          v[r].bvk = M[el][i][j][k].bvk;
+          #endif
+
+          #if BHK
+          v[r].bhk = M[el][i][j][k].bhk;
+          #endif
+
+          #if ETK
+          v[r].etk = M[el][i][j][k].etk;
+          #endif
+
+          #if GCK
+          v[r].gck = M[el][i][j][k].gck;
+          #endif
+
+          #if GSK
+          v[r].gsk = M[el][i][j][k].gsk;
+          #endif
+
+          #if HSK
+          v[r].hsk = M[el][i][j][k].hsk;
+          #endif
+
           r++;
         }
 
@@ -760,6 +816,62 @@ static unsigned computeInterpolator (unsigned nel, struct Parameters a[nel][NX *
       a[el][r].qmu = 0.L;
       #endif
 
+      #if GCP
+      a[el][r].gcp = 0.L;
+      #endif
+
+      #if GSP
+      a[el][r].gsp = 0.L;
+      #endif
+
+      #if MU0
+      a[el][r].mu0 = 0.L;
+      #endif
+
+      #if APK
+      a[el][r].apk = 0.L;
+      #endif
+
+      #if BTK
+      a[el][r].btk = 0.L;
+      #endif
+
+      #if RHK
+      a[el][r].rhk = 0.L;
+      #endif
+
+      #if BCK
+      a[el][r].bck = 0.L;
+      #endif
+
+      #if BBK
+      a[el][r].bbk = 0.L;
+      #endif
+
+      #if BVK
+      a[el][r].bvk = 0.L;
+      #endif
+
+      #if BHK
+      a[el][r].bhk = 0.L;
+      #endif
+
+      #if ETK
+      a[el][r].etk = 0.L;
+      #endif
+
+      #if GCK
+      a[el][r].gck = 0.L;
+      #endif
+
+      #if GSK
+      a[el][r].gsk = 0.L;
+      #endif
+
+      #if HSK
+      a[el][r].hsk = 0.L;
+      #endif
+
       for (unsigned c = 0; c < N; c++)
       {
         #if VP
@@ -796,6 +908,62 @@ static unsigned computeInterpolator (unsigned nel, struct Parameters a[nel][NX *
 
         #if QMU
         a[el][r].qmu += C[r][c] * v[c].qmu;
+        #endif
+
+        #if GCP
+        a[el][r].gcp += C[r][c] * v[c].gcp;
+        #endif
+
+        #if GSP
+        a[el][r].gsp += C[r][c] * v[c].gsp;
+        #endif
+
+        #if MU0
+        a[el][r].mu0 += C[r][c] * v[c].mu0;
+        #endif
+
+        #if APK
+        a[el][r].apk += C[r][c] * v[c].apk;
+        #endif
+
+        #if BTK
+        a[el][r].btk += C[r][c] * v[c].btk;
+        #endif
+
+        #if RHK
+        a[el][r].rhk += C[r][c] * v[c].rhk;
+        #endif
+
+        #if BCK
+        a[el][r].bck += C[r][c] * v[c].bck;
+        #endif
+
+        #if BBK
+        a[el][r].bbk += C[r][c] * v[c].bbk;
+        #endif
+
+        #if BVK
+        a[el][r].bvk += C[r][c] * v[c].bvk;
+        #endif
+
+        #if BHK
+        a[el][r].bhk += C[r][c] * v[c].bhk;
+        #endif
+
+        #if ETK
+        a[el][r].etk += C[r][c] * v[c].etk;
+        #endif
+
+        #if GCK
+        a[el][r].gck += C[r][c] * v[c].gck;
+        #endif
+
+        #if GSK
+        a[el][r].gsk += C[r][c] * v[c].gsk;
+        #endif
+
+        #if HSK
+        a[el][r].hsk += C[r][c] * v[c].hsk;
         #endif
       }
     }
@@ -847,6 +1015,62 @@ static void surface (struct Parameters *m, unsigned nel, unsigned el,
   m->qmu = 0.L;
   #endif
 
+  #if GCP
+  m->gcp = 0.L;
+  #endif
+
+  #if GSP
+  m->gsp = 0.L;
+  #endif
+
+  #if MU0
+  m->mu0 = 0.L;
+  #endif
+
+  #if APK
+  m->apk = 0.L;
+  #endif
+
+  #if BTK
+  m->btk = 0.L;
+  #endif
+
+  #if RHK
+  m->rhk = 0.L;
+  #endif
+
+  #if BCK
+  m->bck = 0.L;
+  #endif
+
+  #if BBK
+  m->bbk = 0.L;
+  #endif
+
+  #if BVK
+  m->bvk = 0.L;
+  #endif
+
+  #if BHK
+  m->bhk = 0.L;
+  #endif
+
+  #if ETK
+  m->etk = 0.L;
+  #endif
+
+  #if GCK
+  m->gck = 0.L;
+  #endif
+
+  #if GSK
+  m->gsk = 0.L;
+  #endif
+
+  #if HSK
+  m->hsk = 0.L;
+  #endif
+
   for (unsigned k = 0; k < NZ; k++)
 
     for (unsigned j = 0; j < NY; j++)
@@ -889,6 +1113,62 @@ static void surface (struct Parameters *m, unsigned nel, unsigned el,
 
         #if QMU
         m->qmu += a[el][r].qmu * cn;
+        #endif
+
+        #if GCP
+        m->gcp += a[el][r].gcp * cn;
+        #endif
+
+        #if GSP
+        m->gsp += a[el][r].gsp * cn;
+        #endif
+
+        #if MU0
+        m->mu0 += a[el][r].mu0 * cn;
+        #endif
+
+        #if APK
+        m->apk += a[el][r].apk * cn;
+        #endif
+
+        #if BTK
+        m->btk += a[el][r].btk * cn;
+        #endif
+
+        #if RHK
+        m->rhk += a[el][r].rhk * cn;
+        #endif
+
+        #if BCK
+        m->bck += a[el][r].bck * cn;
+        #endif
+
+        #if BBK
+        m->bbk += a[el][r].bbk * cn;
+        #endif
+
+        #if BVK
+        m->bvk += a[el][r].bvk * cn;
+        #endif
+
+        #if BHK
+        m->bhk += a[el][r].bhk * cn;
+        #endif
+
+        #if ETK
+        m->etk += a[el][r].etk * cn;
+        #endif
+
+        #if GCK
+        m->gck += a[el][r].gck * cn;
+        #endif
+
+        #if GSK
+        m->gsk += a[el][r].gsk * cn;
+        #endif
+
+        #if HSK
+        m->hsk += a[el][r].hsk * cn;
         #endif
 
         r++;
@@ -952,6 +1232,90 @@ static void computeMeans (struct Means *mo,
   unsigned nqmu = 0;
   mo->a.qmu = 0.L;
   mo->g.qmu = 0.L;
+  #endif
+
+  #if GCP
+  unsigned ngcp = 0;
+  mo->a.gcp = 0.L;
+  mo->g.gcp = 0.L;
+  #endif
+
+  #if GSP
+  unsigned ngsp = 0;
+  mo->a.gsp = 0.L;
+  mo->g.gsp = 0.L;
+  #endif
+
+  #if MU0
+  unsigned nmu0 = 0;
+  mo->a.mu0 = 0.L;
+  mo->g.mu0 = 0.L;
+  #endif
+
+  #if APK
+  unsigned napk = 0;
+  mo->a.apk = 0.L;
+  mo->g.apk = 0.L;
+  #endif
+
+  #if BTK
+  unsigned nbtk = 0;
+  mo->a.btk = 0.L;
+  mo->g.btk = 0.L;
+  #endif
+
+  #if RHK
+  unsigned nrhk = 0;
+  mo->a.rhk = 0.L;
+  mo->g.rhk = 0.L;
+  #endif
+
+  #if BCK
+  unsigned nbck = 0;
+  mo->a.bck = 0.L;
+  mo->g.bck = 0.L;
+  #endif
+
+  #if BBK
+  unsigned nbbk = 0;
+  mo->a.bbk = 0.L;
+  mo->g.bbk = 0.L;
+  #endif
+
+  #if BVK
+  unsigned nbvk = 0;
+  mo->a.bvk = 0.L;
+  mo->g.bvk = 0.L;
+  #endif
+
+  #if BHK
+  unsigned nbhk = 0;
+  mo->a.bhk = 0.L;
+  mo->g.bhk = 0.L;
+  #endif
+
+  #if ETK
+  unsigned netk = 0;
+  mo->a.etk = 0.L;
+  mo->g.etk = 0.L;
+  #endif
+
+  #if GCK
+  unsigned ngck = 0;
+  mo->a.gck = 0.L;
+  mo->g.gck = 0.L;
+  #endif
+
+  #if GSK
+  unsigned ngsk = 0;
+  mo->a.gsk = 0.L;
+  mo->g.gsk = 0.L;
+  #endif
+
+  #if HSK
+  unsigned nhsk = 0;
+  mo->a.hsk = 0.L;
+  mo->g.hsk = 0.L;
   #endif
 
   for (unsigned i = 0; i < np; i++)
@@ -1049,6 +1413,146 @@ static void computeMeans (struct Means *mo,
         nqmu++;
       }
       #endif
+
+      #if GCP
+      if (m.gcp > TOLERANCE)
+      {
+        mo->a.gcp += m.gcp;
+        mo->g.gcp += log (m.gcp);
+
+        ngcp++;
+      }
+      #endif
+
+      #if GSP
+      if (m.gsp > TOLERANCE)
+      {
+        mo->a.gsp += m.gsp;
+        mo->g.gsp += log (m.gsp);
+
+        ngsp++;
+      }
+      #endif
+
+      #if MU0
+      if (m.mu0 > TOLERANCE)
+      {
+        mo->a.mu0 += m.mu0;
+        mo->g.mu0 += log (m.mu0);
+
+        nmu0++;
+      }
+      #endif
+
+      #if APK
+      if (m.apk > TOLERANCE)
+      {
+        mo->a.apk += m.apk;
+        mo->g.apk += log (m.apk);
+
+        napk++;
+      }
+      #endif
+
+      #if BTK
+      if (m.btk > TOLERANCE)
+      {
+        mo->a.btk += m.btk;
+        mo->g.btk += log (m.btk);
+
+        nbtk++;
+      }
+      #endif
+
+      #if RHK
+      if (m.rhk > TOLERANCE)
+      {
+        mo->a.rhk += m.rhk;
+        mo->g.rhk += log (m.rhk);
+
+        nrhk++;
+      }
+      #endif
+
+      #if BCK
+      if (m.bck > TOLERANCE)
+      {
+        mo->a.bck += m.bck;
+        mo->g.bck += log (m.bck);
+
+        nbck++;
+      }
+      #endif
+
+      #if BBK
+      if (m.bbk > TOLERANCE)
+      {
+        mo->a.bbk += m.bbk;
+        mo->g.bbk += log (m.bbk);
+
+        nbbk++;
+      }
+      #endif
+
+      #if BVK
+      if (m.bvk > TOLERANCE)
+      {
+        mo->a.bvk += m.bvk;
+        mo->g.bvk += log (m.bvk);
+
+        nbvk++;
+      }
+      #endif
+
+      #if BHK
+      if (m.bhk > TOLERANCE)
+      {
+        mo->a.bhk += m.bhk;
+        mo->g.bhk += log (m.bhk);
+
+        nbhk++;
+      }
+      #endif
+
+      #if ETK
+      if (m.etk > TOLERANCE)
+      {
+        mo->a.etk += m.etk;
+        mo->g.etk += log (m.etk);
+
+        netk++;
+      }
+      #endif
+
+      #if GCK
+      if (m.gck > TOLERANCE)
+      {
+        mo->a.gck += m.gck;
+        mo->g.gck += log (m.gck);
+
+        ngck++;
+      }
+      #endif
+
+      #if GSK
+      if (m.gsk > TOLERANCE)
+      {
+        mo->a.gsk += m.gsk;
+        mo->g.gsk += log (m.gsk);
+
+        ngsk++;
+      }
+      #endif
+
+      #if HSK
+      if (m.hsk > TOLERANCE)
+      {
+        mo->a.hsk += m.hsk;
+        mo->g.hsk += log (m.hsk);
+
+        nhsk++;
+      }
+      #endif
     }
 
   #if VP
@@ -1131,6 +1635,132 @@ static void computeMeans (struct Means *mo,
     mo->g.qmu = exp (mo->g.qmu);
   }
   #endif
+
+  #if GCP
+  if (ngcp)
+  {
+    mo->a.gcp /= ngcp;
+    mo->g.gcp /= ngcp;
+    mo->g.gcp = exp (mo->g.gcp);
+  }
+  #endif
+
+  #if GSP
+  if (ngsp)
+  {
+    mo->a.gsp /= ngsp;
+    mo->g.gsp /= ngsp;
+    mo->g.gsp = exp (mo->g.gsp);
+  }
+  #endif
+
+  #if MU0
+  if (nmu0)
+  {
+    mo->a.mu0 /= nmu0;
+    mo->g.mu0 /= nmu0;
+    mo->g.mu0 = exp (mo->g.mu0);
+  }
+  #endif
+
+  #if APK
+  if (napk)
+  {
+    mo->a.apk /= napk;
+    mo->g.apk /= napk;
+    mo->g.apk = exp (mo->g.apk);
+  }
+  #endif
+
+  #if BTK
+  if (nbtk)
+  {
+    mo->a.btk /= nbtk;
+    mo->g.btk /= nbtk;
+    mo->g.btk = exp (mo->g.btk);
+  }
+  #endif
+
+  #if RHK
+  if (nrhk)
+  {
+    mo->a.rhk /= nrhk;
+    mo->g.rhk /= nrhk;
+    mo->g.rhk = exp (mo->g.rhk);
+  }
+  #endif
+
+  #if BCK
+  if (nbck)
+  {
+    mo->a.bck /= nbck;
+    mo->g.bck /= nbck;
+    mo->g.bck = exp (mo->g.bck);
+  }
+  #endif
+
+  #if BBK
+  if (nbbk)
+  {
+    mo->a.bbk /= nbbk;
+    mo->g.bbk /= nbbk;
+    mo->g.bbk = exp (mo->g.bbk);
+  }
+  #endif
+
+  #if BVK
+  if (nbvk)
+  {
+    mo->a.bvk /= nbvk;
+    mo->g.bvk /= nbvk;
+    mo->g.bvk = exp (mo->g.bvk);
+  }
+  #endif
+
+  #if BHK
+  if (nbhk)
+  {
+    mo->a.bhk /= nbhk;
+    mo->g.bhk /= nbhk;
+    mo->g.bhk = exp (mo->g.bhk);
+  }
+  #endif
+
+  #if ETK
+  if (netk)
+  {
+    mo->a.etk /= netk;
+    mo->g.etk /= netk;
+    mo->g.etk = exp (mo->g.etk);
+  }
+  #endif
+
+  #if GCK
+  if (ngck)
+  {
+    mo->a.gck /= ngck;
+    mo->g.gck /= ngck;
+    mo->g.gck = exp (mo->g.gck);
+  }
+  #endif
+
+  #if GSK
+  if (ngsk)
+  {
+    mo->a.gsk /= ngsk;
+    mo->g.gsk /= ngsk;
+    mo->g.gsk = exp (mo->g.gsk);
+  }
+  #endif
+
+  #if HSK
+  if (nhsk)
+  {
+    mo->a.hsk /= nhsk;
+    mo->g.hsk /= nhsk;
+    mo->g.hsk = exp (mo->g.hsk);
+  }
+  #endif
 }
 
 static unsigned optimize (int ic, int nc, unsigned nel,
@@ -1204,6 +1834,62 @@ static unsigned optimize (int ic, int nc, unsigned nel,
           M_l[i][j].qmu = 0.L;
           #endif
 
+          #if GCP
+          M_l[i][j].gcp = 0.L;
+          #endif
+
+          #if GSP
+          M_l[i][j].gsp = 0.L;
+          #endif
+
+          #if MU0
+          M_l[i][j].mu0 = 0.L;
+          #endif
+
+          #if APK
+          M_l[i][j].apk = 0.L;
+          #endif
+
+          #if BTK
+          M_l[i][j].btk = 0.L;
+          #endif
+
+          #if RHK
+          M_l[i][j].rhk = 0.L;
+          #endif
+
+          #if BCK
+          M_l[i][j].bck = 0.L;
+          #endif
+
+          #if BBK
+          M_l[i][j].bbk = 0.L;
+          #endif
+
+          #if BVK
+          M_l[i][j].bvk = 0.L;
+          #endif
+
+          #if BHK
+          M_l[i][j].bhk = 0.L;
+          #endif
+
+          #if ETK
+          M_l[i][j].etk = 0.L;
+          #endif
+
+          #if GCK
+          M_l[i][j].gck = 0.L;
+          #endif
+
+          #if GSK
+          M_l[i][j].gsk = 0.L;
+          #endif
+
+          #if HSK
+          M_l[i][j].hsk = 0.L;
+          #endif
+
           continue;
         }
 
@@ -1264,7 +1950,7 @@ static void helpMenu (void)
                     "\n\n EXAMPLE"
                     "\n    mpiexec -n 36 bin/gll2mean -5 2891 0.5 1.0 data/INPUT/ ."
 
-                    "\n\n COMMAND LINE ARGUMENTS"
+                    "\n\n COMMAND-LINE ARGUMENTS"
                     "\n    MIN_DEPTH              - minimum depth"
                     "\n    MAX_DEPTH              - maximum depth"
                     "\n    HORIZONTAL_RESOLUTION  - spatial distance (in degrees) between grid points along the horizontal"
@@ -1471,6 +2157,62 @@ int main (int argc, char *argv[])
                                       #endif
 
                                       #if QMU
+                                      MPI_LONG_DOUBLE,
+                                      #endif
+
+                                      #if GCP
+                                      MPI_LONG_DOUBLE,
+                                      #endif
+
+                                      #if GSP
+                                      MPI_LONG_DOUBLE,
+                                      #endif
+
+                                      #if MU0
+                                      MPI_LONG_DOUBLE,
+                                      #endif
+
+                                      #if APK
+                                      MPI_LONG_DOUBLE,
+                                      #endif
+
+                                      #if BTK
+                                      MPI_LONG_DOUBLE,
+                                      #endif
+
+                                      #if RHK
+                                      MPI_LONG_DOUBLE,
+                                      #endif
+
+                                      #if BCK
+                                      MPI_LONG_DOUBLE,
+                                      #endif
+
+                                      #if BBK
+                                      MPI_LONG_DOUBLE,
+                                      #endif
+
+                                      #if BVK
+                                      MPI_LONG_DOUBLE,
+                                      #endif
+
+                                      #if BHK
+                                      MPI_LONG_DOUBLE,
+                                      #endif
+
+                                      #if ETK
+                                      MPI_LONG_DOUBLE,
+                                      #endif
+
+                                      #if GCK
+                                      MPI_LONG_DOUBLE,
+                                      #endif
+
+                                      #if GSK
+                                      MPI_LONG_DOUBLE,
+                                      #endif
+
+                                      #if HSK
                                       MPI_LONG_DOUBLE
                                       #endif
                                       };
@@ -1509,6 +2251,62 @@ int main (int argc, char *argv[])
                   #endif
 
                   #if QMU
+                  1,
+                  #endif
+
+                  #if GCP
+                  1,
+                  #endif
+
+                  #if GSP
+                  1,
+                  #endif
+
+                  #if MU0
+                  1,
+                  #endif
+
+                  #if APK
+                  1,
+                  #endif
+
+                  #if BTK
+                  1,
+                  #endif
+
+                  #if RHK
+                  1,
+                  #endif
+
+                  #if BCK
+                  1,
+                  #endif
+
+                  #if BBK
+                  1,
+                  #endif
+
+                  #if BVK
+                  1,
+                  #endif
+
+                  #if BHK
+                  1,
+                  #endif
+
+                  #if ETK
+                  1,
+                  #endif
+
+                  #if GCK
+                  1,
+                  #endif
+
+                  #if GSK
+                  1,
+                  #endif
+
+                  #if HSK
                   1
                   #endif
                   };
@@ -1547,7 +2345,63 @@ int main (int argc, char *argv[])
                       #endif
 
                       #if QMU
-                      offsetof (struct Parameters, qmu)
+                      offsetof (struct Parameters, qmu),
+                      #endif
+
+                      #if GCP
+                      offsetof (struct Parameters, gcp),
+                      #endif
+
+                      #if GSP
+                      offsetof (struct Parameters, gsp),
+                      #endif
+
+                      #if MU0
+                      offsetof (struct Parameters, mu0),
+                      #endif
+
+                      #if APK
+                      offsetof (struct Parameters, apk),
+                      #endif
+
+                      #if BTK
+                      offsetof (struct Parameters, btk),
+                      #endif
+
+                      #if RHK
+                      offsetof (struct Parameters, rhk),
+                      #endif
+
+                      #if BCK
+                      offsetof (struct Parameters, bck),
+                      #endif
+
+                      #if BBK
+                      offsetof (struct Parameters, bbk),
+                      #endif
+
+                      #if BVK
+                      offsetof (struct Parameters, bvk),
+                      #endif
+
+                      #if BHK
+                      offsetof (struct Parameters, bhk),
+                      #endif
+
+                      #if ETK
+                      offsetof (struct Parameters, etk),
+                      #endif
+
+                      #if GCK
+                      offsetof (struct Parameters, gck),
+                      #endif
+
+                      #if GSK
+                      offsetof (struct Parameters, gsk),
+                      #endif
+
+                      #if HSK
+                      offsetof (struct Parameters, hsk)
                       #endif
                       };
 
@@ -1586,6 +2440,62 @@ int main (int argc, char *argv[])
   #endif
 
   #if QMU
+  count++;
+  #endif
+
+  #if GCP
+  count++;
+  #endif
+
+  #if GSP
+  count++;
+  #endif
+
+  #if MU0
+  count++;
+  #endif
+
+  #if APK
+  count++;
+  #endif
+
+  #if BTK
+  count++;
+  #endif
+
+  #if RHK
+  count++;
+  #endif
+
+  #if BCK
+  count++;
+  #endif
+
+  #if BBK
+  count++;
+  #endif
+
+  #if BVK
+  count++;
+  #endif
+
+  #if BHK
+  count++;
+  #endif
+
+  #if ETK
+  count++;
+  #endif
+
+  #if GCK
+  count++;
+  #endif
+
+  #if GSK
+  count++;
+  #endif
+
+  #if HSK
   count++;
   #endif
 

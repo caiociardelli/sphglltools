@@ -49,6 +49,11 @@ unsigned readCoefficients (unsigned zone, char *prm, unsigned N,
                            unsigned ns, unsigned nlg,
                            double A[ns][nlg], double B[ns][nlg]);
 
+unsigned readNumberOfPoints (unsigned *np, char *filename);
+unsigned readCoordinates (unsigned np, char *filename,
+                          double *rmin, double *rmax,
+                          double R[np], double Theta[np], double Phi[np]);
+
 void createProfilePf (double r1, double r2,
                       unsigned nr, double R[nr]);
 void createOutputGridLL (unsigned nt, unsigned np,
@@ -75,6 +80,7 @@ unsigned writeExpansionPf (char *argv[], bool dvv,
                            double R[nr], double M[nr]);
 unsigned writeModel1D (char *prm, unsigned nr,
                        double R[nr], struct MeanModel Mo[nr]);
+void writeExpansionPath (unsigned np, double M[np]);
 
 unsigned writePowSpec1D (char *prm, unsigned nmax,
                          double Pws1D2[nmax + 1],
@@ -92,6 +98,7 @@ unsigned checkBSplinesHeaderIO (unsigned rvalue);
 unsigned checkKnotsIO (unsigned rvalue);
 unsigned checkMeanModelHeaderIO (unsigned rvalue);
 unsigned checkMeanModelIO (unsigned rvalue);
+unsigned checkCoordinatesIO (unsigned rvalue);
 unsigned checkCoefficientsHeaderIO (unsigned rvalue);
 unsigned checkCoefficientsIO (unsigned rvalue);
 unsigned checkExpansionIO (unsigned rvalue);

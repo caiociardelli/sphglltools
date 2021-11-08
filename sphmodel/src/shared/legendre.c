@@ -68,7 +68,7 @@ void nmlFactors (unsigned nmax, unsigned nlg, long double nF[nlg])
 
 void lgPmn (long double x, unsigned n, unsigned nmax, long double P[nmax + 2])
 {
-  /* Computes the Associated Lengendre polynomials */
+  /* Computes the associated Legendre polynomials */
   long double sint = (fabsl (x) == 1.L) ? 0.L : sqrtl (1.L - square (x));
   long double cott = (fabsl (x) == 1.L) ? 0.L : x / sint;
 
@@ -100,7 +100,7 @@ void normalize (unsigned n, unsigned nlg, unsigned nmax,
                 long double nF[nlg],
                 long double P[nmax + 2], long double nP[nmax + 2])
 {
-  /* Normalizes the Associated Legendre polynomials */
+  /* Normalizes the associated Legendre polynomials */
   for (unsigned m = 0; m <= n; m++)
 
     nP[m + 1] = K2 * nF[mN2I (m, n)] * P[m + 1];

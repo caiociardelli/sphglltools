@@ -92,6 +92,62 @@ struct Parameters
   #if QMU
   long double qmu;
   #endif
+
+  #if GCP
+  long double gcp;
+  #endif
+
+  #if GSP
+  long double gsp;
+  #endif
+
+  #if MU0
+  long double mu0;
+  #endif
+
+  #if APK
+  long double apk;
+  #endif
+
+  #if BTK
+  long double btk;
+  #endif
+
+  #if RHK
+  long double rhk;
+  #endif
+
+  #if BCK
+  long double bck;
+  #endif
+
+  #if BBK
+  long double bbk;
+  #endif
+
+  #if BVK
+  long double bvk;
+  #endif
+
+  #if BHK
+  long double bhk;
+  #endif
+
+  #if ETK
+  long double etk;
+  #endif
+
+  #if GCK
+  long double gck;
+  #endif
+
+  #if GSK
+  long double gsk;
+  #endif
+
+  #if HSK
+  long double hsk;
+  #endif
 };
 
 struct Means
