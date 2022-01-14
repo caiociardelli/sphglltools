@@ -74,7 +74,7 @@ int main (int argc, char *argv[])
 {
   if (argc != 2)
   {
-    fprintf (stderr, "Error: wrong number of parameters on the comand line...\n");
+    fprintf (stderr, "Error: wrong number of parameters on the command line...\n");
     helpMenu ();
 
     return 1;

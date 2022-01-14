@@ -220,7 +220,7 @@ int main (int argc, char *argv[])
 
   if (argc != 5 && ic == 0)
   {
-    fprintf (stderr, "Error: wrong number of parameters on the comand line...\n");
+    fprintf (stderr, "Error: wrong number of parameters on the command line...\n");
     helpMenu ();
 
     MPI_Abort (MPI_COMM_WORLD, 1);

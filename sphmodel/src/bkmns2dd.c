@@ -314,7 +314,7 @@ int main (int argc, char *argv[])
 {
   if (argc != 10 && argc != 11)
   {
-    fprintf (stderr, "\n Error: wrong number of parameters on the comand line...\n");
+    fprintf (stderr, "\n Error: wrong number of parameters on the command line...\n");
     helpMenu ();
 
     return 1;
