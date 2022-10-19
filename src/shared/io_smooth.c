@@ -181,9 +181,9 @@ static void insertPmNode (struct Parameters M[NX][NY][NZ],
   p->next = new;
 }
 
-static void deleteElNode (struct ElNode *lle)
+static void deleteElNodes (struct ElNode *lle)
 {
-  /* Deletes a cell of the linked list of spectral elements */
+  /* Deletes all cells of the linked list of spectral elements */
   struct ElNode *q;
 
   for (struct ElNode *p = lle; p != NULL; p = q)
@@ -195,9 +195,9 @@ static void deleteElNode (struct ElNode *lle)
   q = NULL;
 }
 
-static void deletePmNode (struct PmNode *llm)
+static void deletePmNodes (struct PmNode *llm)
 {
-  /* Deletes a cell of the linked list of model parameters */
+  /* Deletes all cells of the linked list of model parameters */
   struct PmNode *q;
 
   for (struct PmNode *p = llm; p != NULL; p = q)
@@ -1646,8 +1646,8 @@ void toArrayElAndPmNodes (unsigned nel, struct ElNode *lle,
     q = q->next;
   }
 
-  deleteElNode (lle);
-  deletePmNode (llm);
+  deleteElNodes (lle);
+  deletePmNodes (llm);
 }
 
 unsigned readNumberOfPoints (unsigned *n)
