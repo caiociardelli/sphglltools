@@ -87,7 +87,7 @@ OBJS4 := $(patsubst %.o, $(OBJ)/%.o, $(OBJECTS4))
 
 # Command used for cleaning
 RM := rm -rf
- 
+
 #
 # Compilation and linking
 #
@@ -149,7 +149,7 @@ $(BIN)/smooth: $(OBJS4) $(OBJ)/smooth.o
 	@ echo ' '
 
 $(BIN)/getinfo: $(OBJ)/getinfo.o
-	@ echo 'Building binary using $(GCC) linker: $@'
+	@ echo 'Building binary using $(CC) linker: $@'
 	$(CC) $(FLAGS) $(INC) $^ -o $@ $(LIB)
 	@ echo 'Finished building binary: $@'
 	@ echo ' '
@@ -255,7 +255,7 @@ $(OBJ)/smooth.o: $(SRC)/smooth.c $(SETUP)
 	@ echo ' '
 
 $(OBJ)/getinfo.o: $(SRC)/getinfo.c $(SETUP)
-	@ echo 'Building target using $(GCC) compiler: $@'
+	@ echo 'Building target using $(CC) compiler: $@'
 	$(CC) $(FLAGS) $(INC) -c $(SRC)/getinfo.c -o $@
 	@ echo ' '
 
