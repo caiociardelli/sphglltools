@@ -1588,7 +1588,7 @@ void createOutputGridBk (int ic, int nc, int k[nc], int kk[nc],
                          unsigned np, unsigned np_l, unsigned nt, unsigned nr,
                          struct Boundaries *gb, struct Point To[np_l][nt][nr])
 {
-  /* Creates the file grid */
+  /* Creates the grid file */
   gb->rmin =  r1 <= r2 ? r1 : r2;
   gb->rmax =  r1 >= r2 ? r1 : r2;
   gb->tmin =  0.00;
@@ -1742,7 +1742,7 @@ void createOutputGridDD (int ic, int nc, int k[nc], int kk[nc],
                          long double R[nr], long double Delta_l[nd_l],
                          struct Boundaries *gb, struct Point To[nd_l][nr])
 {
-  /* Creates the file grid */
+  /* Creates the grid file */
   gb->xmin =  INFINITY;
   gb->xmax = -INFINITY;
   gb->ymin =  INFINITY;
@@ -1820,7 +1820,7 @@ void createOutputGridLL (int ic, int nc, int k[nc], int kk[nc],
                          unsigned np, unsigned np_l, unsigned nt,
                          struct Boundaries *gb, struct Point To[np_l][nt])
 {
-  /* Creates the file grid */
+  /* Creates the grid file */
   gb->xmin =  INFINITY;
   gb->xmax = -INFINITY;
   gb->ymin =  INFINITY;
@@ -1882,7 +1882,7 @@ void createOutputGrid1D (int ic, int nc, int k[nc], int kk[nc],
                          long double Theta[nt],
                          long double Phi[np_l])
 {
-  /* Creates the file grid */
+  /* Creates the grid file */
   gb->xmin =  INFINITY;
   gb->xmax = -INFINITY;
   gb->ymin =  INFINITY;
@@ -1948,7 +1948,7 @@ void createOutputGridPf (long double r1, long double r2,
                          long double R[nr],
                          struct Boundaries *gb, struct Point To[nr])
 {
-  /* Creates the file grid */
+  /* Creates the grid file */
   gb->xmin =  INFINITY;
   gb->xmax = -INFINITY;
   gb->ymin =  INFINITY;

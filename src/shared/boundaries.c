@@ -751,63 +751,63 @@ unsigned computeFaces (unsigned nel, struct Point T[nel][NX][NY][NZ],
         struct Point p5 = T[el][i][j][0];
         struct Point p6 = T[el][i][j][NZ - 1];
 
-        Cx1_p[0][0] += 1.L; Cx1_p[0][1] += p1.y;        Cx1_p[0][2] += p1.z;
+        Cx1_p[0][0] += 1.L;  Cx1_p[0][1] += p1.y;        Cx1_p[0][2] += p1.z;
         Cx1_p[1][0] += p1.y; Cx1_p[1][1] += p1.y * p1.y; Cx1_p[1][2] += p1.y * p1.z;
         Cx1_p[2][0] += p1.z; Cx1_p[2][1] += p1.y * p1.z; Cx1_p[2][2] += p1.z * p1.z;
-        Cy1_p[0][0] += 1.L; Cy1_p[0][1] += p1.x;        Cy1_p[0][2] += p1.z;
+        Cy1_p[0][0] += 1.L;  Cy1_p[0][1] += p1.x;        Cy1_p[0][2] += p1.z;
         Cy1_p[1][0] += p1.x; Cy1_p[1][1] += p1.x * p1.x; Cy1_p[1][2] += p1.x * p1.z;
         Cy1_p[2][0] += p1.z; Cy1_p[2][1] += p1.x * p1.z; Cy1_p[2][2] += p1.z * p1.z;
-        Cz1_p[0][0] += 1.L; Cz1_p[0][1] += p1.x;        Cz1_p[0][2] += p1.y;
+        Cz1_p[0][0] += 1.L;  Cz1_p[0][1] += p1.x;        Cz1_p[0][2] += p1.y;
         Cz1_p[1][0] += p1.x; Cz1_p[1][1] += p1.x * p1.x; Cz1_p[1][2] += p1.x * p1.y;
         Cz1_p[2][0] += p1.y; Cz1_p[2][1] += p1.x * p1.y; Cz1_p[2][2] += p1.y * p1.y;
 
-        Cx2_p[0][0] += 1.L; Cx2_p[0][1] += p2.y;        Cx2_p[0][2] += p2.z;
+        Cx2_p[0][0] += 1.L;  Cx2_p[0][1] += p2.y;        Cx2_p[0][2] += p2.z;
         Cx2_p[1][0] += p2.y; Cx2_p[1][1] += p2.y * p2.y; Cx2_p[1][2] += p2.y * p2.z;
         Cx2_p[2][0] += p2.z; Cx2_p[2][1] += p2.y * p2.z; Cx2_p[2][2] += p2.z * p2.z;
-        Cy2_p[0][0] += 1.L; Cy2_p[0][1] += p2.x;        Cy2_p[0][2] += p2.z;
+        Cy2_p[0][0] += 1.L;  Cy2_p[0][1] += p2.x;        Cy2_p[0][2] += p2.z;
         Cy2_p[1][0] += p2.x; Cy2_p[1][1] += p2.x * p2.x; Cy2_p[1][2] += p2.x * p2.z;
         Cy2_p[2][0] += p2.z; Cy2_p[2][1] += p2.x * p2.z; Cy2_p[2][2] += p2.z * p2.z;
-        Cz2_p[0][0] += 1.L; Cz2_p[0][1] += p2.x;        Cz2_p[0][2] += p2.y;
+        Cz2_p[0][0] += 1.L;  Cz2_p[0][1] += p2.x;        Cz2_p[0][2] += p2.y;
         Cz2_p[1][0] += p2.x; Cz2_p[1][1] += p2.x * p2.x; Cz2_p[1][2] += p2.x * p2.y;
         Cz2_p[2][0] += p2.y; Cz2_p[2][1] += p2.x * p2.y; Cz2_p[2][2] += p2.y * p2.y;
 
-        Cx3_p[0][0] += 1.L; Cx3_p[0][1] += p3.y;        Cx3_p[0][2] += p3.z;
+        Cx3_p[0][0] += 1.L;  Cx3_p[0][1] += p3.y;        Cx3_p[0][2] += p3.z;
         Cx3_p[1][0] += p3.y; Cx3_p[1][1] += p3.y * p3.y; Cx3_p[1][2] += p3.y * p3.z;
         Cx3_p[2][0] += p3.z; Cx3_p[2][1] += p3.y * p3.z; Cx3_p[2][2] += p3.z * p3.z;
-        Cy3_p[0][0] += 1.L; Cy3_p[0][1] += p3.x;        Cy3_p[0][2] += p3.z;
+        Cy3_p[0][0] += 1.L;  Cy3_p[0][1] += p3.x;        Cy3_p[0][2] += p3.z;
         Cy3_p[1][0] += p3.x; Cy3_p[1][1] += p3.x * p3.x; Cy3_p[1][2] += p3.x * p3.z;
         Cy3_p[2][0] += p3.z; Cy3_p[2][1] += p3.x * p3.z; Cy3_p[2][2] += p3.z * p3.z;
-        Cz3_p[0][0] += 1.L; Cz3_p[0][1] += p3.x;        Cz3_p[0][2] += p3.y;
+        Cz3_p[0][0] += 1.L;  Cz3_p[0][1] += p3.x;        Cz3_p[0][2] += p3.y;
         Cz3_p[1][0] += p3.x; Cz3_p[1][1] += p3.x * p3.x; Cz3_p[1][2] += p3.x * p3.y;
         Cz3_p[2][0] += p3.y; Cz3_p[2][1] += p3.x * p3.y; Cz3_p[2][2] += p3.y * p3.y;
 
-        Cx4_p[0][0] += 1.L; Cx4_p[0][1] += p4.y;        Cx4_p[0][2] += p4.z;
+        Cx4_p[0][0] += 1.L;  Cx4_p[0][1] += p4.y;        Cx4_p[0][2] += p4.z;
         Cx4_p[1][0] += p4.y; Cx4_p[1][1] += p4.y * p4.y; Cx4_p[1][2] += p4.y * p4.z;
         Cx4_p[2][0] += p4.z; Cx4_p[2][1] += p4.y * p4.z; Cx4_p[2][2] += p4.z * p4.z;
-        Cy4_p[0][0] += 1.L; Cy4_p[0][1] += p4.x;        Cy4_p[0][2] += p4.z;
+        Cy4_p[0][0] += 1.L;  Cy4_p[0][1] += p4.x;        Cy4_p[0][2] += p4.z;
         Cy4_p[1][0] += p4.x; Cy4_p[1][1] += p4.x * p4.x; Cy4_p[1][2] += p4.x * p4.z;
         Cy4_p[2][0] += p4.z; Cy4_p[2][1] += p4.x * p4.z; Cy4_p[2][2] += p4.z * p4.z;
-        Cz4_p[0][0] += 1.L; Cz4_p[0][1] += p4.x;        Cz4_p[0][2] += p4.y;
+        Cz4_p[0][0] += 1.L;  Cz4_p[0][1] += p4.x;        Cz4_p[0][2] += p4.y;
         Cz4_p[1][0] += p4.x; Cz4_p[1][1] += p4.x * p4.x; Cz4_p[1][2] += p4.x * p4.y;
         Cz4_p[2][0] += p4.y; Cz4_p[2][1] += p4.x * p4.y; Cz4_p[2][2] += p4.y * p4.y;
 
-        Cx5_p[0][0] += 1.L; Cx5_p[0][1] += p5.y;        Cx5_p[0][2] += p5.z;
+        Cx5_p[0][0] += 1.L;  Cx5_p[0][1] += p5.y;        Cx5_p[0][2] += p5.z;
         Cx5_p[1][0] += p5.y; Cx5_p[1][1] += p5.y * p5.y; Cx5_p[1][2] += p5.y * p5.z;
         Cx5_p[2][0] += p5.z; Cx5_p[2][1] += p5.y * p5.z; Cx5_p[2][2] += p5.z * p5.z;
-        Cy5_p[0][0] += 1.L; Cy5_p[0][1] += p5.x;        Cy5_p[0][2] += p5.z;
+        Cy5_p[0][0] += 1.L;  Cy5_p[0][1] += p5.x;        Cy5_p[0][2] += p5.z;
         Cy5_p[1][0] += p5.x; Cy5_p[1][1] += p5.x * p5.x; Cy5_p[1][2] += p5.x * p5.z;
         Cy5_p[2][0] += p5.z; Cy5_p[2][1] += p5.x * p5.z; Cy5_p[2][2] += p5.z * p5.z;
-        Cz5_p[0][0] += 1.L; Cz5_p[0][1] += p5.x;        Cz5_p[0][2] += p5.y;
+        Cz5_p[0][0] += 1.L;  Cz5_p[0][1] += p5.x;        Cz5_p[0][2] += p5.y;
         Cz5_p[1][0] += p5.x; Cz5_p[1][1] += p5.x * p5.x; Cz5_p[1][2] += p5.x * p5.y;
         Cz5_p[2][0] += p5.y; Cz5_p[2][1] += p5.x * p5.y; Cz5_p[2][2] += p5.y * p5.y;
 
-        Cx6_p[0][0] += 1.L; Cx6_p[0][1] += p6.y;        Cx6_p[0][2] += p6.z;
+        Cx6_p[0][0] += 1.L;  Cx6_p[0][1] += p6.y;        Cx6_p[0][2] += p6.z;
         Cx6_p[1][0] += p6.y; Cx6_p[1][1] += p6.y * p6.y; Cx6_p[1][2] += p6.y * p6.z;
         Cx6_p[2][0] += p6.z; Cx6_p[2][1] += p6.y * p6.z; Cx6_p[2][2] += p6.z * p6.z;
-        Cy6_p[0][0] += 1.L; Cy6_p[0][1] += p6.x;        Cy6_p[0][2] += p6.z;
+        Cy6_p[0][0] += 1.L;  Cy6_p[0][1] += p6.x;        Cy6_p[0][2] += p6.z;
         Cy6_p[1][0] += p6.x; Cy6_p[1][1] += p6.x * p6.x; Cy6_p[1][2] += p6.x * p6.z;
         Cy6_p[2][0] += p6.z; Cy6_p[2][1] += p6.x * p6.z; Cy6_p[2][2] += p6.z * p6.z;
-        Cz6_p[0][0] += 1.L; Cz6_p[0][1] += p6.x;        Cz6_p[0][2] += p6.y;
+        Cz6_p[0][0] += 1.L;  Cz6_p[0][1] += p6.x;        Cz6_p[0][2] += p6.y;
         Cz6_p[1][0] += p6.x; Cz6_p[1][1] += p6.x * p6.x; Cz6_p[1][2] += p6.x * p6.y;
         Cz6_p[2][0] += p6.y; Cz6_p[2][1] += p6.x * p6.y; Cz6_p[2][2] += p6.y * p6.y;
 
@@ -837,46 +837,46 @@ unsigned computeFaces (unsigned nel, struct Point T[nel][NX][NY][NZ],
 
         if ((i == 2 && j != 2) || (j == 2 && i != 2)) continue;
 
-        Cx1_s[l][0] = 1.L; Cx1_s[l][1] = p1.y;        Cx1_s[l][2] = p1.y * p1.y;
+        Cx1_s[l][0] = 1.L;  Cx1_s[l][1] = p1.y;        Cx1_s[l][2] = p1.y * p1.y;
         Cx1_s[l][3] = p1.z; Cx1_s[l][4] = p1.y * p1.z; Cx1_s[l][5] = p1.z * p1.z;
-        Cy1_s[l][0] = 1.L; Cy1_s[l][1] = p1.x;        Cy1_s[l][2] = p1.x * p1.x;
+        Cy1_s[l][0] = 1.L;  Cy1_s[l][1] = p1.x;        Cy1_s[l][2] = p1.x * p1.x;
         Cy1_s[l][3] = p1.z; Cy1_s[l][4] = p1.x * p1.z; Cy1_s[l][5] = p1.z * p1.z;
-        Cz1_s[l][0] = 1.L; Cz1_s[l][1] = p1.x;        Cz1_s[l][2] = p1.x * p1.x;
+        Cz1_s[l][0] = 1.L;  Cz1_s[l][1] = p1.x;        Cz1_s[l][2] = p1.x * p1.x;
         Cz1_s[l][3] = p1.y; Cz1_s[l][4] = p1.x * p1.y; Cz1_s[l][5] = p1.y * p1.y;
 
-        Cx2_s[l][0] = 1.L; Cx2_s[l][1] = p2.y;        Cx2_s[l][2] = p2.y * p2.y;
+        Cx2_s[l][0] = 1.L;  Cx2_s[l][1] = p2.y;        Cx2_s[l][2] = p2.y * p2.y;
         Cx2_s[l][3] = p2.z; Cx2_s[l][4] = p2.y * p2.z; Cx2_s[l][5] = p2.z * p2.z;
-        Cy2_s[l][0] = 1.L; Cy2_s[l][1] = p2.x;        Cy2_s[l][2] = p2.x * p2.x;
+        Cy2_s[l][0] = 1.L;  Cy2_s[l][1] = p2.x;        Cy2_s[l][2] = p2.x * p2.x;
         Cy2_s[l][3] = p2.z; Cy2_s[l][4] = p2.x * p2.z; Cy2_s[l][5] = p2.z * p2.z;
-        Cz2_s[l][0] = 1.L; Cz2_s[l][1] = p2.x;        Cz2_s[l][2] = p2.x * p2.x;
+        Cz2_s[l][0] = 1.L;  Cz2_s[l][1] = p2.x;        Cz2_s[l][2] = p2.x * p2.x;
         Cz2_s[l][3] = p2.y; Cz2_s[l][4] = p2.x * p2.y; Cz2_s[l][5] = p2.y * p2.y;
 
-        Cx3_s[l][0] = 1.L; Cx3_s[l][1] = p3.y;        Cx3_s[l][2] = p3.y * p3.y;
+        Cx3_s[l][0] = 1.L;  Cx3_s[l][1] = p3.y;        Cx3_s[l][2] = p3.y * p3.y;
         Cx3_s[l][3] = p3.z; Cx3_s[l][4] = p3.y * p3.z; Cx3_s[l][5] = p3.z * p3.z;
-        Cy3_s[l][0] = 1.L; Cy3_s[l][1] = p3.x;        Cy3_s[l][2] = p3.x * p3.x;
+        Cy3_s[l][0] = 1.L;  Cy3_s[l][1] = p3.x;        Cy3_s[l][2] = p3.x * p3.x;
         Cy3_s[l][3] = p3.z; Cy3_s[l][4] = p3.x * p3.z; Cy3_s[l][5] = p3.z * p3.z;
-        Cz3_s[l][0] = 1.L; Cz3_s[l][1] = p3.x;        Cz3_s[l][2] = p3.x * p3.x;
+        Cz3_s[l][0] = 1.L;  Cz3_s[l][1] = p3.x;        Cz3_s[l][2] = p3.x * p3.x;
         Cz3_s[l][3] = p3.y; Cz3_s[l][4] = p3.x * p3.y; Cz3_s[l][5] = p3.y * p3.y;
 
-        Cx4_s[l][0] = 1.L; Cx4_s[l][1] = p4.y;        Cx4_s[l][2] = p4.y * p4.y;
+        Cx4_s[l][0] = 1.L;  Cx4_s[l][1] = p4.y;        Cx4_s[l][2] = p4.y * p4.y;
         Cx4_s[l][3] = p4.z; Cx4_s[l][4] = p4.y * p4.z; Cx4_s[l][5] = p4.z * p4.z;
-        Cy4_s[l][0] = 1.L; Cy4_s[l][1] = p4.x;        Cy4_s[l][2] = p4.x * p4.x;
+        Cy4_s[l][0] = 1.L;  Cy4_s[l][1] = p4.x;        Cy4_s[l][2] = p4.x * p4.x;
         Cy4_s[l][3] = p4.z; Cy4_s[l][4] = p4.x * p4.z; Cy4_s[l][5] = p4.z * p4.z;
-        Cz4_s[l][0] = 1.L; Cz4_s[l][1] = p4.x;        Cz4_s[l][2] = p4.x * p4.x;
+        Cz4_s[l][0] = 1.L;  Cz4_s[l][1] = p4.x;        Cz4_s[l][2] = p4.x * p4.x;
         Cz4_s[l][3] = p4.y; Cz4_s[l][4] = p4.x * p4.y; Cz4_s[l][5] = p4.y * p4.y;
 
-        Cx5_s[l][0] = 1.L; Cx5_s[l][1] = p5.y;        Cx5_s[l][2] = p5.y * p5.y;
+        Cx5_s[l][0] = 1.L;  Cx5_s[l][1] = p5.y;        Cx5_s[l][2] = p5.y * p5.y;
         Cx5_s[l][3] = p5.z; Cx5_s[l][4] = p5.y * p5.z; Cx5_s[l][5] = p5.z * p5.z;
-        Cy5_s[l][0] = 1.L; Cy5_s[l][1] = p5.x;        Cy5_s[l][2] = p5.x * p5.x;
+        Cy5_s[l][0] = 1.L;  Cy5_s[l][1] = p5.x;        Cy5_s[l][2] = p5.x * p5.x;
         Cy5_s[l][3] = p5.z; Cy5_s[l][4] = p5.x * p5.z; Cy5_s[l][5] = p5.z * p5.z;
-        Cz5_s[l][0] = 1.L; Cz5_s[l][1] = p5.x;        Cz5_s[l][2] = p5.x * p5.x;
+        Cz5_s[l][0] = 1.L;  Cz5_s[l][1] = p5.x;        Cz5_s[l][2] = p5.x * p5.x;
         Cz5_s[l][3] = p5.y; Cz5_s[l][4] = p5.x * p5.y; Cz5_s[l][5] = p5.y * p5.y;
 
-        Cx6_s[l][0] = 1.L; Cx6_s[l][1] = p6.y;        Cx6_s[l][2] = p6.y * p6.y;
+        Cx6_s[l][0] = 1.L;  Cx6_s[l][1] = p6.y;        Cx6_s[l][2] = p6.y * p6.y;
         Cx6_s[l][3] = p6.z; Cx6_s[l][4] = p6.y * p6.z; Cx6_s[l][5] = p6.z * p6.z;
-        Cy6_s[l][0] = 1.L; Cy6_s[l][1] = p6.x;        Cy6_s[l][2] = p6.x * p6.x;
+        Cy6_s[l][0] = 1.L;  Cy6_s[l][1] = p6.x;        Cy6_s[l][2] = p6.x * p6.x;
         Cy6_s[l][3] = p6.z; Cy6_s[l][4] = p6.x * p6.z; Cy6_s[l][5] = p6.z * p6.z;
-        Cz6_s[l][0] = 1.L; Cz6_s[l][1] = p6.x;        Cz6_s[l][2] = p6.x * p6.x;
+        Cz6_s[l][0] = 1.L;  Cz6_s[l][1] = p6.x;        Cz6_s[l][2] = p6.x * p6.x;
         Cz6_s[l][3] = p6.y; Cz6_s[l][4] = p6.x * p6.y; Cz6_s[l][5] = p6.y * p6.y;
 
         for (unsigned ii = 0; ii < NCF_s; ii++)

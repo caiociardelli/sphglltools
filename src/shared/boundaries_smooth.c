@@ -27,6 +27,7 @@
 void identifyZones (unsigned n, unsigned l[n],
                     struct Point T[n][NX][NY][NZ])
 {
+  /* Identifies zone based on the r coordinate */
   unsigned hx = NX / 2, hy = NY / 2, hz = NZ / 2;
 
   for (unsigned i = 0; i < n; i++)
@@ -47,6 +48,8 @@ void computeElRadii (unsigned nel,
                      struct Radii imr[nel],
                      struct Radii omr[NEL])
 {
+  /* Computes 3D distances and radial distances between
+     point p and the center of all spectral elements */
   unsigned hx = NX / 2, hy = NY / 2, hz = NZ / 2;
 
   for (unsigned el = 0; el < nel; el++)
