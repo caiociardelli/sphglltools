@@ -71,7 +71,7 @@ static const long double PI = 3.14159265358979323846L; /* Value of Pi */
 static const long double TO_DEGREE  = 180.L / 3.14159265358979323846L; /* Constant to convert from radians to degrees */
 static const long double TO_RADIANS = 3.14159265358979323846L / 180.L; /* Constant to convert from degrees to radians */
 
-static const long double EARTH_R = 6371.L; /* Earth radius */
+static const long double EARTH_R = 6371.L; /* Earth's radius */
 
                                       /* K1 and K2 are constants used to prevent underflow
                                          in the Associated Legendre funtions */

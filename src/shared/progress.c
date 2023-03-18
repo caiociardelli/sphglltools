@@ -45,3 +45,4 @@ void progressBar (unsigned index, unsigned step, unsigned n, clock_t starttime)
     fprintf (stderr, "] [%.1lf%%] [Elapsed time: %.2lf min]", percentage, cpu_time_used);
   }
 }
+

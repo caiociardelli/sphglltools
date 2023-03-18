@@ -2515,6 +2515,8 @@ int main (int argc, char *argv[])
     MPI_Abort (MPI_COMM_WORLD, 1);
   }
 
+  MPI_Type_free (&PARAMETERS);
+
   MPI_Barrier (MPI_COMM_WORLD);
 
   if (ic == 0)

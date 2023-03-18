@@ -357,6 +357,8 @@ int main (int argc, char *argv[])
 
   MPI_Bcast (Mm, nl, PARAMETERS, 0, MPI_COMM_WORLD);
 
+  MPI_Type_free (&PARAMETERS);
+
   MPI_Barrier (MPI_COMM_WORLD);
 
   if (ic == 0) fprintf (stderr, "Computing mean model...\n");
