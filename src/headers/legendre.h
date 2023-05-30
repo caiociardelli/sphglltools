@@ -86,7 +86,7 @@ void gLLNodesAndWeights3Dl (long double X[NX],
                             long double Z[NX], long double W[NX][NY][NZ]);
 
 void nmlFactors (unsigned nmax, unsigned nlg, long double nF[nlg]);
-void lgPmn (long double x, unsigned nmax, unsigned nlg, long double P[nlg]);
+void lgPmn (long double x, unsigned n, unsigned nmax, long double P[nmax + 2]);
 void normalize (unsigned n, unsigned nlg, unsigned nmax,
                 long double nF[nlg],
                 long double P[nmax + 2], long double nP[nmax + 2]);
