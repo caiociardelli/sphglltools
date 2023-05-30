@@ -23,16 +23,16 @@
 
 #ifndef COORDINATES_H
 #define COORDINATES_H
-static inline double rad2Degree (double angle)
+static inline double rad2Degree (double v)
 {
   /* Converts radians to degrees */
-  return angle * TO_DEGREE;
+  return v * TO_DEGREE;
 }
 
-static inline long double rad2Degreel (long double angle)
+static inline long double rad2Degreel (long double v)
 {
   /* Converts radians to degrees */
-  return angle * TO_DEGREE;
+  return v * TO_DEGREE;
 }
 
 static inline double degree2Rad (double v)

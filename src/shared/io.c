@@ -5056,15 +5056,15 @@ unsigned checkTopoIO (unsigned rvalue)
   switch (rvalue)
   {
     case 1:
-      fprintf (stderr, "Unable to write file name to string buffer...\n");
+      fprintf (stderr, "\nUnable to write file name to string buffer...\n");
     break;
 
     case 2:
-      fprintf (stderr, "Error opening topological file...\n");
+      fprintf (stderr, "\nError opening topological file...\n");
     break;
 
     case 3:
-      fprintf (stderr, "Error reading topological file...\n");
+      fprintf (stderr, "\nError reading topological file...\n");
     break;
   }
 
@@ -5077,23 +5077,23 @@ unsigned checkTopoAndModelIO (unsigned rvalue)
   switch (rvalue)
   {
     case 1:
-      fprintf (stderr, "Unable to write file name to string buffer...\n");
+      fprintf (stderr, "\nUnable to write file name to string buffer...\n");
     break;
 
     case 2:
-      fprintf (stderr, "Error opening topological file...\n");
+      fprintf (stderr, "\nError opening topological file...\n");
     break;
 
     case 3:
-      fprintf (stderr, "Error reading topological file...\n");
+      fprintf (stderr, "\nError reading topological file...\n");
     break;
 
     case 4:
-      fprintf (stderr, "Error: could not open model file!\n");
+      fprintf (stderr, "\nError: could not open model file!\n");
     break;
 
     case 5:
-      fprintf (stderr, "Error: could not read model file!\n");
+      fprintf (stderr, "\nError: could not read model file!\n");
     break;
   }
 
@@ -5110,11 +5110,11 @@ unsigned checkModelIO (unsigned rvalue)
     break;
 
     case 2:
-      fprintf (stderr, "Error opening file...\n");
+      fprintf (stderr, "\nError opening file...\n");
     break;
 
     case 3:
-      fprintf (stderr, "Error writing model file...\n");
+      fprintf (stderr, "\nError writing model file...\n");
     break;
   }
 
@@ -5127,31 +5127,31 @@ unsigned checkBSplinesHeaderIO (unsigned rvalue)
   switch (rvalue)
   {
     case 1:
-      fprintf (stderr, "Error: unable to write file name to string buffer!\n");
+      fprintf (stderr, "\nError: unable to write file name to string buffer!\n");
     break;
 
     case 2:
-      fprintf (stderr, "Error: could not read file!\n");
+      fprintf (stderr, "\nError: could not read file!\n");
     break;
 
     case 3:
-      fprintf (stderr, "Error: could not read file header!\n");
+      fprintf (stderr, "\nError: could not read file header!\n");
     break;
 
     case 4:
-      fprintf (stderr, "Error: could not read number of knots!\n");
+      fprintf (stderr, "\nError: could not read number of knots!\n");
     break;
 
     case 5:
-      fprintf (stderr, "Error: could not read b-splines degree!\n");
+      fprintf (stderr, "\nError: could not read b-splines degree!\n");
     break;
 
     case 6:
-      fprintf (stderr, "Error: could not read minimum radius!\n");
+      fprintf (stderr, "\nError: could not read minimum radius!\n");
     break;
 
     case 7:
-      fprintf (stderr, "Error: could not read maximum radius!\n");
+      fprintf (stderr, "\nError: could not read maximum radius!\n");
     break;
   }
 
@@ -5164,27 +5164,27 @@ unsigned checkKnotsIO (unsigned rvalue)
   switch (rvalue)
   {
     case 1:
-      fprintf (stderr, "Error: unable to write file name to string buffer!\n");
+      fprintf (stderr, "\nError: unable to write file name to string buffer!\n");
     break;
 
     case 2:
-      fprintf (stderr, "Error: could not read file!\n");
+      fprintf (stderr, "\nError: could not read file!\n");
     break;
 
     case 3:
-      fprintf (stderr, "Error: could not read header information!\n");
+      fprintf (stderr, "\nError: could not read header information!\n");
     break;
 
     case 4:
-      fprintf (stderr, "Error: could not read knots positions!\n");
+      fprintf (stderr, "\nError: could not read knots positions!\n");
     break;
 
     case 5:
-      fprintf (stderr, "Error: could not read minimum radius!\n");
+      fprintf (stderr, "\nError: could not read minimum radius!\n");
     break;
 
     case 6:
-      fprintf (stderr, "Error: could not read maximum radius!\n");
+      fprintf (stderr, "\nError: could not read maximum radius!\n");
     break;
   }
 
@@ -5197,19 +5197,19 @@ unsigned checkMeanModelHeaderIO (unsigned rvalue)
   switch (rvalue)
   {
     case 1:
-      fprintf (stderr, "Error: unable to write file name to string buffer!\n");
+      fprintf (stderr, "\nError: unable to write file name to string buffer!\n");
     break;
 
     case 2:
-      fprintf (stderr, "Error: could not read file!\n");
+      fprintf (stderr, "\nError: could not read file!\n");
     break;
 
     case 3:
-      fprintf (stderr, "Error: could not read file header!\n");
+      fprintf (stderr, "\nError: could not read file header!\n");
     break;
 
     case 4:
-      fprintf (stderr, "Error: could not read number of points!\n");
+      fprintf (stderr, "\nError: could not read number of points!\n");
     break;
   }
 
@@ -5222,15 +5222,15 @@ unsigned checkMeanModelIO (unsigned rvalue)
   switch (rvalue)
   {
     case 1:
-      fprintf (stderr, "Error: unable to write file name to string buffer!\n");
+      fprintf (stderr, "\nError: unable to write file name to string buffer!\n");
     break;
 
     case 2:
-      fprintf (stderr, "Error: could not open file!\n");
+      fprintf (stderr, "\nError: could not open file!\n");
     break;
 
     case 3:
-      fprintf (stderr, "Error: could not read file!\n");
+      fprintf (stderr, "\nError: could not read file!\n");
     break;
   }
 
@@ -5243,11 +5243,11 @@ unsigned checkCoefficientsIO (unsigned rvalue)
   switch (rvalue)
   {
     case 1:
-      fprintf (stderr, "Unable to write file name to string buffer...\n");
+      fprintf (stderr, "\nUnable to write file name to string buffer...\n");
     break;
 
     case 2:
-      fprintf (stderr, "Error opening file...\n");
+      fprintf (stderr, "\nError opening file...\n");
     break;
   }
 

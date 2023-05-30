@@ -1006,19 +1006,19 @@ unsigned checkBlockModelHeaderIO (unsigned rvalue)
   switch (rvalue)
   {
     case 1:
-      fprintf (stderr, "\n Error: unable to write file name to string buffer!\n");
+      fprintf (stderr, "\nError: unable to write file name to string buffer!\n");
     break;
 
     case 2:
-      fprintf (stderr, "\n Error: could not read file!\n");
+      fprintf (stderr, "\nError: could not read file!\n");
     break;
 
     case 3:
-      fprintf (stderr, "\n Error: could not read in the endianess of the file...!\n");
+      fprintf (stderr, "\nError: could not read in the endianess of the file...!\n");
     break;
 
     case 4:
-      fprintf (stderr, "\n Error: could not read block model dimensions!\n");
+      fprintf (stderr, "\nError: could not read block model dimensions!\n");
     break;
   }
 
@@ -1031,23 +1031,23 @@ unsigned checkBlockModelIO (unsigned rvalue)
   switch (rvalue)
   {
     case 1:
-      fprintf (stderr, "\n Error: unable to write file name to string buffer!\n");
+      fprintf (stderr, "\nError: unable to write file name to string buffer!\n");
     break;
 
     case 2:
-      fprintf (stderr, "\n Error: could not read file!\n");
+      fprintf (stderr, "\nError: could not read file!\n");
     break;
 
     case 3:
-      fprintf (stderr, "\n Error: could not read in the endianess of the file...!\n");
+      fprintf (stderr, "\nError: could not read in the endianess of the file...!\n");
     break;
 
     case 4:
-      fprintf (stderr, "\n Error: could not read block model dimensions!\n");
+      fprintf (stderr, "\nError: could not read block model dimensions!\n");
     break;
 
     case 5:
-      fprintf (stderr, "\n Error: could not read block model file!\n");
+      fprintf (stderr, "\nError: could not read block model file!\n");
     break;
   }
 
@@ -1060,31 +1060,31 @@ unsigned checkBSplinesHeaderIO (unsigned rvalue)
   switch (rvalue)
   {
     case 1:
-      fprintf (stderr, "Error: unable to write file name to string buffer!\n");
+      fprintf (stderr, "\nError: unable to write file name to string buffer!\n");
     break;
 
     case 2:
-      fprintf (stderr, "Error: could not read file!\n");
+      fprintf (stderr, "\nError: could not read file!\n");
     break;
 
     case 3:
-      fprintf (stderr, "Error: could not read file header!\n");
+      fprintf (stderr, "\nError: could not read file header!\n");
     break;
 
     case 4:
-      fprintf (stderr, "Error: could not read number of knots!\n");
+      fprintf (stderr, "\nError: could not read number of knots!\n");
     break;
 
     case 5:
-      fprintf (stderr, "Error: could not read b-splines degree!\n");
+      fprintf (stderr, "\nError: could not read b-splines degree!\n");
     break;
 
     case 6:
-      fprintf (stderr, "Error: could not read minimum radius!\n");
+      fprintf (stderr, "\nError: could not read minimum radius!\n");
     break;
 
     case 7:
-      fprintf (stderr, "Error: could not read maximum radius!\n");
+      fprintf (stderr, "\nError: could not read maximum radius!\n");
     break;
   }
 
@@ -1097,19 +1097,19 @@ unsigned checkKnotsIO (unsigned rvalue)
   switch (rvalue)
   {
     case 1:
-      fprintf (stderr, "Error: unable to write file name to string buffer!\n");
+      fprintf (stderr, "\nError: unable to write file name to string buffer!\n");
     break;
 
     case 2:
-      fprintf (stderr, "Error: could not read file!\n");
+      fprintf (stderr, "\nError: could not read file!\n");
     break;
 
     case 3:
-      fprintf (stderr, "Error: could not read header information!\n");
+      fprintf (stderr, "\nError: could not read header information!\n");
     break;
 
     case 4:
-      fprintf (stderr, "Error: could not read knots positions!\n");
+      fprintf (stderr, "\nError: could not read knots positions!\n");
     break;
   }
 
@@ -1122,19 +1122,19 @@ unsigned checkMeanModelHeaderIO (unsigned rvalue)
   switch (rvalue)
   {
     case 1:
-      fprintf (stderr, "Error: unable to write file name to string buffer!\n");
+      fprintf (stderr, "\nError: unable to write file name to string buffer!\n");
     break;
 
     case 2:
-      fprintf (stderr, "Error: could not read file!\n");
+      fprintf (stderr, "\nError: could not read file!\n");
     break;
 
     case 3:
-      fprintf (stderr, "Error: could not read file header!\n");
+      fprintf (stderr, "\nError: could not read file header!\n");
     break;
 
     case 4:
-      fprintf (stderr, "Error: could not read number of points!\n");
+      fprintf (stderr, "\nError: could not read number of points!\n");
     break;
   }
 
@@ -1147,15 +1147,15 @@ unsigned checkMeanModelIO (unsigned rvalue)
   switch (rvalue)
   {
     case 1:
-      fprintf (stderr, "\n Error: unable to write file name to string buffer!\n");
+      fprintf (stderr, "\nError: unable to write file name to string buffer!\n");
     break;
 
     case 2:
-      fprintf (stderr, "\n Error: could not open file!\n");
+      fprintf (stderr, "\nError: could not open file!\n");
     break;
 
     case 3:
-      fprintf (stderr, "\n Error: could not read file!\n");
+      fprintf (stderr, "\nError: could not read file!\n");
     break;
   }
 
@@ -1186,15 +1186,15 @@ unsigned checkCoefficientsHeaderIO (unsigned rvalue)
   switch (rvalue)
   {
     case 1:
-      fprintf (stderr, "\n Error: unable to write file name to string buffer!\n");
+      fprintf (stderr, "\nError: unable to write file name to string buffer!\n");
     break;
 
     case 2:
-      fprintf (stderr, "\n Error: could not read file!\n");
+      fprintf (stderr, "\nError: could not read file!\n");
     break;
 
     case 3:
-      fprintf (stderr, "\n Error: could not read header information!\n");
+      fprintf (stderr, "\nError: could not read header information!\n");
     break;
   }
 
@@ -1207,11 +1207,11 @@ unsigned checkCoefficientsIO (unsigned rvalue)
   switch (rvalue)
   {
     case 1:
-      fprintf (stderr, "\n Error: unable to write file name to string buffer!\n");
+      fprintf (stderr, "\nError: unable to write file name to string buffer!\n");
     break;
 
     case 2:
-      fprintf (stderr, "\n Error: could not read file!\n");
+      fprintf (stderr, "\nError: could not read file!\n");
     break;
 
     case 3:
