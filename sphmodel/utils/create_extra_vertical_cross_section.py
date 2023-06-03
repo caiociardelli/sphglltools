@@ -53,13 +53,9 @@ from builtins import (ascii, bytes, chr, dict, filter, hex, input,
 import sys
 import math
 import numpy as np
-import matplotlib.pyplot as plt
-import mpl_toolkits.axisartist.floating_axes as floating_axes
 
 from scipy.interpolate import interp1d
-from matplotlib.transforms import Affine2D
-from matplotlib.projections import PolarAxes
-from mpl_toolkits.axisartist.grid_finder import FixedLocator, MaxNLocator, DictFormatter
+
 
 EARTH_R = 6371.0
 

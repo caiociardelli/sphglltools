@@ -52,11 +52,8 @@ from builtins import (ascii, bytes, chr, dict, filter, hex, input,
 
 import sys
 import numpy as np
-import matplotlib.pyplot as plt
 
 from scipy.interpolate import interp1d
-from mpl_toolkits.mplot3d import Axes3D
-from matplotlib import cm, colors
 
 
 def meanModel (name):
