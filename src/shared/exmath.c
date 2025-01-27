@@ -410,7 +410,7 @@ double simpson (double x1, double x2, unsigned nx, double f[nx])
 double bSplines (double x, unsigned nnt, unsigned dg,
                  double T[nnt], unsigned i)
 {
-  /* Function to compute the b-splines */
+  /* Computes the b-splines */
   if (dg == 0) return (T[i] <= x && x < T[i + 1]) ? 1.0 : 0.0;
 
   else
